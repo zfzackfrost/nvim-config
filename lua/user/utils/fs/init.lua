@@ -1,10 +1,11 @@
 local M = {}
 
 local F = Utils.functional
+local C = Utils.core
+local uv = vim.loop
 
 M.Path = require('user.utils.fs.path')
 
-local uv = vim.loop
 
 local function tree_impl(accum, dir)
   local nodes = F.map(function(v)
@@ -18,6 +19,12 @@ local function tree_impl(accum, dir)
   F.each(F.partial(table.insert, accum), nodes)
 end
 
+M.tree = function(dir)
+  local accum = {}
+  tree_impl(accum, dir)
+  return accum
+end
+
 local function read_file_sync(filename)
   local fd = assert(uv.fs_open(tostring(M.Path:new(filename):expand()), 'r', 438))
   local stat = assert(uv.fs_fstat(fd))
@@ -26,25 +33,32 @@ local function read_file_sync(filename)
   return data
 end
 local function read_file_async(filename, callback)
-  vim.loop.fs_open(tostring(M.Path:new(filename):expand()), 'r', 438, function(err_open, fd)
+  uv.fs_open(tostring(M.Path:new(filename):expand()), 'r', 438, function(err_open, fd)
     if err_open then
       error('Failed to open file for reading. Got error message: ' .. err_open, 3)
       return
     end
-    vim.loop.fs_fstat(fd, function(err_fstat, stat)
+    uv.fs_fstat(fd, function(err_fstat, stat)
       assert(not err_fstat, err_fstat)
       if stat.type ~= 'file' then
         return callback('')
       end
-      vim.loop.fs_read(fd, stat.size, 0, function(err_read, data)
+      uv.fs_read(fd, stat.size, 0, function(err_read, data)
         assert(not err_read, err_read)
-        vim.loop.fs_close(fd, function(err_close)
+        uv.fs_close(fd, function(err_close)
           assert(not err_close, err_close)
           return callback(data)
         end)
       end)
     end)
   end)
+end
+
+M.read_file = function(filename, callback)
+  if C.is_callable(callback) then
+    return read_file_async(filename, callback)
+  end
+  return read_file_sync(filename)
 end
 
 M.sep = (function()
@@ -59,19 +73,6 @@ M.sep = (function()
     return package.config:sub(1, 1)
   end
 end)()
-
-M.read_file = function(filename, callback)
-  if callback then
-    return read_file_async(filename, callback)
-  end
-  return read_file_sync(filename)
-end
-
-M.tree = function(dir)
-  local accum = {}
-  tree_impl(accum, dir)
-  return accum
-end
 
 M.is_file = function(path)
   return M.Path:new(path):is_file()

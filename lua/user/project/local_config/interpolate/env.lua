@@ -1,13 +1,13 @@
 local M = {}
-local Path = require('user.utils.fs.path')
+local Fs = Utils.fs
 
 local function get_default_project_name(root)
-  local dir = Path:new(root):parent()
-  return tostring(Path:new(root):make_relative(tostring(dir)))
+  local dir = Fs.Path:new(root):parent()
+  return tostring(Fs.Path:new(root):make_relative(tostring(dir)))
 end
 
 local function get_default_project_author()
-  return os.getenv('USER') or 'author-name'
+  return os.getenv('USER') or 'author-namr'
 end
 
 function M.make_env(root, is_env, cfg)
@@ -16,7 +16,7 @@ function M.make_env(root, is_env, cfg)
     -- Available if in env.yml
     cfg.project_root = root
   else
-    -- Available if not in env.yml
+    -- Available if NOT in env.yml
     cfg.project_root = cfg.project_root or root
     cfg.project_name = cfg.project_name or get_default_project_name(root)
     cfg.project_author = cfg.project_author or get_default_project_author()

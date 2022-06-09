@@ -42,7 +42,7 @@ local function open(self, win_opts)
   local edge = win_opts.edge
   local vertical = edge == cfg_ty.DockEdge.Right or edge == cfg_ty.DockEdge.Left
   win_opts.size = eval_size(win_opts.size, vertical)
-  
+
   local buffer_mode = win_opts.buffer.mode
   if buffer_mode == cfg_ty.OpenBufferMode.BufnrOption then
     win_opts.buffer = win_opts.buffer.bufnr
@@ -80,7 +80,7 @@ local function open(self, win_opts)
 
   if buffer_mode == cfg_ty.OpenBufferMode.CreateEmptyDestroyOnClose then
     local buffer = self:buffer()
-    buffer.opts.bufhidden = "wipe"
+    buffer.opts.bufhidden = 'wipe'
   end
 end
 

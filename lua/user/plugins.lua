@@ -43,8 +43,8 @@ packer = packer.startup(function(use, use_rocks)
 
   -- Lua libs
   use_rocks({ 'lyaml' })
-  use_rocks({ 'lpeg' })
   use_rocks({ 'lua-cjson' })
+  use_rocks({ 'lpeg' })
   use({ 'nvim-lua/plenary.nvim' })
 
   -- Mappings
@@ -73,6 +73,7 @@ packer = packer.startup(function(use, use_rocks)
 
   -- File/Project Management
   use({ 'tpope/vim-eunuch' })
+  use({ 'editorconfig/editorconfig-vim' })
   use({ 'lewis6991/gitsigns.nvim' })
   use({ 'tpope/vim-fugitive' })
   use({

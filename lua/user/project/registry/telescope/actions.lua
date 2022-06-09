@@ -12,7 +12,7 @@ local input_label = function(default, callback)
 end
 
 local input_new_project_cwd = function(callback)
-  pcall(vim.ui.input, { prompt = 'Project root: ', default = root.guess('%') }, callback)
+  pcall(vim.ui.input, { prompt = 'Project root: ', completion='dir', default = root.guess('%') }, callback)
 end
 
 local input_new_project_label = function(cwd, callback)

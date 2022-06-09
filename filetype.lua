@@ -15,6 +15,9 @@ vim.filetype.add({
     ['zsh-theme'] = 'zsh',
   },
   filename = {
+    -- Git
+    ['.gitignore'] = 'gitconfig',
+
     -- Markdown
     ['README'] = 'markdown',
 

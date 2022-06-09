@@ -5,6 +5,7 @@ local bufmatch_commentstring = {
   {
     filetype = {
       '^wgsl$',
+      '^gitconfig$',
     },
   },
 }

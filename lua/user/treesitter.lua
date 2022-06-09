@@ -7,7 +7,7 @@ require('nvim-treesitter.configs').setup({
   },
   indent = {
     enable = true,
-    disable = { 'wgsl' },
+    disable = { 'wgsl', 'cpp', 'c' },
   },
   context_commentstring = {
     enable = true,

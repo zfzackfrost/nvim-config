@@ -19,6 +19,7 @@ require('user.which-key')
 require('user.lualine')
 require('user.colors')
 
+require('user.editorconfig')
 require('user.project')
 
 require('user.lazy-plugins.luasnip')()

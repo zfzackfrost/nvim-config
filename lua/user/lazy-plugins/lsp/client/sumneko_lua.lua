@@ -1,10 +1,3 @@
-local installer = require('nvim-lsp-installer')
-
-local ok, server = installer.get_server('sumneko_lua')
-if ok and not server:is_installed() then
-  server:install()
-end
-
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')

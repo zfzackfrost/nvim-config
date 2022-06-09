@@ -45,7 +45,9 @@ function M.picker(opts)
       actions.select_default:replace(function()
         actions.close(prompt_bufnr)
         local selection = action_state.get_selected_entry()
-        proj_tasks.run_task(selection.value)
+        vim.schedule(function()
+          proj_tasks.run_task(selection.value)
+        end)
       end)
       return true
     end,

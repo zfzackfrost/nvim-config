@@ -111,12 +111,17 @@ _G.packer_plugins = {
   },
   ["crates.nvim"] = {
     after_files = { "/home/zack/.local/share/nvim/site/pack/packer/opt/crates.nvim/after/plugin/cmp_crates.lua" },
-    config = { "\27LJ\2\nˆ\4\0\0\a\0\19\0%6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0004\3\0\0B\0\3\0026\1\a\0009\1\b\0019\1\b\1'\3\t\0'\4\n\0'\5\v\0005\6\f\0B\1\5\0016\1\a\0009\1\b\0019\1\b\1'\3\t\0'\4\r\0'\5\14\0005\6\15\0B\1\5\0016\1\a\0009\1\b\0019\1\b\1'\3\t\0'\4\16\0'\5\17\0005\6\18\0B\1\5\1K\0\1\0\1\0\2\tdesc\20Open crate repo\vbuffer\3\0005<Cmd>lua require('crates').open_repository()<Cr>\15<Space>lcr\1\0\2\tdesc\24Open crates.io page\vbuffer\3\0004<Cmd>lua require('crates').open_crates_io()<Cr>\15<Space>lci\1\0\2\tdesc\20Open crate docs\vbuffer\3\0008<Cmd>lua require('crates').open_documentation()<Cr>\15<Space>lcd\6n\bmap\nUtils\23user_plugin_crates\24nvim_create_augroup\bapi\bvim\nsetup\vcrates\frequire\0" },
+    config = { "\27LJ\2\nˆ\4\0\0\a\0\19\0%6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0004\3\0\0B\0\3\0026\1\a\0009\1\b\0019\1\b\1'\3\t\0'\4\n\0'\5\v\0005\6\f\0B\1\5\0016\1\a\0009\1\b\0019\1\b\1'\3\t\0'\4\r\0'\5\14\0005\6\15\0B\1\5\0016\1\a\0009\1\b\0019\1\b\1'\3\t\0'\4\16\0'\5\17\0005\6\18\0B\1\5\1K\0\1\0\1\0\2\vbuffer\3\0\tdesc\20Open crate repo5<Cmd>lua require('crates').open_repository()<Cr>\15<Space>lcr\1\0\2\vbuffer\3\0\tdesc\24Open crates.io page4<Cmd>lua require('crates').open_crates_io()<Cr>\15<Space>lci\1\0\2\vbuffer\3\0\tdesc\20Open crate docs8<Cmd>lua require('crates').open_documentation()<Cr>\15<Space>lcd\6n\bmap\nUtils\23user_plugin_crates\24nvim_create_augroup\bapi\bvim\nsetup\vcrates\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
     path = "/home/zack/.local/share/nvim/site/pack/packer/opt/crates.nvim",
     url = "https://github.com/Saecki/crates.nvim"
+  },
+  ["editorconfig-vim"] = {
+    loaded = true,
+    path = "/home/zack/.local/share/nvim/site/pack/packer/start/editorconfig-vim",
+    url = "https://github.com/editorconfig/editorconfig-vim"
   },
   ["friendly-snippets"] = {
     loaded = true,

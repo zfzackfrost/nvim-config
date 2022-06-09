@@ -1,6 +1,8 @@
 local M = {}
 
-local shader_color = '#C08C6D'
+local config_icon = ''
+
+local zsh_color = '#89E051'
 
 local markdown_color = '#519ABA'
 local markdown_icon = ''
@@ -8,14 +10,14 @@ local markdown_icon = ''
 local license_color = '#CBCB41'
 local license_icon = ''
 
+local shader_color = '#C08C6D'
 local shader_icon_mixed = ''
 local shader_icon_vert = '艹'
-local shader_icon_frag = ''
+local shader_icon_frag = ''
 local shader_icon_geom = '謁'
 local shader_icon_comp = 'ﬧ'
 local shader_icon_tesc = ''
 local shader_icon_tese = ''
-
 
 local function setup_icons()
   local devicons = require('nvim-web-devicons')
@@ -26,14 +28,25 @@ local function setup_icons()
       ['LICENSE'] = {
         icon = license_icon,
         color = license_color,
-        name = 'License'
+        name = 'License',
       },
-
+      ['LICENSE.txt'] = {
+        icon = license_icon,
+        color = license_color,
+        name = 'LicenseTxt',
+      },
       -- Repository License file
       ['LICENSE.md'] = {
         icon = license_icon,
         color = license_color,
-        name = 'LicenseMd'
+        name = 'LicenseMd',
+      },
+
+      -- Zsh
+      ['zsh-theme'] = {
+        icon = config_icon,
+        color = zsh_color,
+        name = 'ZshTheme',
       },
 
       -- Markdown file
@@ -48,6 +61,12 @@ local function setup_icons()
         icon = shader_icon_mixed,
         color = shader_color,
         name = 'Wgsl',
+      },
+      -- GLSL shader
+      glsl = {
+        icon = shader_icon_mixed,
+        color = shader_color,
+        name = 'Glsl',
       },
       -- GLSL Vertex shader
       vert = {
@@ -91,9 +110,9 @@ local function setup_icons()
 end
 
 function M.setup()
-  vim.api.nvim_create_autocmd({'ColorScheme'}, {
-    group=vim.api.nvim_create_augroup('user_plugin_web_devicons', {}),
-    callback=setup_icons,
+  vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
+    group = vim.api.nvim_create_augroup('user_plugin_web_devicons', {}),
+    callback = setup_icons,
   })
 end
 
