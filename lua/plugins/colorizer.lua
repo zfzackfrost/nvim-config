@@ -2,6 +2,7 @@ local ft = {
   'css',
   'scss',
   'svelte',
+  'html',
   'xml',
   'json',
   'javascriptreact',
