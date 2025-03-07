@@ -1,0 +1,8 @@
+{
+  "lua": {
+    "format_on_save": true
+  },
+  "json": {
+    "format_on_save": true
+  }
+}
