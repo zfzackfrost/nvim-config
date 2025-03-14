@@ -13,9 +13,17 @@ local function bufonly()
   end
 end
 
+local function write_nofmt()
+  local old_format_on_save = vim.b.format_on_save
+  vim.b.format_on_save = false
+  vim.cmd.write()
+  vim.b.format_on_save = old_format_on_save
+end
+
 local wk = require('which-key')
 wk.add({
   { '<leader>bo', bufonly, desc = 'Delete buffers except current' },
+  { '<leader>bw', write_nofmt, desc = 'Write buffer without formatting' },
   { '<leader>bd', make_bufdelete(false), desc = 'Delete buffer and keep split' },
   { '<leader>bD', make_bufdelete(true), desc = 'Delete buffer (force) and keep split' },
 })
