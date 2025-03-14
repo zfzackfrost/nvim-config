@@ -1,3 +1,16 @@
+local function fileformat()
+  local ff = vim.bo.fileformat
+  local symbols
+  if ff == 'unix' then
+    symbols = [[\n]]
+  elseif ff == 'dos' then
+    symbols = [[\r\n]]
+  else
+    symbols = [[\r]]
+  end
+  return symbols
+end
+
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
@@ -27,7 +40,7 @@ return {
       lualine_a = { 'mode' },
       lualine_b = { 'branch', 'diff', 'diagnostics' },
       lualine_c = { 'filename' },
-      lualine_x = { 'encoding', 'fileformat', 'filetype' },
+      lualine_x = { 'encoding', fileformat, 'filetype' },
       lualine_y = { 'progress' },
       lualine_z = { 'location' },
     },
