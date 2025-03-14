@@ -13,10 +13,15 @@ return {
   {
     'catgoose/nvim-colorizer.lua',
     ft = ft,
-    opts = { -- set to setup table
+    opts = {
       filetypes = ft,
-      css = true,
-      sass = { enable = true, parsers = { 'css' } }, -- Enable sass colors
+      user_default_options = {
+        RGB = true,
+        RRGGBB = true,
+        css_fn = true,
+        names = false,
+        tailwind = 'lsp',
+      },
     },
   },
 }

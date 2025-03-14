@@ -48,6 +48,7 @@ local servers = {
     },
   },
   pyright = {},
+  tailwindcss = {},
   taplo = {},
   vtsls = {},
   glsl_analyzer = {},
