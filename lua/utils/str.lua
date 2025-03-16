@@ -1,5 +1,17 @@
 local M = {}
 
+---Repeat a string
+---@param s string the string
+---@param n integer number of times to repeat
+---@return string #`s` concatenated with itself `n` times
+function M.rep(s, n)
+  local rv = ''
+  for _ = 1, n, 1 do
+    rv = rv .. s
+  end
+  return rv
+end
+
 ---Remove a prefix from a string
 ---@param s string the string
 ---@param v string the prefix to remove
