@@ -26,12 +26,24 @@ do
   local group = augroup('user_resize_window', {})
   autocmd({ 'BufWinEnter' }, {
     group = group,
-    callback = function()
+    callback = function(args)
       vim.defer_fn(function()
-        if vim.bo.filetype == 'neo-tree' then
-          vim.api.nvim_win_set_width(0, 28)
+        local cur_w = nil
+        local all_w = vim.api.nvim_tabpage_list_wins(0)
+        for _, w in ipairs(all_w) do
+          local b = vim.api.nvim_win_get_buf(w)
+          if b == args.buf then
+            cur_w = w
+            break
+          end
         end
-      end, 50)
+        if cur_w == nil then
+          return
+        end
+        if vim.bo.filetype == 'neo-tree' then
+          vim.api.nvim_win_set_width(cur_w, 28)
+        end
+      end, 10)
     end,
   })
 end
