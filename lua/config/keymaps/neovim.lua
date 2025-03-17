@@ -5,6 +5,6 @@ wk.add({
 
   { '<leader>vs', group = 'server' },
   { '<leader>vss', [[<Cmd>StartServer<Cr>]], desc = 'Start server' },
-  { '<leader>vsS', [[<Cmd>StopServer<Cr>]], desc = 'Stop Server' },
+  { '<leader>vse', [[<Cmd>StopServer<Cr>]], desc = 'Stop Server' },
   { '<leader>vsd', [[<Cmd>CleanServerPipe<Cr>]], desc = 'Clean old server pipe' },
 })
