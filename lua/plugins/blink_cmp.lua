@@ -10,7 +10,6 @@ return {
       snippets = { preset = 'luasnip' },
       keymap = { preset = 'enter' },
       appearance = {
-        use_nvim_cmp_as_default = false,
         nerd_font_variant = 'normal',
       },
       completion = {
@@ -38,8 +37,18 @@ return {
           },
         },
       },
+      fuzzy = {
+        sorts = {
+          'exact',
+          'score',
+          'sort_text',
+        },
+      },
       signature = {
         enabled = true,
+        trigger = {
+          show_on_insert = true,
+        },
       },
       cmdline = {},
       sources = {
