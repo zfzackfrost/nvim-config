@@ -58,7 +58,7 @@ end
 
 function M.read_settings()
   local p = get_file_path()
-  local defaults = default_settings
+  local defaults = vim.deepcopy(default_settings)
   if p == nil then
     return defaults
   end
