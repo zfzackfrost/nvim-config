@@ -12,7 +12,7 @@ local function on_attach(args)
       vim.lsp.inlay_hint.enable(not enabled, { bufnr = args.buf })
     end
     wk.add({
-      { '<leader>cr', ':IncRename ', buffer = args.buf, desc = 'Rename under cursor' },
+      { '<leader>cr', [[:IncRename <C-r>=expand('<cword>')<Cr>]], buffer = args.buf, desc = 'Rename under cursor' },
       {
         '<leader>cs',
         [[<Cmd>Telescope lsp_document_symbols theme=ivy<Cr>]],
