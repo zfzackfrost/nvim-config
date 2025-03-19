@@ -23,6 +23,28 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 local default_opts = {}
 
+local ts_settings = {
+  typescript = {
+    inlayHints = {
+      variableTypes = {
+        enabled = true,
+      },
+      parameterTypes = {
+        enabled = true,
+      },
+      propertyDeclarationTypes = {
+        enabled = true,
+      },
+      parameterNames = {
+        enabled = 'all',
+      },
+    },
+  },
+}
+local svelte_settings = {
+  svelte = {},
+}
+
 ---@module "lspconfig.configs"
 local servers = {
   clangd = {
@@ -50,7 +72,9 @@ local servers = {
   pyright = {},
   tailwindcss = {},
   taplo = {},
-  vtsls = {},
+  vtsls = {
+    settings = ts_settings,
+  },
   glsl_analyzer = {},
   yamlls = {
     settings = {
@@ -66,7 +90,9 @@ local servers = {
       },
     },
   },
-  svelte = {},
+  svelte = {
+    settings = vim.tbl_deep_extend('keep', svelte_settings, ts_settings),
+  },
   zls = {},
 }
 
