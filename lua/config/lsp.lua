@@ -19,8 +19,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = on_attach,
 })
 
--- rust-analyzer
-
 local default_opts = {}
 
 local ts_settings = {
