@@ -1,9 +1,11 @@
 local M = {}
 
-local default_settings = {
-  rust = {
-    lsp_enable_hints = true,
-  },
+local default_settings = {}
+local enable_hints_fts = {
+  'rust',
+  'typescript',
+  'typescriptreact',
+  'svelte',
 }
 local format_on_save_fts = {
   'c',
@@ -26,6 +28,12 @@ local format_on_save_fts = {
   'xml',
   'zig',
 }
+for _, ft in ipairs(enable_hints_fts) do
+  if default_settings[ft] == nil then
+    default_settings[ft] = {}
+  end
+  default_settings[ft].lsp_enable_hints = true
+end
 for _, ft in ipairs(format_on_save_fts) do
   if default_settings[ft] == nil then
     default_settings[ft] = {}
