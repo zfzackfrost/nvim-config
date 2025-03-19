@@ -3,6 +3,8 @@ local enable_hints_fts = {
   'rust',
   'typescript',
   'typescriptreact',
+  'javascript',
+  'javascriptreact',
   'svelte',
 }
 local format_on_save_fts = {
