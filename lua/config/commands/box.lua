@@ -48,10 +48,13 @@ local function make_comment_box(text, width, height, dash)
   local start_dashes = math.floor((width - #text) / 2.0 + 0.5)
   local end_dashes = width - start_dashes - #text
 
+  local commentstring = vim.trim(string.gsub(vim.bo.commentstring, '%%s', ''))
+  local remove_spaces = s.ends_with(commentstring, dash)
+
   local text_line = s.rep(dash, start_dashes) .. text .. s.rep(dash, end_dashes)
   local dash_line = s.rep(dash, width)
-  text_line = c.commented_text(text_line, nil, true)
-  dash_line = c.commented_text(dash_line, nil, true)
+  text_line = c.commented_text(text_line, nil, remove_spaces)
+  dash_line = c.commented_text(dash_line, nil, remove_spaces)
 
   local start_dash_lines = math.floor(height / 2.0)
   local end_dash_lines = (height - start_dash_lines - 1)
