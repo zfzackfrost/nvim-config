@@ -68,6 +68,11 @@ local function make_comment_box(text, width, height, dash)
     table.insert(lines, dash_line)
   end
 
+  -- Remember defaults
+  defaults.width = width
+  defaults.height = height
+  defaults.dash = dash
+
   vim.api.nvim_put(lines, 'l', true, false)
 end
 
