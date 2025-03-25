@@ -1,15 +1,20 @@
 local blink = require('blink.cmp')
-
 ---------------- Menu Components --------------
 
 ---@type blink.cmp.DrawComponent
 local kind_icon = {
   ellipsis = false,
   text = function(ctx)
+    if ctx.item.client_name == 'tailwindcss' and ctx.kind == 'Color' then
+      return ctx.kind_icon
+    end
     local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
     return kind_icon
   end,
   highlight = function(ctx)
+    if ctx.item.client_name == 'tailwindcss' and ctx.kind == 'Color' then
+      return ctx.kind_hl
+    end
     local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
     return hl
   end,

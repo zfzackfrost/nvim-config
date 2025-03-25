@@ -20,7 +20,7 @@ return {
         RRGGBB = true,
         css_fn = true,
         names = false,
-        tailwind = 'lsp',
+        tailwind = false,
       },
     },
   },
