@@ -32,4 +32,9 @@ function M.map_filetype(filetypes, mappings, opts)
     end,
   })
 end
+
+function M.unimplemented()
+  vim.notify('Mapping has not been implemented yet!', vim.log.levels.WARN)
+end
+
 return M
