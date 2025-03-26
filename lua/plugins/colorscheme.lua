@@ -17,6 +17,12 @@ return {
         lsp_trouble = true,
         neotest = true,
       },
+      custom_highlights = function(colors)
+        return {
+          LineNr = { bg = colors.crust },
+          CursorLineNr = { bg = colors.crust },
+        }
+      end,
     },
     config = function(_, opts)
       require('catppuccin').setup(opts)
