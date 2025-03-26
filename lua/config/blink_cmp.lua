@@ -1,4 +1,14 @@
 local blink = require('blink.cmp')
+
+---------------- Option Functions -------------
+
+local disabled_fts = {
+  'gitcommit',
+}
+local function blink_enabled()
+  return not vim.tbl_contains(disabled_fts, vim.bo.filetype)
+end
+
 ---------------- Menu Components --------------
 
 ---@type blink.cmp.DrawComponent
@@ -38,6 +48,7 @@ local providers = {
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
 local opts = {
+  enabled = blink_enabled,
   snippets = { preset = 'luasnip' },
   keymap = { preset = 'enter' },
   appearance = {
