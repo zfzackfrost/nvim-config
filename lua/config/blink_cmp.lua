@@ -1,6 +1,6 @@
 local blink = require('blink.cmp')
 
----------------- Option Functions -------------
+--------------- Enable Completion -------------
 
 local disabled_fts = {
   'gitcommit',
