@@ -20,18 +20,25 @@ return {
       desc = 'Upgrate all crates',
     },
     {
-      'i',
+      't',
       function()
         require('crates').expand_plain_crate_to_inline_table()
       end,
       desc = 'Expand crate to inline table',
     },
     {
-      'I',
+      'T',
       function()
         require('crates').extract_crate_into_table()
       end,
       desc = 'Extract crate to table',
+    },
+    {
+      'd',
+      function()
+        require('crates').open_documentation()
+      end,
+      desc = 'Open crate documentation',
     },
   },
 }
