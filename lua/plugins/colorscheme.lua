@@ -21,6 +21,7 @@ return {
         return {
           LineNr = { bg = colors.crust },
           CursorLineNr = { bg = colors.crust },
+          SignColumn = { bg = colors.crust },
         }
       end,
     },
