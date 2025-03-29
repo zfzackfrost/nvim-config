@@ -37,8 +37,32 @@ local lazydev = {
   module = 'lazydev.integrations.blink',
   score_offset = 100, -- Top priority
 }
+local nerdfont = {
+  module = 'blink-nerdfont',
+  name = 'Nerd Fonts',
+  score_offset = 10,
+  opts = { insert = true },
+}
 local providers = {
   lazydev = lazydev,
+  nerdfont = nerdfont,
+}
+
+-------------------- Sources ------------------
+
+local sources = {
+  default = { 'lsp', 'snippets', 'path', 'buffer' },
+  per_filetype = {
+    lua = {
+      'lazydev',
+      'lsp',
+      'snippets',
+      'path',
+      'buffer',
+      'nerdfont',
+    },
+  },
+  providers = providers,
 }
 
 -- ############################################################
@@ -83,10 +107,7 @@ local opts = {
     },
   },
   cmdline = {},
-  sources = {
-    default = { 'lazydev', 'lsp', 'snippets', 'path', 'buffer' },
-    providers = providers,
-  },
+  sources = sources,
 }
 
 -- ############################################################
