@@ -17,11 +17,14 @@ return {
         lsp_trouble = true,
         neotest = true,
       },
+
       custom_highlights = function(colors)
         return {
           LineNr = { bg = colors.crust },
           CursorLineNr = { bg = colors.crust },
           SignColumn = { bg = colors.crust },
+          IndentLine = { fg = colors.surface0 },
+          IndentLineCurrent = { fg = colors.surface2 },
         }
       end,
     },
