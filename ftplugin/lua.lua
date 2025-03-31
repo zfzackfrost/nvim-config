@@ -1,3 +1,7 @@
+vim.bo.expandtab = true
+vim.bo.shiftwidth = 2
+vim.bo.softtabstop = 2
+
 local gen_hook = MiniSplitjoin.gen_hook
 local curly = { brackets = { '%b{}' } }
 
