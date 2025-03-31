@@ -49,9 +49,9 @@ local function handle_lsp_format(ft_config)
   end
 end
 
-local function handle_local_settings()
+local function handle_local_settings(settings)
   local ft_config = {}
-  for ft, config in pairs(vim.g.local_settings) do
+  for ft, config in pairs(settings) do
     if vim.bo.filetype == ft then
       ft_config = config
       break
@@ -65,7 +65,7 @@ local function handle_local_settings()
 end
 
 local function load_local_settings()
-  vim.g.local_settings = require('config.local_settings.file').read_settings()
-  handle_local_settings()
+  local settings = require('config.local_settings.file').read_settings()
+  handle_local_settings(settings)
 end
 vim.api.nvim_create_user_command('LoadLocalSettings', load_local_settings, {})
