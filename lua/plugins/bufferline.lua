@@ -8,13 +8,13 @@ return {
         options = {
           show_close_icon = false,
           show_buffer_close_icons = false,
-          separator_style = 'thin',
+          separator_style = 'thick',
           offsets = {
             {
               filetype = 'neo-tree',
               text = 'File Tree',
               separator = true,
-              highlight = 'lualine_a_normal',
+              highlight = 'BufferlineBanner',
             },
           },
         },
