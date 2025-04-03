@@ -26,6 +26,7 @@ local wk = require('which-key')
 wk.add({
   { prefix, group = 'buffers' },
   { prefix .. 'o', bufonly, desc = 'Delete buffers except current' },
+  { prefix .. 'e', [[<Cmd>edit<Cr>]], desc = "Re-open current buffer's file" },
   { prefix .. 'w', write_nofmt, desc = 'Write buffer without formatting' },
   { prefix .. 'd', make_bufdelete(false), desc = 'Delete buffer and keep split' },
   { prefix .. 'D', make_bufdelete(true), desc = 'Delete buffer (force) and keep split' },
