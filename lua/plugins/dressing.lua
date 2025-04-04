@@ -4,7 +4,13 @@ return {
     event = 'VeryLazy',
     opts = {
       input = {
-        enabled = false,
+        enabled = true,
+        border = 'single',
+        prefer_width = 50,
+        relative = 'cursor',
+        win_options = {
+          sidescrolloff = 5,
+        },
       },
       select = {
         enabled = true,
