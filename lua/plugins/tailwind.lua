@@ -4,6 +4,15 @@ return {
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
   },
+  ft = {
+    'css',
+    'scss',
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+    'svelte',
+  },
   opts = {
     server = {
       override = false,
@@ -14,5 +23,5 @@ return {
     conceal = {
       enabled = false,
     },
-  }, -- your configuration
+  },
 }
