@@ -2,7 +2,7 @@ vim.bo.expandtab = true
 vim.bo.shiftwidth = 4
 vim.bo.softtabstop = 4
 
-local gen_hook = MiniSplitjoin.gen_hook
+local gen_hook = require('mini.splitjoin').gen_hook
 
 local paren = { brackets = { '%b()' } }
 local curly = { brackets = { '%b{}' } }

@@ -2,7 +2,7 @@ vim.bo.expandtab = true
 vim.bo.shiftwidth = 2
 vim.bo.softtabstop = 2
 
-local gen_hook = MiniSplitjoin.gen_hook
+local gen_hook = require('mini.splitjoin').gen_hook
 local curly = { brackets = { '%b{}' } }
 
 -- Add trailing comma when splitting inside curly brackets
