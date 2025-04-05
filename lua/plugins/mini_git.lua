@@ -2,6 +2,7 @@ return {
   'echasnovski/mini-git',
   version = false,
   main = 'mini.git',
+  cmd = { 'Git' },
   opts = {
     job = {
       git_executable = 'git',

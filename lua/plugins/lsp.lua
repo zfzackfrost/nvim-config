@@ -1,7 +1,7 @@
 return {
   {
     'smjonas/inc-rename.nvim',
-    lazy = true,
+    event = 'CmdlineEnter',
     opts = {},
   },
   {
@@ -23,7 +23,6 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      'inc-rename.nvim',
       'mason-lspconfig.nvim',
     },
     event = 'VeryLazy',

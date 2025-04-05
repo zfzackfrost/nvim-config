@@ -1,12 +1,13 @@
 return {
   {
     'mfussenegger/nvim-dap',
-    lazy = true,
+    dependencies = { 'rcarriga/nvim-dap-ui' },
+    cmd = { 'DebugStart' },
   },
   {
     'rcarriga/nvim-dap-ui',
-    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
-    event = 'VeryLazy',
+    dependencies = { 'nvim-neotest/nvim-nio' },
+    lazy = true,
     opts = {},
   },
 }
