@@ -5,28 +5,40 @@ local function get_server_path()
   return vim.fs.joinpath(cache_dir, 'serverpipe')
 end
 
-local function start_server()
+---@param t vim.api.keyset.create_user_command.command_args
+local function start_server(t)
   local p = get_server_path()
+  local silent = t.smods.silent or t.smods.emsg_silent
   if vim.uv.fs_stat(p) then
-    vim.notify('Failed to start server:\nPipe already exists!', vim.log.levels.WARN, {})
+    if not silent then
+      vim.notify('Failed to start server:\nPipe already exists!', vim.log.levels.WARN, {})
+    end
     return
   end
   if not vim.g.server_started then
     vim.fn.serverstart(p)
-    vim.notify(string.format('Started server:\n   %s', p), vim.log.levels.INFO, {})
+    if not silent then
+      vim.notify(string.format('Started server:\n   %s', p), vim.log.levels.INFO, {})
+    end
   end
   vim.g.server_started = true
 end
 
-local function stop_server()
+---@param t vim.api.keyset.create_user_command.command_args
+local function stop_server(t)
   local p = get_server_path()
+  local silent = t.smods.silent or t.smods.emsg_silent
   if not vim.uv.fs_stat(p) then
-    vim.notify('Failed to stop server:\nPipe does not exists!', vim.log.levels.WARN, {})
+    if not silent then
+      vim.notify('Failed to stop server:\nPipe does not exists!', vim.log.levels.WARN, {})
+    end
     return
   end
   vim.fn.serverstop(p)
   vim.g.server_started = false
-  vim.notify(string.format('Stopped server:\n   %s', p), vim.log.levels.INFO, {})
+  if not silent then
+    vim.notify(string.format('Stopped server:\n   %s', p), vim.log.levels.INFO, {})
+  end
 end
 
 local function clean_server_pipe()
