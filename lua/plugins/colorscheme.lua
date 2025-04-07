@@ -16,6 +16,9 @@ return {
         window_picker = true,
         lsp_trouble = true,
         neotest = true,
+        snacks = {
+          enabled = true,
+        },
       },
 
       custom_highlights = function(colors)
