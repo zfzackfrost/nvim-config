@@ -9,6 +9,7 @@ return {
     ft = 'lua', -- only load on lua files
     opts = {
       library = {
+        'snacks.nvim',
         'nvim-dap-ui',
         -- See the configuration section for more details
         -- Load luvit types when the `vim.uv` word is found
