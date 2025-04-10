@@ -12,7 +12,6 @@ return {
         which_key = true,
         mason = true,
         blink_cmp = true,
-        overseer = true,
         window_picker = true,
         lsp_trouble = true,
         neotest = true,
