@@ -1,4 +1,7 @@
+---@module 'config.local_settings.types'
+---@type LocalSettings
 local defaults = {}
+
 local enable_hints_fts = {
   'rust',
   'typescript',
