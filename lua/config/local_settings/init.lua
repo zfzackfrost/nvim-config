@@ -1,5 +1,8 @@
+---@module 'config.local_settings.types'
+
 local v = require('utils.validate')
 
+---@param ft_config FiletypeSettings
 local function handle_lsp_enable_hints(ft_config)
   if not v.is_any(ft_config.lsp_enable_hints, { v.is_bool, v.is_nil }) then
     vim.b.lsp_enable_hints = nil
@@ -8,6 +11,8 @@ local function handle_lsp_enable_hints(ft_config)
     vim.b.lsp_enable_hints = ft_config.lsp_enable_hints
   end
 end
+
+---@param ft_config FiletypeSettings
 local function handle_autostart_server(ft_config)
   if not v.is_any(ft_config.autostart_server, { v.is_bool, v.is_nil }) then
     vim.b.autostart_server = nil
@@ -16,6 +21,8 @@ local function handle_autostart_server(ft_config)
     vim.b.autostart_server = ft_config.autostart_server
   end
 end
+
+---@param ft_config FiletypeSettings
 local function handle_format_on_save(ft_config)
   if not v.is_any(ft_config.format_on_save, { v.is_bool, v.is_nil }) then
     vim.b.format_on_save = nil
@@ -24,12 +31,14 @@ local function handle_format_on_save(ft_config)
     vim.b.format_on_save = ft_config.format_on_save
   end
 end
+
+---@param ft_config FiletypeSettings
 local function handle_formatters(ft_config)
   if not v.is_any(ft_config.formatters, { v.is_nil, v.is_string_list, v.is_string }) then
     vim.b.formatters = nil
     vim.notify('Invalid value for formatters!', vim.log.levels.ERROR)
-  else
-    if type(ft_config) == 'string' then
+  elseif ft_config ~= nil then
+    if type(ft_config.formatters) == 'string' then
       vim.b.formatters = { ft_config.formatters }
     else
       vim.b.formatters = ft_config.formatters
@@ -37,6 +46,7 @@ local function handle_formatters(ft_config)
   end
 end
 
+---@param ft_config FiletypeSettings
 local function handle_lsp_format(ft_config)
   local function is_valid_lsp_format(value)
     return v.is_any_value(value, { 'never', 'fallback', 'first', 'last', 'prefer' })
@@ -49,7 +59,9 @@ local function handle_lsp_format(ft_config)
   end
 end
 
+---@param settings LocalSettings
 local function handle_local_settings(settings)
+  ---@type FiletypeSettings
   local ft_config = {}
   for ft, config in pairs(settings) do
     if vim.bo.filetype == ft then

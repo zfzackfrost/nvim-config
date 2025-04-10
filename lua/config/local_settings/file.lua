@@ -1,5 +1,7 @@
 local M = {}
 
+---@module 'config.local_settings.types'
+
 local defaults = require('config.local_settings.defaults')
 
 local function get_file_path()
@@ -17,6 +19,7 @@ local function get_file_path()
   end
 end
 
+---@return LocalSettings
 function M.read_settings()
   local p = get_file_path()
   local d = vim.deepcopy(defaults)
