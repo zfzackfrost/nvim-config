@@ -25,8 +25,6 @@ return {
           LineNr = { bg = colors.crust },
           CursorLineNr = { bg = colors.crust },
           SignColumn = { bg = colors.crust },
-          IndentLine = { fg = colors.surface0 },
-          IndentLineCurrent = { fg = colors.surface2 },
           BufferlineBanner = { fg = colors.crust, bg = colors.overlay1 },
         }
       end,
