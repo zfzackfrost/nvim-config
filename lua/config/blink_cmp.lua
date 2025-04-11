@@ -2,9 +2,7 @@ local blink = require('blink.cmp')
 
 --------------- Enable Completion -------------
 
-local disabled_fts = {
-  'gitcommit',
-}
+local disabled_fts = {}
 local function blink_enabled()
   return not vim.tbl_contains(disabled_fts, vim.bo.filetype)
 end
