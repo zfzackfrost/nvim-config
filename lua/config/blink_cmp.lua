@@ -102,6 +102,8 @@ local opts = {
     enabled = true,
     trigger = {
       show_on_insert = true,
+      show_on_insert_on_trigger_character = true,
+      show_on_trigger_character = true,
     },
   },
   cmdline = {},
