@@ -1,4 +1,4 @@
-vim.api.nvim_create_autocmd('BufWinEnter', {
+autocmd('BufWinEnter', {
   callback = function()
     vim.wo.spell = true
     return true

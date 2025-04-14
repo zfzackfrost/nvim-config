@@ -38,8 +38,8 @@ local function on_attach(args)
   end
 end
 
-local augroup = vim.api.nvim_create_augroup('user_lsp', {})
-vim.api.nvim_create_autocmd('LspAttach', {
+local augroup = augroup('user_lsp', {})
+autocmd('LspAttach', {
   group = augroup,
   callback = on_attach,
 })

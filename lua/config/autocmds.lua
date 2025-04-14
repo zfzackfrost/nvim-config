@@ -1,6 +1,3 @@
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-
 do
   local group = augroup('user_local_settings', {})
   autocmd({ 'BufWinEnter', 'BufEnter', 'BufRead' }, {
