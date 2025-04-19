@@ -26,6 +26,7 @@ return {
     main = 'nvim-treesitter.configs',
     opts = {
       ensure_installed = 'all',
+      ignore_insall = { 'comment' },
       sync_install = false,
       highlight = { enable = true },
       indent = { enable = true },
