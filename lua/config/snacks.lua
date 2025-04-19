@@ -1,3 +1,23 @@
+-- ============================================================
+-- =========================== Setup ==========================
+-- ============================================================
+
+local opts = {
+  input = { enabled = true },
+  indent = { enabled = true },
+  dashboard = { enabled = true },
+  notifier = { enabled = true },
+}
+
+require('snacks').setup(opts)
+vim.ui.select = Snacks.picker.select
+
+-- ============================================================
+-- ========================= Notifier =========================
+-- ============================================================
+
+-- ~~~~~~~~~~~~~~~~~~ LSP Progress ~~~~~~~~~~~~~~~~~~
+
 ---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
 local progress = vim.defaulttable()
 vim.api.nvim_create_autocmd('LspProgress', {
