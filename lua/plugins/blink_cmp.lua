@@ -5,6 +5,7 @@ return {
     dependencies = {
       'LuaSnip',
       'MahanRahmati/blink-nerdfont.nvim',
+      'ribru17/blink-cmp-spell',
     },
     event = { 'InsertEnter' },
     config = function()

@@ -41,21 +41,42 @@ local nerdfont = {
   score_offset = 10,
   opts = { insert = true },
 }
+local spell = {
+  name = 'Spell',
+  module = 'blink-cmp-spell',
+  opts = {
+    -- Only enable source in `@spell` captures, and disable it
+    -- in `@nospell` captures
+    enable_in_context = function()
+      local curpos = vim.api.nvim_win_get_cursor(0)
+      local captures = vim.treesitter.get_captures_at_pos(0, curpos[1] - 1, curpos[2] - 1)
+      for _, cap in ipairs(captures) do
+        if cap.capture == 'spell' then
+          return true
+        elseif cap.capture == 'nospell' then
+          return false
+        end
+      end
+    end,
+  },
+}
 local providers = {
   lazydev = lazydev,
   nerdfont = nerdfont,
+  spell = spell,
 }
 
 -------------------- Sources ------------------
 
 local sources = {
-  default = { 'lsp', 'snippets', 'path', 'buffer' },
+  default = { 'lsp', 'snippets', 'path', 'spell', 'buffer' },
   per_filetype = {
     lua = {
       'lazydev',
       'lsp',
       'snippets',
       'path',
+      'spell',
       'buffer',
       'nerdfont',
     },
