@@ -20,7 +20,14 @@ do
 end
 
 do
+  ---@alias WindowSide 'L'|'R'
+  ---@type table<string, number>
+  local ft_window_configs = {
+    ['grug-far'] = 45,
+    ['neo-tree'] = 28,
+  }
   local group = augroup('user_resize_window', {})
+
   autocmd({ 'BufWinEnter' }, {
     group = group,
     callback = function(args)
@@ -37,8 +44,11 @@ do
         if cur_w == nil then
           return
         end
-        if vim.bo.filetype == 'neo-tree' then
-          vim.api.nvim_win_set_width(cur_w, 28)
+        for ft, cfg in pairs(ft_window_configs) do
+          if vim.bo.filetype == ft then
+            vim.api.nvim_win_set_width(cur_w, cfg)
+            break
+          end
         end
       end, 10)
     end,
