@@ -7,6 +7,12 @@ local function local_opts(_, opts)
   ---@module 'neotree'
   ---@type neotree.Config
   return {
+    window = {
+      mappings = {
+        ['q'] = 'noop',
+        ['<Esc>'] = 'close_window',
+      },
+    },
     filesystem = {
       filtered_items = {
         visible = true,
