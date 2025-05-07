@@ -3,16 +3,12 @@ vim.g.maplocalleader = '\\'
 
 local opt = vim.opt
 
-opt.viewoptions = {
-  'folds',
-  'cursor',
-}
-
+opt.viewoptions = { 'folds', 'cursor' }
 opt.formatexpr = "v:lua.require'conform'.formatexpr()"
-opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+opt.foldmethod = 'expr'
+opt.foldexpr = 'v:lua.vim.lsp.foldexpr()'
 opt.foldlevel = 99
 opt.showmode = false
-opt.foldmethod = 'expr'
 opt.clipboard = ''
 opt.hidden = true
 opt.laststatus = 3
