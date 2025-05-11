@@ -120,7 +120,13 @@ local function text_callback(text)
 end
 
 local function comment_box()
+  local def = require('utils.vim.selection').get()
+  local def_str = ''
+  if def ~= nil then
+    def_str = table.concat(def, '\n')
+  end
   vim.ui.input({
+    default = def_str,
     prompt = 'Text: ',
   }, text_callback)
 end
