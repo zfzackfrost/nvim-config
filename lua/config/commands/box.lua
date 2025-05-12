@@ -123,7 +123,7 @@ local function comment_box()
   local def = require('utils.vim.selection').get()
   local def_str = ''
   if def ~= nil then
-    def_str = table.concat(def, '\n')
+    def_str = table.concat(def, ' ')
   end
   vim.ui.input({
     default = def_str,
