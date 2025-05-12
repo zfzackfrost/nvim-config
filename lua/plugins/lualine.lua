@@ -49,7 +49,7 @@ return {
       'man',
       'mason',
       'neo-tree',
-      'overseer',
+      'nvim-dap-ui',
       'quickfix',
       'trouble',
     },
