@@ -6,7 +6,7 @@ return {
     opts = {
       keymaps = {
         close = {
-          n = '<Esc>',
+          n = 'q',
           i = '<C-c>',
         },
         nextInput = {
