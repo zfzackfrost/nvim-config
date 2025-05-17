@@ -8,5 +8,5 @@ wk.add({
   { '<leader>sb', '<Cmd>Telescope buffers<Cr>', desc = 'Search for buffer' },
   { '<leader>sh', '<Cmd>Telescope help_tags<Cr>', desc = 'Search for vim help' },
   { '<leader>sm', '<Cmd>Telescope man_pages<Cr>', desc = 'Search linux manual' },
-  { '<leader>sb', '<Cmd>Telescope builtin<Cr>', desc = 'Search for Telescope finder' },
+  { '<leader>st', '<Cmd>Telescope builtin<Cr>', desc = 'Search for Telescope finder' },
 })
