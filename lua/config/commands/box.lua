@@ -39,7 +39,7 @@ local function process_int_input(value, name, default)
   return value
 end
 
-local function make_comment_box(text, width, height, dash)
+local function make_comment_box(text, visual, width, height, dash)
   text = vim.trim(text)
   if #text > 0 then
     text = ' ' .. text .. ' '
@@ -73,19 +73,27 @@ local function make_comment_box(text, width, height, dash)
   defaults.height = height
   defaults.dash = dash
 
-  vim.api.nvim_put(lines, 'l', true, false)
+  -- Started from visual mode?
+  if visual then
+    local old_x = vim.fn.getreginfo()
+    vim.fn.setreg('x', lines, 'v')
+    vim.cmd('normal! gv"xp')
+    vim.fn.setreg('x', old_x)
+  else
+    vim.api.nvim_put(lines, 'l', true, false)
+  end
 end
 
-local function dash_callback(text, width, height)
+local function dash_callback(text, visual, width, height)
   return function(dash)
     dash = process_dash_input(dash)
     if dash == nil then
       return
     end
-    make_comment_box(text, width, height, dash)
+    make_comment_box(text, visual, width, height, dash)
   end
 end
-local function height_callback(text, width)
+local function height_callback(text, visual, width)
   return function(height)
     height = process_int_input(height, 'height', defaults.height)
     if height == nil then
@@ -94,10 +102,10 @@ local function height_callback(text, width)
     vim.ui.input({
       default = defaults.dash,
       prompt = 'Dash: ',
-    }, dash_callback(text, width, height))
+    }, dash_callback(text, visual, width, height))
   end
 end
-local function width_callback(text)
+local function width_callback(text, visual)
   return function(width)
     width = process_int_input(width, 'width', '' .. defaults.width)
     if width == nil then
@@ -106,17 +114,19 @@ local function width_callback(text)
     vim.ui.input({
       default = '' .. defaults.height,
       prompt = 'Height: ',
-    }, height_callback(text, width))
+    }, height_callback(text, visual, width))
   end
 end
-local function text_callback(text)
-  if text == nil then
-    return
+local function text_callback(visual)
+  return function(text)
+    if text == nil then
+      return
+    end
+    vim.ui.input({
+      default = '' .. defaults.width,
+      prompt = 'Width: ',
+    }, width_callback(text, visual))
   end
-  vim.ui.input({
-    default = '' .. defaults.width,
-    prompt = 'Width: ',
-  }, width_callback(text))
 end
 
 local function comment_box()
@@ -125,9 +135,11 @@ local function comment_box()
   if def ~= nil then
     def_str = table.concat(def, ' ')
   end
+  local mode = vim.fn.mode()
+  local visual = (mode == 'v') or (mode == 'V')
   vim.ui.input({
     default = def_str,
     prompt = 'Text: ',
-  }, text_callback)
+  }, text_callback(visual))
 end
 vim.api.nvim_create_user_command('CommentBox', comment_box, {})
