@@ -130,15 +130,15 @@ local function text_callback(visual)
 end
 
 local function comment_box()
-  local def = require('utils.vim.selection').get()
-  local def_str = ''
-  if def ~= nil then
-    def_str = table.concat(def, ' ')
+  local selection = require('utils.vim.selection').get()
+  local default_text = ''
+  if selection ~= nil then
+    default_text = table.concat(selection, ' ')
   end
   local mode = vim.fn.mode()
   local visual = (mode == 'v') or (mode == 'V')
   vim.ui.input({
-    default = def_str,
+    default = default_text,
     prompt = 'Text: ',
   }, text_callback(visual))
 end
