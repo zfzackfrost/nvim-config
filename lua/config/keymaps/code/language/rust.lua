@@ -1,13 +1,14 @@
 return {
   ft = 'rust',
   mappings = {
+    { 'o', group = 'open' },
     {
-      'C',
+      'oc',
       '<Cmd>RustLsp openCargo<Cr>',
       desc = 'Open Cargo.toml',
     },
     {
-      'd',
+      'od',
       '<Cmd>RustLsp openDocs<Cr>',
       desc = 'Open on docs.rs',
     },
