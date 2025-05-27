@@ -20,15 +20,18 @@ local format_on_save_fts = {
   'javascript',
   'javascriptreact',
   'json',
+  'jsonc',
   'lua',
   'markdown',
   'python',
   'rust',
   'scss',
   'svelte',
+  'toml',
   'typescript',
   'typescriptreact',
   'xml',
+  'yaml',
   'zig',
 }
 for _, ft in ipairs(enable_hints_fts) do
