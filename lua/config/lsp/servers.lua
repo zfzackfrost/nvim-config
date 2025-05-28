@@ -40,6 +40,7 @@ local server_opts = {
   cssls = {},
   cssmodules_ls = {},
   gdscript = {},
+  glasgow = {},
   html = {},
   eslint = {},
   jsonls = {
