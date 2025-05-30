@@ -1,5 +1,5 @@
 local M = {}
-local gen = {}
+M.gen = {}
 
 local s = require('utils.str')
 
@@ -28,7 +28,12 @@ local is_positions_inside_brackets = function(from_pos, to_pos, brackets)
   return false
 end
 
-function gen.add_trailing_comment(opts)
+---@class GenOptsBase
+---@field brackets? string[]
+
+---@param opts GenOptsBase
+---@return function
+function M.gen.add_trailing_comment(opts)
   opts = opts or {}
   local brackets = opts.brackets or { '%b()' }
 
@@ -64,5 +69,4 @@ function gen.add_trailing_comment(opts)
 end
 
 ------------------ Return ----------------
-M.gen = gen
 return M
