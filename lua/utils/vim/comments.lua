@@ -1,5 +1,22 @@
 local M = {}
 
+---Extract the contents of a comment
+---@param text string the complete text of the comment, and only the comment (i.e. no other code).
+---@param commentstring string value of `commentstring` option. Defaults to the vim option
+---@return string # the contents of the comment extracted from `text`.
+function M.comment_contents(text, commentstring)
+  if commentstring == nil then
+    commentstring = vim.bo.commentstring
+  end
+
+  local pattern = string.gsub(commentstring, '%s*%%s%s*', '(.*)')
+  local m = string.match(text, pattern)
+  if m ~= nil then
+    return m
+  end
+  return ''
+end
+
 ---Comment out each line in a string
 ---@param text string text to add comments to
 ---@param commentstring? string value of `commentstring` option. Defaults to the vim option
