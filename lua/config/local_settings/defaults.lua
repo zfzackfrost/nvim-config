@@ -3,7 +3,7 @@
 local defaults = {}
 
 local enable_hints_fts = {
-  'rust',
+  -- 'rust',
   'typescript',
   'typescriptreact',
   'javascript',
