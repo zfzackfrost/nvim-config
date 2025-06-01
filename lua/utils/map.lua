@@ -24,7 +24,7 @@ function M.map_filetype(filetypes, mappings, opts)
   for _, m in ipairs(mappings) do
     m.buffer = true
   end
-  vim.api.nvim_create_autocmd('FileType', {
+  autocmd('FileType', {
     pattern = filetypes,
     callback = function()
       local wk = require('which-key')

@@ -20,9 +20,9 @@ local function load_keymaps()
   require('config.keymaps.windows')
 end
 
-local augroup = vim.api.nvim_create_augroup('user_keymaps', {})
-vim.api.nvim_create_autocmd('User', {
+local group = augroup('user_keymaps', {})
+autocmd('User', {
   pattern = 'VeryLazy',
-  group = augroup,
+  group = group,
   callback = load_keymaps,
 })
