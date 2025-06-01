@@ -62,7 +62,7 @@ local spell = {
 }
 local providers = {
   lazydev = lazydev,
-  nerdfont = nerdfont,
+  -- nerdfont = nerdfont,
   spell = spell,
 }
 
@@ -78,7 +78,7 @@ local sources = {
       'path',
       'spell',
       'buffer',
-      'nerdfont',
+      -- 'nerdfont',
     },
   },
   providers = providers,
