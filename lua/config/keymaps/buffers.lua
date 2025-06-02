@@ -29,6 +29,7 @@ wk.add({
   { prefix .. 'e', [[<Cmd>edit<Cr>]], desc = "Re-open current buffer's file" },
   { prefix .. '<C-w>', write_nofmt, desc = 'Write buffer without formatting' },
   { prefix .. 'W', [[<Cmd>wall<Cr>]], desc = 'Write all buffers' },
+  { prefix .. 'w', [[<Cmd>write<Cr>]], desc = 'Write current buffers' },
   { prefix .. 'd', make_bufdelete(false), desc = 'Delete buffer and keep split' },
   { prefix .. 'D', make_bufdelete(true), desc = 'Delete buffer (force) and keep split' },
 })
