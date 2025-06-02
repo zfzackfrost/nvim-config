@@ -13,11 +13,18 @@ local function bufonly()
   end
 end
 
-local function write_nofmt()
-  local old_format_on_save = vim.b.format_on_save
-  vim.b.format_on_save = false
-  vim.cmd.write()
-  vim.b.format_on_save = old_format_on_save
+---@param all? boolean
+local function make_write_nofmt(all)
+  return function()
+    local old_format_on_save = vim.b.format_on_save
+    vim.b.format_on_save = false
+    if all then
+      vim.cmd.wall()
+    else
+      vim.cmd.write()
+    end
+    vim.b.format_on_save = old_format_on_save
+  end
 end
 
 local prefix = '<leader>b'
@@ -27,7 +34,8 @@ wk.add({
   { prefix, group = 'buffers' },
   { prefix .. 'o', bufonly, desc = 'Delete buffers except current' },
   { prefix .. 'e', [[<Cmd>edit<Cr>]], desc = "Re-open current buffer's file" },
-  { prefix .. '<C-w>', write_nofmt, desc = 'Write buffer without formatting' },
+  { prefix .. '<C-w>', make_write_nofmt(false), desc = 'Write current buffer without formatting' },
+  { prefix .. '<C-S-W>', make_write_nofmt(true), desc = 'Write all buffers without formatting' },
   { prefix .. 'W', [[<Cmd>wall<Cr>]], desc = 'Write all buffers' },
   { prefix .. 'w', [[<Cmd>write<Cr>]], desc = 'Write current buffers' },
   { prefix .. 'd', make_bufdelete(false), desc = 'Delete buffer and keep split' },
