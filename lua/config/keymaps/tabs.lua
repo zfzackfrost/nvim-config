@@ -1,12 +1,13 @@
 local wk = require('which-key')
+local prefix = '<leader>T'
 wk.add({
-  { '<leader>t', group = 'tabs' },
-  { '<leader>td', '<Cmd>tabclose<Cr>', desc = 'Close current tab' },
-  { '<leader>to', '<Cmd>tabonly<Cr>]]', desc = 'Close other tabs' },
+  { prefix, group = 'tabs' },
+  { prefix .. 'd', '<Cmd>tabclose<Cr>', desc = 'Close current tab' },
+  { prefix .. 'o', '<Cmd>tabonly<Cr>]]', desc = 'Close other tabs' },
 
-  { '<leader>tm', group = 'move tab' },
-  { '<leader>tm-', '<Cmd>-tabmove<Cr>]]', desc = 'Move tab left' },
-  { '<leader>tm+', '<Cmd>+tabmove<Cr>]]', desc = 'Move tab right' },
-  { '<leader>tm0', '<Cmd>0tabmove<Cr>]]', desc = 'Move tab to first' },
-  { '<leader>tm$', '<Cmd>$tabmove<Cr>]]', desc = 'Move tab to last' },
+  { prefix .. 'm', group = 'move tab' },
+  { prefix .. 'm-', '<Cmd>-tabmove<Cr>]]', desc = 'Move tab left' },
+  { prefix .. 'm+', '<Cmd>+tabmove<Cr>]]', desc = 'Move tab right' },
+  { prefix .. 'm0', '<Cmd>0tabmove<Cr>]]', desc = 'Move tab to first' },
+  { prefix .. 'm$', '<Cmd>$tabmove<Cr>]]', desc = 'Move tab to last' },
 })
