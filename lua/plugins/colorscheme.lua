@@ -8,6 +8,7 @@ return {
         dark = 'frappe',
         light = 'latte',
       },
+      term_colors = true,
       integrations = {
         which_key = true,
         mason = true,
