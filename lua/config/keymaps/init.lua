@@ -16,6 +16,7 @@ local function load_keymaps()
   require('config.keymaps.remap')
   require('config.keymaps.search')
   require('config.keymaps.tabs')
+  require('config.keymaps.terminal')
   require('config.keymaps.test')
   require('config.keymaps.windows')
 end
