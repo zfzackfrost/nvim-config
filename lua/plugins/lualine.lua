@@ -52,6 +52,7 @@ return {
       'nvim-dap-ui',
       'quickfix',
       'trouble',
+      'toggleterm',
     },
   },
 }
