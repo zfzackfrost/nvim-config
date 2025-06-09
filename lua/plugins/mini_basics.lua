@@ -5,6 +5,7 @@ return {
     opts = {
       mappings = {
         windows = true,
+        move_with_alt = true,
       },
     },
   },

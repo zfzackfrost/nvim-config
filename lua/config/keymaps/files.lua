@@ -1,6 +1,8 @@
 local wk = require('which-key')
+
+local prefix = '<leader>f'
 wk.add({
-  { '<leader>f', group = 'files' },
-  { '<leader>fp', [[:!mkdir -p %:p:h<Cr>]], desc = 'Make parent directory' },
-  { '<leader>ft', [[<Cmd>Telescope filetypes<Cr>]], desc = 'Set filetype' },
+  { prefix, group = 'files' },
+  { prefix .. 'p', [[:!mkdir -p %:p:h<Cr>]], desc = 'Make parent directory' },
+  { prefix .. 't', [[<Cmd>Telescope filetypes<Cr>]], desc = 'Set filetype' },
 })

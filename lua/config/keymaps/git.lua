@@ -11,6 +11,7 @@ local git_icon = {
 }
 
 local function lazygit_open()
+  ---@diagnostic disable-next-line: missing-fields
   Snacks.lazygit.open({
     configure = true,
   })
@@ -20,6 +21,7 @@ wk.add({
   { prefix, group = 'git' },
 
   { prefix .. 'g', lazygit_open, desc = 'Lazygit Open', icon = git_icon },
+
   { prefix_add, group = 'add', icon = git_icon },
   { prefix_add .. 'a', [[<Cmd>Git add --all<Cr>]], desc = 'Add all', icon = git_icon },
   { prefix_add .. 'f', [[<Cmd>Git add %<Cr>]], desc = 'Add current file', icon = git_icon },

@@ -35,7 +35,7 @@ wk.add({
   { prefix .. 'o', bufonly, desc = 'Delete buffers except current' },
   { prefix .. 'e', [[<Cmd>edit<Cr>]], desc = "Re-open current buffer's file" },
   { prefix .. '<C-w>', make_write_nofmt(false), desc = 'Write current buffer without formatting' },
-  { prefix .. '<C-S-W>', make_write_nofmt(true), desc = 'Write all buffers without formatting' },
+  { prefix .. '<M-w>', make_write_nofmt(true), desc = 'Write all buffers without formatting' },
   { prefix .. 'W', [[<Cmd>wall<Cr>]], desc = 'Write all buffers' },
   { prefix .. 'w', [[<Cmd>write<Cr>]], desc = 'Write current buffers' },
   { prefix .. 'd', make_bufdelete(false), desc = 'Delete buffer and keep split' },

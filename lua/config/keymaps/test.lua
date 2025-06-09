@@ -1,22 +1,23 @@
 local wk = require('which-key')
+local prefix = '<leader>d'
 wk.add({
-  { '<leader>T', group = 'test' },
+  { prefix, group = 'test/debug' },
   {
-    '<leader>Tt',
+    prefix .. 't',
     function()
       require('neotest').summary.toggle()
     end,
     desc = 'Tests summary',
   },
   {
-    '<leader>Tr',
+    prefix .. 'r',
     function()
       require('neotest').run.run()
     end,
     desc = 'Run nearest test',
   },
   {
-    '<leader>Tf',
+    prefix .. 'f',
     function()
       require('neotest').run.run(vim.fn.expand('%'))
     end,

@@ -10,6 +10,6 @@ wk.add({
 
   { prefix_server, group = 'server' },
   { prefix_server .. 's', [[<Cmd>StartServer<Cr>]], desc = 'Start server' },
-  { prefix_server .. 'e', [[<Cmd>StopServer<Cr>]], desc = 'Stop Server' },
+  { prefix_server .. 'e', [[<Cmd>StopServer<Cr>]], desc = 'Stop server' },
   { prefix_server .. 'd', [[<Cmd>CleanServerPipe<Cr>]], desc = 'Clean old server pipe' },
 })

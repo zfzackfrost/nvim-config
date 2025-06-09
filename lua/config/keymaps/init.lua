@@ -1,4 +1,4 @@
-local function plugin_groups()
+local function extra_groups()
   local wk = require('which-key')
   wk.add({
     { 's', group = 'surround', mode = { 'n', 'x' } },
@@ -6,7 +6,7 @@ local function plugin_groups()
 end
 
 local function load_keymaps()
-  plugin_groups()
+  extra_groups()
   require('config.keymaps.buffers')
   require('config.keymaps.code')
   require('config.keymaps.files')
