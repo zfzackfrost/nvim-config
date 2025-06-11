@@ -35,7 +35,7 @@ end
 ---@return function
 function M.gen.add_trailing_comment(opts)
   opts = opts or {}
-  local brackets = opts.brackets or { '%b()' }
+  local brackets = opts.brackets or {}
 
   return function(split_positions)
     local sep = ''
