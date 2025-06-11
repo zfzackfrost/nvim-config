@@ -1,8 +1,11 @@
 local mini_ai = require('mini.ai')
+local spec_treesitter = mini_ai.gen_spec.treesitter
 
 -- ============================================================
 -- ========================== Custom ==========================
 -- ============================================================
+
+-- ~~~~~~~~~~~~ Function Specs ~~~~~~~~~~~~
 
 local function entire_buffer()
   local from = { line = 1, col = 1 }
@@ -48,11 +51,25 @@ local function current_line(ai)
   return { from = from, to = to }
 end
 
+-- ~~~~~~~~~~~ Treesitter Specs ~~~~~~~~~~~
+
+local ts_F = spec_treesitter({ a = '@function.outer', i = '@function.inner' })
+local ts_O = spec_treesitter({
+  a = { '@class.outer', '@conditional.outer', '@loop.outer', '@block.outer' },
+  i = { '@class.inner', '@conditional.inner', '@loop.inner', '@block.inner' },
+})
+
+-- ~~~~~~~~~~~ Textobject Table ~~~~~~~~~~~
+
 -- Table with textobject id as fields, textobject specification as values.
 -- Also use this to disable builtin textobjects. See |MiniAi.config|.
 local custom_textobjects = {
   g = entire_buffer,
   l = current_line,
+
+  -- Treesitter specs
+  F = ts_F,
+  O = ts_O,
 }
 
 -- ============================================================
