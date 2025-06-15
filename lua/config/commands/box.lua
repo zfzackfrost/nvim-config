@@ -40,16 +40,26 @@ local function process_int_input(value, name, default)
 end
 
 local function make_comment_box(text, visual, width, height, dash)
+  local commentstring = string.gsub(vim.bo.commentstring, '%%s', '')
+  local commentprefix = vim.trim(commentstring)
+  local remove_spaces = s.ends_with(commentprefix, dash)
+
+  -- Remember defaults
+  defaults.width = width
+  defaults.height = height
+  defaults.dash = dash
+
+  width = width - commentstring:len()
+  if remove_spaces then
+    width = width + (commentstring:len() - commentprefix:len())
+  end
   text = vim.trim(text)
   if #text > 0 then
     text = ' ' .. text .. ' '
   end
 
-  local start_dashes = math.floor((width - #text) / 2.0 + 0.5)
+  local start_dashes = math.floor((width - #text) / 2.0)
   local end_dashes = width - start_dashes - #text
-
-  local commentstring = vim.trim(string.gsub(vim.bo.commentstring, '%%s', ''))
-  local remove_spaces = s.ends_with(commentstring, dash)
 
   local text_line = s.rep(dash, start_dashes) .. text .. s.rep(dash, end_dashes)
   local dash_line = s.rep(dash, width)
@@ -67,11 +77,6 @@ local function make_comment_box(text, visual, width, height, dash)
   for _ = 1, end_dash_lines, 1 do
     table.insert(lines, dash_line)
   end
-
-  -- Remember defaults
-  defaults.width = width
-  defaults.height = height
-  defaults.dash = dash
 
   -- Started from visual mode?
   if visual then
