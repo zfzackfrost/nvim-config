@@ -38,7 +38,7 @@ local lazydev = {
 local nerdfont = {
   module = 'blink-nerdfont',
   name = 'Nerd Fonts',
-  score_offset = 10,
+  score_offset = -25,
   opts = { insert = true },
 }
 local spell = {
@@ -62,7 +62,7 @@ local spell = {
 }
 local providers = {
   lazydev = lazydev,
-  -- nerdfont = nerdfont,
+  nerdfont = nerdfont,
   spell = spell,
 }
 
@@ -78,7 +78,7 @@ local sources = {
       'path',
       'spell',
       'buffer',
-      -- 'nerdfont',
+      'nerdfont',
     },
   },
   providers = providers,
