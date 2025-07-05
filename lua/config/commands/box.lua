@@ -1,5 +1,5 @@
 local s = require('utils.str')
-local c = require('utils.vim.comments')
+local cmt = require('utils.vim.comments')
 
 local defaults = {
   width = 80,
@@ -63,8 +63,8 @@ local function make_comment_box(text, visual, width, height, dash)
 
   local text_line = s.rep(dash, start_dashes) .. text .. s.rep(dash, end_dashes)
   local dash_line = s.rep(dash, width)
-  text_line = c.commented_text(text_line, nil, remove_spaces)
-  dash_line = c.commented_text(dash_line, nil, remove_spaces)
+  text_line = cmt.format(text_line, nil, remove_spaces)
+  dash_line = cmt.format(dash_line, nil, remove_spaces)
 
   local start_dash_lines = math.floor(height / 2.0)
   local end_dash_lines = (height - start_dash_lines - 1)

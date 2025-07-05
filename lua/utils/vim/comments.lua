@@ -4,7 +4,7 @@ local M = {}
 ---@param text string the complete text of the comment, and only the comment (i.e. no other code).
 ---@param commentstring string value of `commentstring` option. Defaults to the vim option
 ---@return string # the contents of the comment extracted from `text`.
-function M.comment_contents(text, commentstring)
+function M.extract(text, commentstring)
   if commentstring == nil then
     commentstring = vim.bo.commentstring
   end
@@ -22,7 +22,7 @@ end
 ---@param commentstring? string value of `commentstring` option. Defaults to the vim option
 ---@param remove_spaces? boolean remove leading and trailing spaces from the comment string
 ---@return string `text` with every line commented out
-function M.commented_text(text, commentstring, remove_spaces)
+function M.format(text, commentstring, remove_spaces)
   local lines = vim.split(text, '\n', { plain = true })
   if commentstring == nil then
     commentstring = vim.bo.commentstring
