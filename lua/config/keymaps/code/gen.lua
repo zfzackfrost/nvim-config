@@ -1,5 +1,5 @@
 local wk = require('which-key')
-local m = require('utils.map')
+local m = require('utils.vim.map')
 
 local prefix = '<leader>cg'
 wk.add({

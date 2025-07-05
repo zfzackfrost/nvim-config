@@ -1,4 +1,4 @@
-local m = require('utils.map')
+local m = require('utils.vim.map')
 
 -- Disable tmux prefix key
 m.disable_map('<C-a>')
