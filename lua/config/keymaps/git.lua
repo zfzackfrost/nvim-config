@@ -1,4 +1,14 @@
 local wk = require('which-key')
+local Terminal = require('toggleterm.terminal').Terminal
+
+local lazygit = Terminal:new({
+  cmd = 'lazygit',
+  direction = 'tab',
+  close_on_exit = true,
+  on_open = function(term)
+    vim.cmd('startinsert!')
+  end,
+})
 
 local prefix = '<leader>g'
 local prefix_add = prefix .. 'a'
@@ -11,10 +21,7 @@ local git_icon = {
 }
 
 local function lazygit_open()
-  ---@diagnostic disable-next-line: missing-fields
-  Snacks.lazygit.open({
-    configure = true,
-  })
+  lazygit:toggle()
 end
 
 wk.add({
