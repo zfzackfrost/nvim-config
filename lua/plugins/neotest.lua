@@ -8,7 +8,7 @@ return {
       'nvim-treesitter/nvim-treesitter',
       -- Adapters
       'lawrence-laz/neotest-zig',
-      'alfaix/neotest-gtest',
+      'orjangj/neotest-ctest',
     },
     lazy = true,
     opts = function()
@@ -20,7 +20,7 @@ return {
               adapter = 'codelldb',
             },
           }),
-          require('neotest-gtest').setup({}),
+          require('neotest-ctest').setup({}),
         },
       }
     end,
