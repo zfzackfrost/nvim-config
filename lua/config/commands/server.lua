@@ -7,6 +7,9 @@ end
 
 ---@param t vim.api.keyset.create_user_command.command_args
 local function start_server(t)
+  if vim.g.server_started then
+    return
+  end
   local p = get_server_path()
   local silent = t.smods.silent or t.smods.emsg_silent
   if vim.uv.fs_stat(p) then
@@ -15,11 +18,9 @@ local function start_server(t)
     end
     return
   end
-  if not vim.g.server_started then
-    vim.fn.serverstart(p)
-    if not silent then
-      vim.notify(string.format('Started server:\n   %s', p), vim.log.levels.INFO, {})
-    end
+  vim.fn.serverstart(p)
+  if not silent then
+    vim.notify(string.format('Started server:\n   %s', p), vim.log.levels.INFO, {})
   end
   vim.g.server_started = true
 end
