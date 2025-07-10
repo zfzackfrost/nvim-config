@@ -11,8 +11,19 @@ local diagnostics_icon = {
   icon = '󱖫',
   color = 'yellow',
 }
+---@type wk.Icon
+local messages_icon = {
+  icon = '󰍡',
+  color = 'red',
+}
 wk.add({
   { prefix, group = 'list', icon = list_icon },
+  {
+    prefix .. 'm',
+    '<Cmd>Noice<Cr>',
+    desc = 'Messages',
+    icon = messages_icon,
+  },
   {
     prefix .. 'x',
     '<Cmd>Trouble diagnostics toggle<Cr>',
