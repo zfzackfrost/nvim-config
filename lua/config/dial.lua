@@ -1,4 +1,5 @@
 local augend = require('dial.augend')
+local common = require('dial.augend.common')
 local config = require('dial.config')
 
 local function extend(lists)
@@ -10,6 +11,34 @@ local function extend(lists)
 end
 
 local dec_int = augend.integer.alias.decimal_int -- decimal number (..., -2, -1, 0, 1, 2, ...)
+local check_pat = '%- %[([ x-])]'
+local checks = { ' ', 'x', '-' }
+local markdown_check = augend.user.new({
+  find = common.find_pattern(check_pat),
+  add = function(text, addend, cursor)
+    local m = string.match(text, check_pat)
+    if m == nil then
+      return { text = text, cursor = cursor }
+    end
+    local idx
+    for i = 1, #checks, 1 do
+      if checks[i] == m then
+        idx = i
+        break
+      end
+    end
+    idx = idx + addend
+    if idx < 1 then
+      idx = #checks
+    elseif idx > #checks then
+      idx = 1
+    end
+    m = checks[idx]
+    text = string.format('- [%s]', m)
+    cursor = #text
+    return { text = text, cursor = cursor }
+  end,
+})
 
 local js_let_const = augend.constant.new({
   elements = { 'let', 'const' },
@@ -138,6 +167,9 @@ config.augends:on_filetype({
     { augend.constant.alias.bool },
   }),
   c = c_augends,
+  markdown = {
+    markdown_check,
+  },
   rust = {
     dec_under,
     hex_under,
