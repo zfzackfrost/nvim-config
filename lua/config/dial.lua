@@ -11,18 +11,18 @@ local function extend(lists)
 end
 
 local dec_int = augend.integer.alias.decimal_int -- decimal number (..., -2, -1, 0, 1, 2, ...)
-local check_pat = '%- %[([ x-])]'
+local check_pat = '(%s*%- %[)([ x-])(].*)'
 local checks = { ' ', 'x', '-' }
 local markdown_check = augend.user.new({
   find = common.find_pattern(check_pat),
   add = function(text, addend, cursor)
-    local m = string.match(text, check_pat)
-    if m == nil then
+    local pre, mark, suf = string.match(text, check_pat)
+    if pre == nil then
       return { text = text, cursor = cursor }
     end
     local idx
     for i = 1, #checks, 1 do
-      if checks[i] == m then
+      if checks[i] == mark then
         idx = i
         break
       end
@@ -33,8 +33,8 @@ local markdown_check = augend.user.new({
     elseif idx > #checks then
       idx = 1
     end
-    m = checks[idx]
-    text = string.format('- [%s]', m)
+    mark = checks[idx]
+    text = pre .. mark .. suf
     cursor = #text
     return { text = text, cursor = cursor }
   end,
