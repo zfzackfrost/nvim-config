@@ -8,9 +8,11 @@ return {
       ---@type Terminal?
       local saved_terminal
 
+      ---@module 'flatten'
+      ---@type Flatten.PartialConfig
       return {
         window = {
-          open = 'alternate',
+          open = 'tab',
         },
         hooks = {
           should_block = function(argv)
@@ -31,22 +33,22 @@ return {
             local termid = term.get_focused_id()
             saved_terminal = term.get(termid, true)
           end,
-          post_open = function(bufnr, winnr, ft, is_blocking)
-            if is_blocking and saved_terminal then
+          post_open = function(opts)
+            if opts.is_blocking and saved_terminal then
               -- Hide the terminal while it's blocking
               saved_terminal:close()
+            else
+              vim.api.nvim_set_current_win(opts.winnr)
             end
-            -- Switch to the new window
-            vim.api.nvim_set_current_win(winnr)
 
             -- If the file is a git commit, create one-shot autocmd to delete its buffer on write
             -- If you just want the toggleable terminal integration, ignore this bit
-            if ft == 'gitcommit' or ft == 'gitrebase' then
+            if opts.filetype == 'gitcommit' or opts.filetype == 'gitrebase' then
               autocmd('BufWritePost', {
-                buffer = bufnr,
+                buffer = opts.bufnr,
                 once = true,
                 callback = vim.schedule_wrap(function()
-                  vim.api.nvim_buf_delete(bufnr, {})
+                  vim.api.nvim_buf_delete(opts.bufnr, {})
                 end),
               })
             end
