@@ -24,11 +24,13 @@ function M.map_filetype(filetypes, mappings, opts)
   for _, m in ipairs(mappings) do
     m.buffer = true
   end
-  autocmd('FileType', {
-    pattern = filetypes,
+  autocmd({ 'BufRead', 'BufEnter', 'BufWinEnter' }, {
     callback = function()
+      if not vim.list_contains(filetypes, vim.bo.filetype) then
+        return
+      end
       local wk = require('which-key')
-      wk.add(mappings, opts)
+      wk.add(vim.deepcopy(mappings), opts)
     end,
   })
 end

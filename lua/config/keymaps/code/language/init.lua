@@ -30,3 +30,4 @@ end
 language_maps('rust')
 language_maps('crates')
 language_maps('markdown')
+language_maps('cpp')
