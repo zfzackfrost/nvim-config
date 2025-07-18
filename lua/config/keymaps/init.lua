@@ -19,6 +19,7 @@ local function load_keymaps()
   require('config.keymaps.tasks')
   require('config.keymaps.terminal')
   require('config.keymaps.test')
+  require('config.keymaps.toggle')
   require('config.keymaps.windows')
 end
 
