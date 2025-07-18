@@ -18,7 +18,12 @@ local function on_attach(args)
       local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf })
       vim.lsp.inlay_hint.enable(not enabled, { bufnr = args.buf })
     end
-    vim.keymap.set('n', '<leader>c<C-r>', increname_prepend_expr, { expr = true, replace_keycodes = true })
+    vim.keymap.set('n', '<leader>c<C-r>', increname_prepend_expr, {
+      desc = 'Rename under cursor (prepend)',
+      buffer = args.buf,
+      expr = true,
+      replace_keycodes = true,
+    })
     wk.add({
       { '<leader>cr', [[:IncRename ]], buffer = args.buf, desc = 'Rename under cursor (replace)' },
       {
