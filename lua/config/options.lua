@@ -1,19 +1,17 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
-local opt = vim.opt
-
-opt.viewoptions = { 'folds', 'cursor' }
-opt.formatexpr = "v:lua.require'conform'.formatexpr()"
-opt.foldlevel = 99
-opt.showmode = false
-opt.clipboard = ''
-opt.hidden = true
-opt.laststatus = 3
-opt.signcolumn = 'yes'
-opt.termguicolors = true
-opt.number = true
-opt.relativenumber = true
+vim.o.viewoptions = 'folds,cursor'
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+vim.o.foldlevel = 99
+vim.o.showmode = false
+vim.o.clipboard = ''
+vim.o.hidden = true
+vim.o.laststatus = 3
+vim.o.signcolumn = 'yes'
+vim.o.termguicolors = true
+vim.o.number = true
+vim.o.relativenumber = true
 
 vim.o.foldmethod = 'expr'
 -- Default to treesitter folding
