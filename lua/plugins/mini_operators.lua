@@ -4,7 +4,7 @@ return {
     version = false,
     keys = {
       { 'g=', desc = 'Evaluate operator', mode = { 'n', 'v' } },
-      { 'gx', desc = 'Exchange operator', mode = { 'n', 'v' } },
+      { 'gX', desc = 'Exchange operator', mode = { 'n', 'v' } },
       { 'gm', desc = 'Multiply operator', mode = { 'n', 'v' } },
       { 'gr', desc = 'Replace operator', mode = { 'n', 'v' } },
       { 'gs', desc = 'Sort operator', mode = { 'n', 'v' } },
@@ -23,7 +23,7 @@ return {
 
       -- Exchange text regions
       exchange = {
-        prefix = 'gx',
+        prefix = 'gX',
         -- Whether to reindent new text to match previous indent
         reindent_linewise = true,
       },
