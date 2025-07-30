@@ -1,5 +1,40 @@
 local M = {}
 
+-- Function to convert UPPER_SNAKE_CASE to PascalCase
+function M.snake_to_pascal(snake_str)
+  if not snake_str or snake_str == '' then
+    return ''
+  end
+
+  -- Convert to lowercase first
+  local result = string.lower(snake_str)
+
+  -- Replace underscores followed by letters with uppercase letters
+  result = string.gsub(result, '_(%w)', function(letter)
+    return string.upper(letter)
+  end)
+
+  -- Capitalize the first letter (this is the key difference from camelCase)
+  result = string.upper(string.sub(result, 1, 1)) .. string.sub(result, 2)
+
+  return result
+end
+
+function M.snake_to_camel(snake_str)
+  if not snake_str or snake_str == '' then
+    return ''
+  end
+
+  -- Convert to lowercase and replace each underscore followed by a letter
+  -- with just the uppercase version of that letter
+  local result = string.lower(snake_str)
+  result = string.gsub(result, '_(%w)', function(letter)
+    return string.upper(letter)
+  end)
+
+  return result
+end
+
 ---Repeat a string
 ---@param s string the string
 ---@param n integer number of times to repeat
