@@ -16,6 +16,12 @@ return {
               separator = true,
               highlight = 'BufferlineBanner',
             },
+            {
+              filetype = 'grug-far',
+              text = 'Grug Far',
+              separator = true,
+              highlight = 'BufferlineBanner',
+            },
           },
         },
         highlights = require('catppuccin.groups.integrations.bufferline').get(),
