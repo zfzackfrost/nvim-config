@@ -12,13 +12,13 @@ return {
           offsets = {
             {
               filetype = 'neo-tree',
-              text = 'File Tree',
+              text = 'File Tree  ',
               separator = true,
               highlight = 'BufferlineBanner',
             },
             {
               filetype = 'grug-far',
-              text = 'Grug Far',
+              text = 'Grug Far  ',
               separator = true,
               highlight = 'BufferlineBanner',
             },
