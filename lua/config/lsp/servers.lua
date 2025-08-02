@@ -69,6 +69,7 @@ local server_opts = {
       },
     },
   },
+  openscad_ls = {},
   svelte = {
     settings = vim.tbl_deep_extend('keep', svelte_settings, vtsls_settings),
   },
