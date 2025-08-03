@@ -18,6 +18,7 @@ local markdown_check = augend.user.new({
   add = function(text, addend, cursor)
     local pre, mark, suf = string.match(text, check_pat)
     if pre == nil then
+      ---@diagnostic disable-next-line: redundant-return-value
       return { text = text, cursor = cursor }
     end
     local idx
@@ -36,6 +37,7 @@ local markdown_check = augend.user.new({
     mark = checks[idx]
     text = pre .. mark .. suf
     cursor = #text
+    ---@diagnostic disable-next-line: redundant-return-value
     return { text = text, cursor = cursor }
   end,
 })
