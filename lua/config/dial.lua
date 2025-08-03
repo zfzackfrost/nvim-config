@@ -68,7 +68,7 @@ local bin_under = augend.integer.new({
 local dec_under = augend.integer.new({
   radix = 10,
   delimiter = '_',
-  natural = true,
+  natural = false,
 })
 
 local hex_a_js = augend.integer.new({
@@ -132,7 +132,7 @@ local bool_python = augend.constant.new({
 local dec_c = augend.integer.new({
   radix = 10,
   delimiter = "'",
-  natural = true,
+  natural = false,
 })
 local hex_c = augend.integer.new({
   radix = 16,
