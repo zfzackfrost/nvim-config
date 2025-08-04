@@ -5,7 +5,7 @@
   "blink-nerdfont.nvim": { "branch": "main", "commit": "2f3cedda78dcf4ef547128ce7f72f7b80e25501d" },
   "blink.cmp": { "branch": "main", "commit": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
-  "catppuccin": { "branch": "main", "commit": "8fd0915ec0a2ad6376bfe895e6c4b3ffb5a5bad2" },
+  "catppuccin": { "branch": "main", "commit": "76a8d0515024cc55d8bd26fc13f1af88faef3ebf" },
   "conform.nvim": { "branch": "master", "commit": "973f3cb73887d510321653044791d7937c7ec0fa" },
   "crates.nvim": { "branch": "main", "commit": "fe66681d97a1eefddb5d7e48bd427b2cb0271881" },
   "dial.nvim": { "branch": "master", "commit": "78bd73aaf2b9c8f80715a878feaf56f7ffa8b6ff" },
