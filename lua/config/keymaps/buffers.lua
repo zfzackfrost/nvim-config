@@ -14,16 +14,43 @@ local function bufonly()
 end
 
 ---@param all? boolean
+local function buf_disable_format(all)
+  if not all then
+    vim.b.old_format_on_save = vim.b.format_on_save
+    vim.b.format_on_save = false
+    return
+  end
+  local bufs = vim.api.nvim_list_bufs()
+  for _, b in ipairs(bufs) do
+    vim.b[b].old_format_on_save = vim.b[b].format_on_save
+    vim.b[b].format_on_save = false
+  end
+end
+
+---@param all? boolean
+local function buf_enable_format(all)
+  if not all then
+    vim.b.format_on_save = vim.b.old_format_on_save
+    vim.b.old_format_on_save = nil
+    return
+  end
+  local bufs = vim.api.nvim_list_bufs()
+  for _, b in ipairs(bufs) do
+    vim.b[b].format_on_save = vim.b[b].old_format_on_save
+    vim.b[b].old_format_on_save = nil
+  end
+end
+
+---@param all? boolean
 local function make_write_nofmt(all)
   return function()
-    local old_format_on_save = vim.b.format_on_save
-    vim.b.format_on_save = false
+    buf_disable_format(all)
     if all then
       vim.cmd.wall()
     else
       vim.cmd.write()
     end
-    vim.b.format_on_save = old_format_on_save
+    buf_enable_format(all)
   end
 end
 
