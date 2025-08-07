@@ -12,18 +12,7 @@ return {
       'nvim-telescope/telescope-fzf-native.nvim',
     },
     cmd = { 'Telescope' },
-    opts = {
-      extensions = {
-        file_browser = {
-          theme = 'ivy',
-          hijack_netrw = true,
-          mappings = {
-            i = {},
-            n = {},
-          },
-        },
-      },
-    },
+    opts = {},
     config = function(_, opts)
       local t = require('telescope')
       t.setup(opts)
