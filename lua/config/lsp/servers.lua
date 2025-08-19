@@ -51,7 +51,7 @@ local server_opts = {
       },
     },
   },
-  pyright = {},
+  basedpyright = {},
   tailwindcss = {},
   taplo = {},
   vtsls = {
