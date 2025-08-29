@@ -1,6 +1,6 @@
 return {
   {
-    'echasnovski/mini.operators',
+    'nvim-mini/mini.operators',
     version = false,
     keys = {
       { 'g=', desc = 'Evaluate operator', mode = { 'n', 'v' } },

@@ -1,6 +1,6 @@
 return {
   {
-    'echasnovski/mini.jump',
+    'nvim-mini/mini.jump',
     version = false,
     keys = {
       { 'f', mode = { 'n', 'x', 'o' } },
@@ -11,7 +11,7 @@ return {
     opts = {},
   },
   {
-    'echasnovski/mini.jump2d',
+    'nvim-mini/mini.jump2d',
     version = false,
     keys = {
       { '<Cr>', mode = { 'n', 'x', 'o' } },

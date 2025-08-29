@@ -1,6 +1,6 @@
 return {
   {
-    'echasnovski/mini.ai',
+    'nvim-mini/mini.ai',
     dependencies = { 'nvim-treesitter-textobjects' },
     version = false,
     config = function()
