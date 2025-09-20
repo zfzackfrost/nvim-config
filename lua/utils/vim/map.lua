@@ -38,4 +38,16 @@ function M.unimplemented()
   vim.notify('Mapping has not been implemented yet!', vim.log.levels.WARN)
 end
 
+--- Add mappings to which-key, all with the same icon
+---@param mappings wk.Spec
+---@param icon wk.Icon
+---@param opts? wk.Parse
+function M.add_with_icon(mappings, icon, opts)
+  mappings = vim.deepcopy(mappings)
+  for _, v in pairs(mappings) do
+    v.icon = icon
+  end
+  require('which-key').add(mappings, opts)
+end
+
 return M

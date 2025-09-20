@@ -1,4 +1,6 @@
 local wk = require('which-key')
+local m = require('utils.vim.map')
+
 local Terminal = require('toggleterm.terminal').Terminal
 
 local lazygit = Terminal:new({
@@ -13,6 +15,7 @@ local lazygit = Terminal:new({
 local prefix = '<leader>g'
 local prefix_add = prefix .. 'a'
 local prefix_commit = prefix .. 'c'
+local prefix_hunk = prefix .. 'h'
 
 ---@type wk.Icon
 local git_icon = {
@@ -24,15 +27,18 @@ local function lazygit_open()
   lazygit:toggle()
 end
 
-wk.add({
+m.add_with_icon({
   { prefix, group = 'git' },
 
-  { prefix .. 'g', lazygit_open, desc = 'Lazygit Open', icon = git_icon },
+  { prefix .. 'g', lazygit_open, desc = 'Lazygit Open' },
 
-  { prefix_add, group = 'add', icon = git_icon },
-  { prefix_add .. 'a', [[<Cmd>Git add --all<Cr>]], desc = 'Add all', icon = git_icon },
-  { prefix_add .. 'f', [[<Cmd>Git add %<Cr>]], desc = 'Add current file', icon = git_icon },
+  { prefix_add, group = 'add' },
+  { prefix_add .. 'a', [[<Cmd>Git add --all<Cr>]], desc = 'Add all' },
+  { prefix_add .. 'f', [[<Cmd>Git add %<Cr>]], desc = 'Add current file' },
 
-  { prefix_commit, group = 'commit', icon = git_icon },
-  { prefix_commit .. 'c', [[<Cmd>Git commit<Cr>]], desc = 'Commit', icon = git_icon },
-})
+  { prefix_commit, group = 'commit' },
+  { prefix_commit .. 'c', [[<Cmd>Git commit<Cr>]], desc = 'Commit' },
+  { prefix_hunk, group = 'hunk' },
+  { prefix_hunk .. 'r', [[<Cmd>Gitsigns reset_hunk<Cr>]], desc = 'Reset hunk' },
+  { prefix_hunk .. 'a', [[<Cmd>Gitsigns stage_hunk<Cr>]], desc = 'Add/stage hunk' },
+}, git_icon)
