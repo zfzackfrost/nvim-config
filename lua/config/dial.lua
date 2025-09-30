@@ -163,12 +163,50 @@ local c_augends = {
   oct_c,
   bin_c,
 }
+
+local scope_cmake = augend.constant.new({
+  elements = { 'PUBLIC', 'PRIVATE', 'INTERFACE' },
+  word = true,
+  cyclic = true,
+})
+local libtype_cmake = augend.constant.new({
+  elements = { 'SHARED', 'STATIC' },
+  word = true,
+  cyclic = true,
+})
+
+local bool_a_cmake = augend.constant.new({
+  elements = { 'TRUE', 'FALSE' },
+  word = true,
+  cyclic = true,
+})
+local bool_b_cmake = augend.constant.new({
+  elements = { 'ON', 'OFF' },
+  word = true,
+  cyclic = true,
+})
+local bool_c_cmake = augend.constant.new({
+  elements = { 'YES', 'NO' },
+  word = true,
+  cyclic = true,
+})
+
 config.augends:on_filetype({
   cpp = extend({
     c_augends,
     { augend.constant.alias.bool },
   }),
   c = c_augends,
+  cmake = extend({
+    default_augends,
+    {
+      scope_cmake,
+      libtype_cmake,
+      bool_a_cmake,
+      bool_b_cmake,
+      bool_c_cmake,
+    },
+  }),
   markdown = {
     markdown_check,
   },
