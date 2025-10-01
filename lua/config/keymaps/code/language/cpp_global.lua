@@ -1,8 +1,9 @@
 return {
   ft = 'cpp',
+  group = '',
   mappings = {
     {
-      'a',
+      '<leader>a',
       '<Cmd>LspClangdSwitchSourceHeader<Cr>',
       desc = 'Switch between source/header',
     },
