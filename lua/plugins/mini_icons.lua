@@ -7,6 +7,9 @@ return {
       file = {
         ['init.lua'] = { glyph = '󰢱' },
       },
+      extension = {
+        ['snippets'] = { glyph = ' ' },
+      },
     },
     config = function(_, opts)
       require('mini.icons').setup(opts)
