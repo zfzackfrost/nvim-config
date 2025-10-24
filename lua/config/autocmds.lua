@@ -6,6 +6,20 @@ do
   })
 end
 do
+  local group = augroup('user_diagnostics', {})
+  autocmd({ 'BufWinEnter', 'BufEnter', 'BufRead' }, {
+    group = group,
+    callback = function(t)
+      local enable = vim.b.diagnostics_disabled
+      if enable == nil then
+        return
+      end
+      vim.diagnostic.enable(not vim.b.diagnostics_disabled, {bufnr = t.buf})
+    end,
+  })
+end
+
+do
   local group = augroup('user_lsp_hints', {})
   autocmd({ 'BufWinEnter', 'BufEnter', 'BufRead' }, {
     group = group,

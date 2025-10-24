@@ -13,6 +13,16 @@ local function handle_lsp_enable_hints(ft_config)
 end
 
 ---@param ft_config FiletypeSettings
+local function handle_diagnostics_disabled(ft_config)
+  if not v.is_any(ft_config.diagnostics_disabled, { v.is_bool, v.is_nil }) then
+    vim.b.diagnostics_disabled = nil
+    vim.notify('Invalid value for diagnostics_enabled!', vim.log.levels.ERROR)
+  else
+    vim.b.diagnostics_disabled = ft_config.diagnostics_disabled
+  end
+end
+
+---@param ft_config FiletypeSettings
 local function handle_autostart_server(ft_config)
   if not v.is_any(ft_config.autostart_server, { v.is_bool, v.is_nil }) then
     vim.b.autostart_server = nil
@@ -74,6 +84,7 @@ local function handle_local_settings(settings)
   handle_formatters(ft_config)
   handle_lsp_format(ft_config)
   handle_lsp_enable_hints(ft_config)
+  handle_diagnostics_disabled(ft_config)
 end
 
 local function load_local_settings()
