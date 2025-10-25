@@ -28,6 +28,7 @@ local svelte_settings = {
 
 ---@module "lspconfig.configs"
 local server_opts = {
+  arduino_language_server = {},
   clangd = {
     cmd = {
       'clangd',
