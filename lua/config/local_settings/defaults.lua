@@ -11,6 +11,7 @@ local enable_hints_fts = {
   'svelte',
 }
 local format_on_save_fts = {
+  'arduino',
   'c',
   'cpp',
   'css',
