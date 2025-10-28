@@ -1,6 +1,5 @@
 return {
   'stevearc/conform.nvim',
-  lazy = true,
   ---@module 'conform'
   ---@type conform.setupOpts
   opts = {
@@ -28,7 +27,4 @@ return {
       zig = { 'zigfmt' },
     },
   },
-  config = function(_, opts)
-    require('conform').setup(opts)
-  end,
 }
