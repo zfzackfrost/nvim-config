@@ -15,7 +15,6 @@ return {
         blink_cmp = true,
         window_picker = true,
         lsp_trouble = true,
-        neotest = true,
         snacks = {
           enabled = true,
         },
