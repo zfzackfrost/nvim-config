@@ -4,6 +4,12 @@ return {
     name = 'catppuccin',
     priority = 5000,
     opts = {
+      lsp_styles = {
+        underlines = {
+          errors = { 'undercurl' },
+          warnings = { 'undercurl' },
+        },
+      },
       background = {
         dark = 'frappe',
         light = 'latte',
