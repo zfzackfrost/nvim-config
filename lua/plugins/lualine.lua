@@ -8,7 +8,7 @@ local function fileformat()
   else
     symbols = [[\r]]
   end
-  return symbols
+  return ff .. '(' .. symbols .. ')'
 end
 
 return {
