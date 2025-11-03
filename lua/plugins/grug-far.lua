@@ -2,7 +2,6 @@ return {
   {
     'MagicDuck/grug-far.nvim',
     cmd = { 'GrugFar' },
-    ---@type grug.far.OptionsOverride
     opts = {
       keymaps = {
         close = {
