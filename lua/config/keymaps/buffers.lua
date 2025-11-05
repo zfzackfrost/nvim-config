@@ -4,11 +4,11 @@ local function make_bufdelete(force)
   end
 end
 local function bufonly()
-  local all_bufs = vim.api.nvim_list_bufs()
-  local current = vim.api.nvim_get_current_buf()
+  local all_bufs = nvim.list_bufs()
+  local current = nvim.get_current_buf()
   for _, buf in ipairs(all_bufs) do
     if vim.bo[buf].buftype == '' and buf ~= current then
-      vim.api.nvim_buf_delete(buf, {})
+      nvim.buf_delete(buf, {})
     end
   end
 end
@@ -20,7 +20,7 @@ local function buf_disable_format(all)
     vim.b.format_on_save = false
     return
   end
-  local bufs = vim.api.nvim_list_bufs()
+  local bufs = nvim.list_bufs()
   for _, b in ipairs(bufs) do
     vim.b[b].old_format_on_save = vim.b[b].format_on_save
     vim.b[b].format_on_save = false
@@ -34,7 +34,7 @@ local function buf_enable_format(all)
     vim.b.old_format_on_save = nil
     return
   end
-  local bufs = vim.api.nvim_list_bufs()
+  local bufs = nvim.list_bufs()
   for _, b in ipairs(bufs) do
     vim.b[b].format_on_save = vim.b[b].old_format_on_save
     vim.b[b].old_format_on_save = nil
