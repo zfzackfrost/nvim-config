@@ -20,4 +20,4 @@ local function format(args)
     range = range,
   })
 end
-vim.api.nvim_create_user_command('Format', format, { bang = true, range = true })
+nvim.create_user_command('Format', format, { bang = true, range = true })

@@ -1,6 +1,7 @@
 _G.augroup = vim.api.nvim_create_augroup
 _G.autocmd = vim.api.nvim_create_autocmd
 
+---Global nvim api aliases
 _G.nvim = {
   echo = vim.api.nvim_echo,
   feedkeys = vim.api.nvim_feedkeys,

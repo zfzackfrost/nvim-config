@@ -147,4 +147,4 @@ local function comment_box()
     prompt = 'Text: ',
   }, text_callback(visual))
 end
-vim.api.nvim_create_user_command('CommentBox', comment_box, {})
+nvim.create_user_command('CommentBox', comment_box, {})

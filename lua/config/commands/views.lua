@@ -11,4 +11,4 @@ local function clean_views(t)
   end
 end
 
-vim.api.nvim_create_user_command('CleanViews', clean_views, { bar = true })
+nvim.create_user_command('CleanViews', clean_views, { bar = true })

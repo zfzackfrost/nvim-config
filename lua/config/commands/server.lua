@@ -49,6 +49,6 @@ local function clean_server_pipe()
   end
 end
 
-vim.api.nvim_create_user_command('StartServer', start_server, { bar = true })
-vim.api.nvim_create_user_command('StopServer', stop_server, { bar = true })
-vim.api.nvim_create_user_command('CleanServerPipe', clean_server_pipe, { bar = true })
+nvim.create_user_command('StartServer', start_server, { bar = true })
+nvim.create_user_command('StopServer', stop_server, { bar = true })
+nvim.create_user_command('CleanServerPipe', clean_server_pipe, { bar = true })

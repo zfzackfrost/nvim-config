@@ -3,4 +3,4 @@ local function debug_start(t)
   require('utils.vim.cmd').unimplemented(t)
 end
 
-vim.api.nvim_create_user_command('DebugStart', debug_start, {})
+nvim.create_user_command('DebugStart', debug_start, {})
