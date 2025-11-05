@@ -12,7 +12,7 @@ _G.nvim = {
   get_mark = vim.api.nvim_get_mark,
   get_mode = vim.api.nvim_get_mode,
 
-  list_bufs = vim.api.list_bufs,
+  list_bufs = vim.api.nvim_list_bufs,
   get_current_buf = vim.api.nvim_get_current_buf,
   set_current_buf = vim.api.nvim_set_current_buf,
   buf_is_loaded = vim.api.nvim_buf_is_loaded,
