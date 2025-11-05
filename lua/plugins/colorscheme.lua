@@ -10,8 +10,8 @@ return {
           warnings = { 'undercurl' },
         },
       },
-      background = {
-        dark = 'frappe',
+      background = { -- latte, frappe, macchiato, mocha
+        dark = 'macchiato',
         light = 'latte',
       },
       term_colors = true,
