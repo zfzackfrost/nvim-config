@@ -1,19 +1,14 @@
-local function plural(word, count)
-  if count ~= 1 then
-    return word .. 's'
-  end
-  return word
-end
+local iff = require('utils.func').iff
 
 ---@param t vim.api.keyset.create_user_command.command_args
 local function clean_swap(t)
-  local views = vim.fs.find(function()
+  local files = vim.fs.find(function()
     return true
   end, { path = vim.go.directory, type = 'file', limit = math.huge })
   local ok_count = 0
   local err_count = 0
-  for _, v in ipairs(views) do
-    local _, err = vim.uv.fs_unlink(v)
+  for _, f in ipairs(files) do
+    local _, err = vim.uv.fs_unlink(f)
     if err == nil then
       ok_count = ok_count + 1
     else
@@ -23,11 +18,11 @@ local function clean_swap(t)
   if not t.smods.silent and not t.smods.emsg_silent then
     vim.notify(
       string.format(
-        'Cleaned %d swap %s\nEncountered %d %s',
+        'Removed %d swap %s\nEncountered %d %s',
         ok_count,
-        plural('file', ok_count),
+        iff(ok_count == 1, 'file', 'files'),
         err_count,
-        plural('error', err_count)
+        iff(err_count == 1, 'error', 'errors')
       ),
       vim.log.levels.INFO,
       {}
