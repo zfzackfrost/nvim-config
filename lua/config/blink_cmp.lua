@@ -35,12 +35,6 @@ local lazydev = {
   module = 'lazydev.integrations.blink',
   score_offset = 100, -- Top priority
 }
-local nerdfont = {
-  module = 'blink-nerdfont',
-  name = 'Nerd Fonts',
-  score_offset = -25,
-  opts = { insert = true },
-}
 local spell = {
   name = 'Spell',
   module = 'blink-cmp-spell',
@@ -62,7 +56,6 @@ local spell = {
 }
 local providers = {
   lazydev = lazydev,
-  nerdfont = nerdfont,
   spell = spell,
 }
 
@@ -78,7 +71,6 @@ local sources = {
       'path',
       'spell',
       'buffer',
-      'nerdfont',
     },
   },
   providers = providers,
