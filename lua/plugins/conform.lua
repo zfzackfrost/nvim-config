@@ -21,6 +21,7 @@ return {
       python = { 'yapf' },
       scss = { 'prettier' },
       svelte = { 'prettier' },
+      toml = { 'taplo' },
       typescript = { 'prettier' },
       typescriptreact = { 'prettier' },
       xml = { 'prettier' },
