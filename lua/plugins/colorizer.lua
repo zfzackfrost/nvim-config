@@ -1,10 +1,13 @@
 local ft = {
   'css',
   'scss',
+  'less',
   'svelte',
+  'vue',
   'html',
   'xml',
   'json',
+  'jsonc',
   'javascriptreact',
   'typescriptreact',
 }
