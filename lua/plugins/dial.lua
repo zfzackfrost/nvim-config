@@ -13,12 +13,8 @@ return {
   keys = {
     { '<C-z>', manipulate('increment', 'normal'), mode = 'n' },
     { '<C-x>', manipulate('decrement', 'normal'), mode = 'n' },
-    { 'g<C-z>', manipulate('increment', 'gnormal'), mode = 'n' },
-    { 'g<C-x>', manipulate('decrement', 'gnormal'), mode = 'n' },
     { '<C-z>', manipulate('increment', 'visual'), mode = 'v' },
     { '<C-x>', manipulate('decrement', 'visual'), mode = 'v' },
-    { 'g<C-z>', manipulate('increment', 'gvisual'), mode = 'v' },
-    { 'g<C-x>', manipulate('decrement', 'gvisual'), mode = 'v' },
   },
   config = function()
     require('config.dial')
