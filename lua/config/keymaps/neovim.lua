@@ -19,12 +19,18 @@ local remove_icon = {
   icon = ' ',
   color = 'red',
 }
+---@type wk.Icon
+local tools_icon = {
+  icon = '󱁤 ',
+  color = 'grey',
+}
 
 wk.add({
   { '<leader>v', group = '(neo)vim', icon = vim_icon },
   { prefix_maintain, group = 'maintain', icon = maintain_icon },
   { prefix_maintain .. 'v', [[<Cmd>CleanViews<Cr>]], desc = 'Remove all views', icon = remove_icon },
   { prefix_maintain .. 's', [[<Cmd>CleanSwap<Cr>]], desc = 'Remove all swap files', icon = remove_icon },
+  { prefix_maintain .. 't', [[<Cmd>Mason<Cr>]], desc = 'Manage tools with Mason', icon = tools_icon },
 
   { prefix_server, group = 'server' },
   { prefix_server .. 's', [[<Cmd>StartServer<Cr>]], desc = 'Start server' },
