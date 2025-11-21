@@ -2,13 +2,7 @@ return {
   {
     'nvim-mini/mini.operators',
     version = false,
-    keys = {
-      { 'g=', desc = 'Evaluate operator', mode = { 'n', 'v' } },
-      { 'gX', desc = 'Exchange operator', mode = { 'n', 'v' } },
-      { 'gm', desc = 'Multiply operator', mode = { 'n', 'v' } },
-      { 'gr', desc = 'Replace operator', mode = { 'n', 'v' } },
-      { 'gs', desc = 'Sort operator', mode = { 'n', 'v' } },
-    },
+    lazy = false,
     opts = {
       -- Each entry configures one operator.
       -- `prefix` defines keys mapped during `setup()`: in Normal mode
