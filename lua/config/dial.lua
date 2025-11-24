@@ -11,36 +11,45 @@ local function extend(lists)
 end
 
 local dec_int = augend.integer.alias.decimal_int -- decimal number (..., -2, -1, 0, 1, 2, ...)
-local check_pat = '(%s*%- %[)([ x-])(].*)'
-local checks = { ' ', 'x', '-' }
-local markdown_check = augend.user.new({
-  find = common.find_pattern(check_pat),
-  add = function(text, addend, cursor)
-    local pre, mark, suf = string.match(text, check_pat)
-    if pre == nil then
+
+local markdown_check
+do
+  local checks = { ' ', 'x', '-' }
+
+  local checks_str = ''
+  for _, c in ipairs(checks) do
+    checks_str = checks_str .. c
+  end
+  local check_pat = '(%s*%- %[)([' .. checks_str .. '])(].*)'
+  markdown_check = augend.user.new({
+    find = common.find_pattern(check_pat),
+    add = function(text, addend, cursor)
+      local pre, mark, suf = string.match(text, check_pat)
+      if pre == nil then
+        ---@diagnostic disable-next-line: redundant-return-value
+        return { text = text, cursor = cursor }
+      end
+      local idx
+      for i = 1, #checks, 1 do
+        if checks[i] == mark then
+          idx = i
+          break
+        end
+      end
+      idx = idx + addend
+      if idx < 1 then
+        idx = #checks
+      elseif idx > #checks then
+        idx = 1
+      end
+      mark = checks[idx]
+      text = pre .. mark .. suf
+      cursor = #text
       ---@diagnostic disable-next-line: redundant-return-value
       return { text = text, cursor = cursor }
-    end
-    local idx
-    for i = 1, #checks, 1 do
-      if checks[i] == mark then
-        idx = i
-        break
-      end
-    end
-    idx = idx + addend
-    if idx < 1 then
-      idx = #checks
-    elseif idx > #checks then
-      idx = 1
-    end
-    mark = checks[idx]
-    text = pre .. mark .. suf
-    cursor = #text
-    ---@diagnostic disable-next-line: redundant-return-value
-    return { text = text, cursor = cursor }
-  end,
-})
+    end,
+  })
+end
 
 local js_let_const = augend.constant.new({
   elements = { 'let', 'const' },
