@@ -123,12 +123,6 @@ local js_augends = {
   augend.constant.alias.bool,
 }
 
-local bool_python = augend.constant.new({
-  elements = { 'True', 'False' },
-  word = true,
-  cyclic = true,
-})
-
 local dec_c = augend.integer.new({
   radix = 10,
   delimiter = "'",
@@ -241,7 +235,7 @@ config.augends:on_filetype({
   },
   python = {
     dec_int,
-    bool_python,
+    augend.constant.alias.Bool,
   },
   javascript = js_augends,
   typescript = js_augends,
