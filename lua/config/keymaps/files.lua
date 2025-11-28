@@ -2,8 +2,23 @@ local wk = require('which-key')
 
 local function select_filetype()
   local filetypes = vim.fn.getcompletion('', 'filetype')
+  local current_ft = vim.bo.filetype
   vim.ui.select(filetypes, {
     prompt = 'Select filetype',
+    snacks = {
+      on_show = function(picker)
+        local idx = nil
+        for i = 1, picker:count() do
+          if filetypes[i] == current_ft then
+            idx = i
+            break
+          end
+        end
+        if idx ~= nil then
+          picker.list:set_target(idx)
+        end
+      end,
+    },
   }, function(item)
     if item == nil then
       return
