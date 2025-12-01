@@ -8,7 +8,7 @@ return {
         ['init.lua'] = { glyph = '󰢱' },
       },
       extension = {
-        ['snippets'] = { glyph = ' ' },
+        ['snippets'] = { glyph = '' },
       },
     },
     config = function(_, opts)
