@@ -34,7 +34,9 @@ local function on_attach(args)
       },
       {
         '<leader>cs',
-        [[<Cmd>Telescope lsp_document_symbols theme=ivy<Cr>]],
+        function()
+          Snacks.picker.lsp_symbols()
+        end,
         desc = 'Symbols',
       },
       {
