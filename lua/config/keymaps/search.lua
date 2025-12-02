@@ -2,8 +2,8 @@ local wk = require('which-key')
 
 local prefix = '<leader>s'
 
-local function search_smart()
-  Snacks.picker.smart()
+local function search_files()
+  Snacks.picker.files()
 end
 local function search_recent()
   Snacks.picker.recent()
@@ -27,7 +27,7 @@ end
 wk.add({
   { '<Esc>', '<Cmd>nohlsearch<Cr>' },
   { prefix, group = 'search' },
-  { '<leader><leader>', search_smart, desc = 'Search for buffer, recents, files' },
+  { '<leader><leader>', search_files, desc = 'Search for files' },
   { prefix .. 'r', search_recent, desc = 'Search for recent files' },
   { prefix .. 'b', search_buffers, desc = 'Search for buffer' },
   { prefix .. 'h', search_help, desc = 'Search for vim help' },
