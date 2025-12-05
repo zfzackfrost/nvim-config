@@ -10,4 +10,7 @@ vim.filetype.add({
     ['inc'] = 'spice',
     ['sub'] = 'spice',
   },
+  pattern = {
+    ['.*/SKSE/.*%.json'] = 'jsonc', -- Skyrim SKSE json file
+  },
 })
