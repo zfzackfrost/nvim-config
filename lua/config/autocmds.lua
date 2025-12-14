@@ -14,7 +14,7 @@ do
       if enable == nil then
         return
       end
-      vim.diagnostic.enable(not vim.b.diagnostics_disabled, {bufnr = t.buf})
+      vim.diagnostic.enable(not vim.b.diagnostics_disabled, { bufnr = t.buf })
     end,
   })
 end
@@ -33,41 +33,6 @@ do
   })
 end
 
-do
-  ---@alias WindowSide 'L'|'R'
-  ---@type table<string, number>
-  local ft_window_configs = {
-    ['grug-far'] = 45,
-    ['neo-tree'] = 28,
-  }
-  local group = augroup('user_resize_window', {})
-
-  autocmd({ 'BufWinEnter' }, {
-    group = group,
-    callback = function(args)
-      vim.defer_fn(function()
-        local cur_w = nil
-        local all_w = vim.api.nvim_tabpage_list_wins(0)
-        for _, w in ipairs(all_w) do
-          local b = vim.api.nvim_win_get_buf(w)
-          if b == args.buf then
-            cur_w = w
-            break
-          end
-        end
-        if cur_w == nil then
-          return
-        end
-        for ft, cfg in pairs(ft_window_configs) do
-          if vim.bo.filetype == ft then
-            vim.api.nvim_win_set_width(cur_w, cfg)
-            break
-          end
-        end
-      end, 10)
-    end,
-  })
-end
 do
   local group = augroup('user_autostart_server', {})
   autocmd({ 'BufWinEnter' }, {

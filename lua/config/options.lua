@@ -4,6 +4,7 @@ vim.g.maplocalleader = '\\'
 vim.o.viewoptions = 'folds,cursor'
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 vim.o.foldlevel = 99
+vim.o.splitkeep = 'screen'
 vim.o.showmode = false
 vim.o.clipboard = ''
 vim.o.hidden = true
