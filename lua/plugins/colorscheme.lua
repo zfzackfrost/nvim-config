@@ -31,7 +31,7 @@ return {
           LineNr = { bg = colors.crust },
           CursorLineNr = { bg = colors.crust },
           SignColumn = { bg = colors.crust },
-          BufferlineBanner = { fg = colors.crust, bg = colors.overlay1 },
+          EdgyWinBar = { fg = colors.overlay2, bg = colors.surface0 },
         }
       end,
     },
