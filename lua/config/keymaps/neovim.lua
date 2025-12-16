@@ -46,6 +46,7 @@ wk.add({
   { prefix_maintain .. 'v', [[<Cmd>CleanViews<Cr>]], desc = 'Remove all views', icon = remove_icon },
   { prefix_maintain .. 's', [[<Cmd>CleanSwap<Cr>]], desc = 'Remove all swap files', icon = remove_icon },
   { prefix_maintain .. 't', [[<Cmd>Mason<Cr>]], desc = 'Manage tools with Mason', icon = tools_icon },
+  { prefix_maintain .. 'p', [[<Cmd>Lazy<Cr>]], desc = 'Manage plugins with Lazy', icon = vim_icon },
 
   { prefix_server, group = 'server', icon = server_icon },
   { prefix_server .. 's', [[<Cmd>StartServer<Cr>]], desc = 'Start server', icon = server_on_icon },
