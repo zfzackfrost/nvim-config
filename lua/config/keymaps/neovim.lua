@@ -6,7 +6,7 @@ local prefix_server = prefix .. 's'
 
 ---@type wk.Icon
 local vim_icon = {
-  icon = '',
+  icon = ' ',
   color = 'green',
 }
 ---@type wk.Icon
@@ -24,6 +24,21 @@ local tools_icon = {
   icon = '󱁤 ',
   color = 'grey',
 }
+---@type wk.Icon
+local server_icon = {
+  icon = '󰒋 ',
+  color = 'purple',
+}
+---@type wk.Icon
+local server_on_icon = {
+  icon = '󰒋 ',
+  color = 'green',
+}
+---@type wk.Icon
+local server_off_icon = {
+  icon = '󰒏 ',
+  color = 'grey',
+}
 
 wk.add({
   { '<leader>v', group = '(neo)vim', icon = vim_icon },
@@ -32,8 +47,8 @@ wk.add({
   { prefix_maintain .. 's', [[<Cmd>CleanSwap<Cr>]], desc = 'Remove all swap files', icon = remove_icon },
   { prefix_maintain .. 't', [[<Cmd>Mason<Cr>]], desc = 'Manage tools with Mason', icon = tools_icon },
 
-  { prefix_server, group = 'server' },
-  { prefix_server .. 's', [[<Cmd>StartServer<Cr>]], desc = 'Start server' },
-  { prefix_server .. 'e', [[<Cmd>StopServer<Cr>]], desc = 'Stop server' },
-  { prefix_server .. 'd', [[<Cmd>CleanServerPipe<Cr>]], desc = 'Clean old server pipe' },
+  { prefix_server, group = 'server', icon = server_icon },
+  { prefix_server .. 's', [[<Cmd>StartServer<Cr>]], desc = 'Start server', icon = server_on_icon },
+  { prefix_server .. 'e', [[<Cmd>StopServer<Cr>]], desc = 'Stop server', icon = server_off_icon },
+  { prefix_server .. 'd', [[<Cmd>CleanServerPipe<Cr>]], desc = 'Clean old server pipe', icon = remove_icon },
 })
