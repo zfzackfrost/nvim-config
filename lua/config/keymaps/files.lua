@@ -1,11 +1,14 @@
 local wk = require('which-key')
 
 local function select_filetype()
+  -- Get all registered filetypes
   local filetypes = vim.fn.getcompletion('', 'filetype')
   local current_ft = vim.bo.filetype
+  local current_buf = nvim.get_current_buf()
   vim.ui.select(filetypes, {
     prompt = 'Select filetype',
     snacks = {
+      -- Scroll to current filetype on show
       on_show = function(picker)
         local idx = nil
         for i = 1, picker:count() do
@@ -21,9 +24,10 @@ local function select_filetype()
     },
   }, function(item)
     if item == nil then
-      return
+      return -- Do nothing if canceled
     end
-    vim.bo.filetype = item
+    -- Set filetype of current_buf
+    vim.bo[current_buf].filetype = item
   end)
 end
 
