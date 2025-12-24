@@ -6,7 +6,7 @@ return {
     opts = {
       -- Exchange text regions
       exchange = {
-        prefix = 'gX',
+        prefix = 'gx',
         reindent_linewise = true,
       },
 
