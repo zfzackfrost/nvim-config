@@ -3,6 +3,8 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 5000,
+    ---@module 'catppuccin'
+    ---@type CatppuccinOptions
     opts = {
       lsp_styles = {
         underlines = {
@@ -31,7 +33,7 @@ return {
           LineNr = { bg = colors.crust },
           CursorLineNr = { bg = colors.crust },
           SignColumn = { bg = colors.crust },
-          EdgyWinBar = { fg = colors.overlay2, bg = colors.surface0 },
+          EdgyWinBar = { fg = colors.surface0, bg = colors.overlay2 },
         }
       end,
     },
