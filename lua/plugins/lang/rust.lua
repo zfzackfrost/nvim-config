@@ -13,7 +13,7 @@ return {
   },
   {
     'mrcjkb/rustaceanvim',
-    version = '^6',
+    version = '*',
     lazy = false,
     init = function()
       vim.g.rustaceanvim = {
