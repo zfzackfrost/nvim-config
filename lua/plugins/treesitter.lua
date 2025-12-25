@@ -4,13 +4,6 @@ return {
     lazy = true,
   },
   {
-    'JoosepAlviste/nvim-ts-context-commentstring',
-    lazy = true,
-    opts = {
-      enable_autocmd = false,
-    },
-  },
-  {
     'windwp/nvim-ts-autotag',
     ft = {
       'typescriptreact',
