@@ -1,5 +1,11 @@
 return {
   'folke/which-key.nvim',
   lazy = true,
-  opts = {},
+  ---@module 'which-key'
+  ---@type wk.Opts
+  opts = {
+    win = {
+      border = 'single',
+    },
+  },
 }
