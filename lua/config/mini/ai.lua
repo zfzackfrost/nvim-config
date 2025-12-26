@@ -56,7 +56,7 @@ end
 -- Table with textobject id as fields, textobject specification as values.
 -- Also use this to disable builtin textobjects. See |MiniAi.config|.
 local custom_textobjects = {
-  g = entire_buffer,
+  b = entire_buffer,
   l = current_line,
 }
 
