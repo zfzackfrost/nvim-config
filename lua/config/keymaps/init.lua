@@ -1,19 +1,12 @@
-local function extra_groups()
-  local wk = require('which-key')
-  wk.add({
-    { 's', group = 'surround', mode = { 'n', 'x' } },
-  })
-end
-
 local function load_keymaps()
-  extra_groups()
+  require('config.keymaps.leader')
   require('config.keymaps.buffers')
   require('config.keymaps.code')
   require('config.keymaps.files')
   require('config.keymaps.git')
   require('config.keymaps.list')
   require('config.keymaps.neovim')
-  require('config.keymaps.remap')
+  require('config.keymaps.noprefix')
   require('config.keymaps.search')
   require('config.keymaps.tabs')
   require('config.keymaps.terminal')

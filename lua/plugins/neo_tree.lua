@@ -44,10 +44,6 @@ return {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
   },
-  keys = {
-    { '<leader>e', [[<Cmd>Neotree toggle<Cr>]], desc = 'File tree' },
-    { '<leader>E', [[<Cmd>Neotree toggle reveal<Cr>]], desc = 'File tree (current file)' },
-  },
   cmd = { 'Neotree' },
   opts = local_opts,
 }

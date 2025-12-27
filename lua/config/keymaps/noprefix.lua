@@ -9,3 +9,6 @@ vim.keymap.set({ 'n', 'v' }, 's', function()
     keys = 's',
   })
 end)
+
+-- Map <Esc> to `nohlsearch` in normal mode
+vim.keymap.set('n', '<Esc>', [[<Cmd>nohlsearch<Cr>]])
