@@ -45,7 +45,9 @@ end
 function M.add_with_icon(mappings, icon, opts)
   mappings = vim.deepcopy(mappings)
   for _, v in pairs(mappings) do
-    v.icon = icon
+    if v.icon == nil then
+      v.icon = icon
+    end
   end
   require('which-key').add(mappings, opts)
 end
