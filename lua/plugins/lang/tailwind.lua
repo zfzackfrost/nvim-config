@@ -7,6 +7,8 @@ return {
   ft = {
     'css',
     'scss',
+    'html',
+    'vue',
     'javascript',
     'javascriptreact',
     'typescript',
