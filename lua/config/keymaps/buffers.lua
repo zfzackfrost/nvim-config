@@ -1,3 +1,7 @@
+local prefix = '<leader>b'
+local wk = require('which-key')
+local m = require('utils.vim.map')
+
 local function make_bufdelete(force)
   return function()
     require('mini.bufremove').delete(0, force)
@@ -54,10 +58,13 @@ local function make_write_nofmt(all)
   end
 end
 
-local prefix = '<leader>b'
+---@type wk.Icon
+local buf_icon = {
+  icon = '󰧭 ',
+  color = 'blue',
+}
 
-local wk = require('which-key')
-wk.add({
+m.add_with_icon({
   { prefix, group = 'buffers' },
   { prefix .. 'o', bufonly, desc = 'Delete buffers except current' },
   { prefix .. 'e', [[<Cmd>edit<Cr>]], desc = "Re-open current buffer's file" },
@@ -67,4 +74,4 @@ wk.add({
   { prefix .. 'w', [[<Cmd>write<Cr>]], desc = 'Write current buffers' },
   { prefix .. 'd', make_bufdelete(false), desc = 'Delete buffer and keep split' },
   { prefix .. 'D', make_bufdelete(true), desc = 'Delete buffer (force) and keep split' },
-})
+}, buf_icon)
