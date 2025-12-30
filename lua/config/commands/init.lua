@@ -1,6 +1,7 @@
 require('config.commands.box')
 require('config.commands.debug')
 require('config.commands.format')
+require('config.commands.modeline')
 require('config.commands.server')
-require('config.commands.views')
 require('config.commands.swap')
+require('config.commands.views')
