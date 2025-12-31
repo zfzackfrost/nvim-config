@@ -23,11 +23,9 @@ local function select_filetype()
       end,
     },
   }, function(item)
-    if item == nil then
-      return -- Do nothing if canceled
+    if item ~= nil then
+      vim.bo[current_buf].filetype = item
     end
-    -- Set filetype of current_buf
-    vim.bo[current_buf].filetype = item
   end)
 end
 
