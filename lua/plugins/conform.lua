@@ -3,6 +3,11 @@ return {
   ---@module 'conform'
   ---@type conform.setupOpts
   opts = {
+    formatters = {
+      rustfmt = {
+        nightly = true,
+      },
+    },
     formatters_by_ft = {
       arduino = { 'clang-format' },
       c = { 'clang-format' },
@@ -19,6 +24,7 @@ return {
       lua = { 'stylua' },
       markdown = { 'prettier' },
       python = { 'yapf' },
+      rust = { 'rustfmt' },
       scss = { 'prettier' },
       svelte = { 'prettier' },
       toml = { 'taplo' },
