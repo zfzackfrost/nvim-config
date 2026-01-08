@@ -5,7 +5,9 @@ return {
   opts = {
     formatters = {
       rustfmt = {
-        nightly = true,
+        options = {
+          nightly = true,
+        },
       },
     },
     formatters_by_ft = {
