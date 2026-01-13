@@ -4,7 +4,8 @@ local M = {}
 
 local defaults = require('config.local_settings.defaults')
 
-local function get_file_path()
+---@return string?
+function M.get_file_path()
   local path = vim.fn.expand('%:p:h')
   if not vim.uv.fs_stat(path) then
     path = vim.fn.getcwd()
@@ -21,7 +22,7 @@ end
 
 ---@return LocalSettings
 function M.read_settings()
-  local p = get_file_path()
+  local p = M.get_file_path()
   local d = vim.deepcopy(defaults)
   if p == nil then
     return d

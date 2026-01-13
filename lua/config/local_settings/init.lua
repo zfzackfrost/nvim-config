@@ -85,6 +85,11 @@ local function handle_local_settings(settings)
   handle_lsp_format(ft_config)
   handle_lsp_enable_hints(ft_config)
   handle_diagnostics_disabled(ft_config)
+
+  local file_path = require('config.local_settings.file').get_file_path()
+  if file_path ~= nil then
+    vim.opt.runtimepath:append({ vim.fs.joinpath(vim.fs.dirname(file_path), '.nvim') })
+  end
 end
 
 local function load_local_settings()
