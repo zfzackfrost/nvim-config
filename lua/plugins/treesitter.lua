@@ -20,10 +20,11 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    branch = 'master',
+    lazy = false,
     main = 'nvim-treesitter.configs',
     opts = {
-      ensure_installed = 'all',
-      ignore_insall = { 'comment' },
+      ignore_insall = { 'comment', 'ipkg' },
       sync_install = false,
       auto_install = true,
       highlight = { enable = true },
