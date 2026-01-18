@@ -95,11 +95,15 @@ local opts = {
         preselect = false,
       },
     },
-    documentation = { auto_show = true, auto_show_delay_ms = 500 },
+    documentation = {
+      auto_show = true,
+      auto_show_delay_ms = 500,
+    },
     menu = {
       draw = {
-        components = {
-          kind_icon = kind_icon,
+        columns = {
+          { 'kind_icon', 'kind', gap = 1 },
+          { 'label', 'label_description' },
         },
       },
     },
