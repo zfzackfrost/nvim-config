@@ -20,6 +20,20 @@ function M.get_file_path()
   end
 end
 
+---Get the `.nvim` directory, located next to the `nvim.json`/`.nvim.json` file.
+---@return string? # The `.nvim` directory, or nil if it doesn't exist
+function M.get_local_dir()
+  local settings_file = M.get_file_path()
+  if settings_file == nil then
+    return
+  end
+  local local_dir = vim.fs.dirname(settings_file)
+  local dir_path = vim.fs.joinpath(local_dir, '.nvim')
+  if vim.fn.isdirectory(dir_path) == 1 then
+    return dir_path
+  end
+end
+
 ---@return LocalSettings
 function M.read_settings()
   local p = M.get_file_path()

@@ -1,6 +1,7 @@
 ---@module 'config.local_settings.types'
 
 local v = require('utils.validate')
+local lfile = require('config.local_settings.file')
 
 ---@param ft_config FiletypeSettings
 local function handle_lsp_enable_hints(ft_config)
@@ -86,14 +87,15 @@ local function handle_local_settings(settings)
   handle_lsp_enable_hints(ft_config)
   handle_diagnostics_disabled(ft_config)
 
-  local file_path = require('config.local_settings.file').get_file_path()
-  if file_path ~= nil then
-    vim.opt.runtimepath:append({ vim.fs.joinpath(vim.fs.dirname(file_path), '.nvim') })
+  ---Add `.nvim` directory to the runtime path
+  local dir = lfile.get_local_dir()
+  if dir ~= nil then
+    vim.opt.runtimepath:append({ dir })
   end
 end
 
 local function load_local_settings()
-  local settings = require('config.local_settings.file').read_settings()
+  local settings = lfile.read_settings()
   handle_local_settings(settings)
 end
 vim.api.nvim_create_user_command('LoadLocalSettings', load_local_settings, {})
