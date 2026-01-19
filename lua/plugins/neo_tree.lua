@@ -17,6 +17,15 @@ local function local_opts(_, opts)
       { event = events.FILE_RENAMED, handler = on_move },
     },
     default_component_configs = {
+      icon = {
+        provider = function(config, node, state)
+          local icon = {}
+          local m_icon, m_hl = require('mini.icons').get(node.type, node.name)
+          icon.highlight = m_hl
+          icon.text = m_icon
+          return icon
+        end,
+      },
       git_status = {
         symbols = {
           -- Change type

@@ -4,6 +4,9 @@ return {
     version = false,
     lazy = true,
     opts = {
+      directory = {
+        ['.nvim'] = { glyph = '' },
+      },
       file = {
         ['init.lua'] = { glyph = '󰢱' },
       },
