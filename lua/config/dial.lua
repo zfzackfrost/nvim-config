@@ -251,6 +251,11 @@ config.augends:on_filetype({
   javascriptreact = js_augends,
   typescriptreact = js_augends,
   svelte = js_augends,
+
+  dosini = {
+    dec_int,
+    augend.constant.alias.bool,
+  },
 })
 config.augends:register_group({
   default = default_augends,
