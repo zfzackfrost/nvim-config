@@ -4,15 +4,6 @@ end
 _G.bt = function()
   Snacks.debug.backtrace()
 end
-if vim.fn.has('nvim-0.11') == 1 then
-  ---@diagnostic disable-next-line: duplicate-set-field
-  vim._print = function(_, ...)
-    dd(...)
-  end
-else
-  ---@diagnostic disable-next-line: duplicate-set-field
-  vim.print = dd
-end
 
 _G.augroup = vim.api.nvim_create_augroup
 _G.autocmd = vim.api.nvim_create_autocmd
