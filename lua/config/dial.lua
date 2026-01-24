@@ -131,6 +131,10 @@ local js_augends = {
   js_let_const,
   augend.constant.alias.bool,
 }
+local json_augends = {
+  dec_int,
+  augend.constant.alias.bool,
+}
 
 local dec_c = augend.integer.new({
   radix = 10,
@@ -224,10 +228,8 @@ config.augends:on_filetype({
     dec_int,
     augend.constant.alias.bool,
   },
-  json = {
-    dec_int,
-    augend.constant.alias.bool,
-  },
+  json = json_augends,
+  jsonc = json_augends,
   toml = {
     dec_under,
     hex_under,
