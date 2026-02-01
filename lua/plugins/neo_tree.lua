@@ -17,9 +17,15 @@ local function local_opts(_, opts)
       { event = events.FILE_RENAMED, handler = on_move },
     },
     default_component_configs = {
+      indent = {
+        with_expanders = true,
+      },
+      ---@diagnostic disable-next-line: missing-fields
       icon = {
-        provider = function(config, node, state)
+        ---@diagnostic disable-next-line: unused-local
+        provider = function(_config, node, _state)
           local icon = {}
+          ---@diagnostic disable-next-line: undefined-field
           local m_icon, m_hl = require('mini.icons').get(node.type, node.name)
           icon.highlight = m_hl
           icon.text = m_icon
