@@ -6,6 +6,7 @@ return {
     opts = {
       directory = {
         ['.nvim'] = { glyph = '' },
+        ['snippets'] = { glyph = '', hl = 'MiniIconsGrey' },
       },
       file = {
         ['init.lua'] = { glyph = '󰢱' },
