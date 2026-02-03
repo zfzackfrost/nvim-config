@@ -1,5 +1,6 @@
 vim.filetype.add({
   extension = {
+    ['snippets'] = 'snippets',
     ['scad'] = 'openscad',
     -- SPICE circuit/netlist/module/library
     ['spi'] = 'spice',
