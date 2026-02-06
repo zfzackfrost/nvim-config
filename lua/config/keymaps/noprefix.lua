@@ -11,7 +11,7 @@ vim.keymap.set({ 'n', 'v' }, 's', function()
 end)
 
 -- Map <Esc> to `nohlsearch` in normal mode
-vim.keymap.set('n', '<Esc>', [[<Cmd>nohlsearch<CrT]])
+vim.keymap.set('n', '<Esc>', [[<Cmd>nohlsearch<Cr>]])
 vim.keymap.set('i', '<M-Cr>', function()
   require('luasnip').expand()
 end, { silent = true })
