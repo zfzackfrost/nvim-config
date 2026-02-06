@@ -198,6 +198,11 @@ local bool_c_cmake = augend.constant.new({
   cyclic = true,
 })
 
+local css_augends = {
+  augend.integer.alias.decimal,
+  augend.hexcolor,
+}
+
 config.augends:on_filetype({
   cpp = extend({
     c_augends,
@@ -258,6 +263,9 @@ config.augends:on_filetype({
     dec_int,
     augend.constant.alias.bool,
   },
+  css = css_augends,
+  scss = css_augends,
+  less = css_augends,
 })
 config.augends:register_group({
   default = default_augends,
