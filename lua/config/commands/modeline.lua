@@ -1,8 +1,9 @@
-local iff = require('utils.func').iff
-local comments = require('utils.vim.comments')
-
 ---GenModeline command function
 local function gen_modeline()
+  local iff = require('utils.func').iff
+  local us = require('utils.str')
+  local cmt_format = require('utils.vim.comments').format
+
   local ft = vim.bo.filetype
   local sw = vim.bo.shiftwidth
   local sts = vim.bo.softtabstop
@@ -18,7 +19,9 @@ local function gen_modeline()
     tostring(sts)
   )
   nvim.win_set_cursor(0, { 1, 0 })
-  nvim.put({ comments.format(modeline_str) }, 'l', true, true)
+  local first_line = nvim.get_current_line()
+  local has_shebang = us.starts_with(first_line, '#!')
+  nvim.put({ cmt_format(modeline_str) }, 'l', has_shebang, true)
 end
 
 nvim.create_user_command('GenModeline', gen_modeline, {})
