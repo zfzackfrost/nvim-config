@@ -4,8 +4,8 @@ local m = require('utils.vim.map')
 local prefix = '<leader>cg'
 ---@type wk.Icon
 local modeline_icon = {
-  icon = ' ',
-  color = 'grey',
+  icon = '',
+  color = 'green',
 }
 wk.add({
   { prefix, group = 'generate', icon = {
