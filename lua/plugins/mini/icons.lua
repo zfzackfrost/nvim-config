@@ -11,7 +11,7 @@ return {
       file = {
         ['.nvim.json'] = { glyph = '', hl = 'MiniIconsGreen' },
         ['nvim.json'] = { glyph = '', hl = 'MiniIconsGreen' },
-        ['lazy-lock.json'] = { glyph = '󰈡', hl = 'MiniIconsRed' },
+        ['lazy-lock.json'] = { glyph = '󱌠', hl = 'MiniIconsRed' },
         ['init.lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' },
       },
       extension = {
