@@ -2,27 +2,21 @@
 ---@param t vim.api.keyset.create_user_command.command_args
 local function gen_modeline(t)
   local iff = require('utils.func').iff
-  local us = require('utils.str')
+  local starts_with = require('utils.str').starts_with
   local cmt_format = require('utils.vim.comments').format
 
-  local ft = vim.bo.filetype
-  local sw = vim.bo.shiftwidth
-  local sts = vim.bo.softtabstop
-  local ts = vim.bo.tabstop
-  local et = vim.bo.expandtab
-
   local modeline_str = string.format(
-    'vim: set %s ft=%s sw=%s ts=%s sts=%s', --
-    iff(et, 'et', 'noet'),
-    ft,
-    tostring(sw),
-    tostring(ts),
-    tostring(sts)
+    'vim: set %s ft=%s sw=%d ts=%d sts=%d', --
+    iff(vim.bo.expandtab, 'et', 'noet'),
+    vim.bo.filetype,
+    vim.bo.shiftwidth,
+    vim.bo.tabstop,
+    vim.bo.softtabstop
   )
   modeline_str = cmt_format(modeline_str)
 
   local first_line = nvim.buf_get_lines(0, 0, 1, false)[1]
-  local has_shebang = us.starts_with(first_line, '#!')
+  local has_shebang = starts_with(first_line, '#!')
   local line_nr = iff(has_shebang, 1, 0)
   nvim.buf_set_lines(0, line_nr, line_nr, false, { modeline_str })
 
