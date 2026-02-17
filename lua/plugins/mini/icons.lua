@@ -12,6 +12,9 @@ return {
         ['.nvim.json'] = { glyph = '', hl = 'MiniIconsGreen' },
         ['nvim.json'] = { glyph = '', hl = 'MiniIconsGreen' },
         ['lazy-lock.json'] = { glyph = '󱌠', hl = 'MiniIconsRed' },
+        ['pnpm-lock.yaml'] = { glyph = '󱌠', hl = 'MiniIconsRed' },
+        ['package-lock.json'] = { glyph = '󱌠', hl = 'MiniIconsRed' },
+        ['Cargo.lock'] = { glyph = '󱌠', hl = 'MiniIconsRed' },
         ['init.lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' },
       },
       extension = {
