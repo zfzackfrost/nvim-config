@@ -8,7 +8,7 @@ local function manipulate(direction, mode, group_name)
     if mode == 'insert' then
       actual_mode = 'normal'
     end
-    require('dial.map').manipulate(direction, actual_mode, group_name)
+    require('dial.map').manipulate(direction, actual_mode --[[ @as any --]], group_name)
     if mode == 'insert' then
       vim.cmd('normal! i')
     end
