@@ -220,7 +220,9 @@ config.augends:on_filetype({
     },
   }),
   markdown = {
+    dec_int,
     markdown_check,
+    augend.misc.alias.markdown_header,
   },
   rust = {
     dec_under,
@@ -233,9 +235,10 @@ config.augends:on_filetype({
     dec_int,
     augend.constant.alias.bool,
   },
-  json = json_augends,
+  json = extend({ { augend.semver.alias.semver }, json_augends }),
   jsonc = json_augends,
   toml = {
+    augend.semver.alias.semver,
     dec_under,
     hex_under,
     oct_under,
@@ -243,6 +246,7 @@ config.augends:on_filetype({
     augend.constant.alias.bool,
   },
   yaml = {
+    augend.semver.alias.semver,
     dec_under,
     hex_under,
     oct_under,
@@ -257,15 +261,16 @@ config.augends:on_filetype({
   typescript = js_augends,
   javascriptreact = js_augends,
   typescriptreact = js_augends,
-  svelte = js_augends,
+  svelte = extend({ js_augends, css_augends }),
+
+  css = css_augends,
+  scss = css_augends,
+  less = css_augends,
 
   dosini = {
     dec_int,
     augend.constant.alias.bool,
   },
-  css = css_augends,
-  scss = css_augends,
-  less = css_augends,
 })
 config.augends:register_group({
   default = default_augends,
