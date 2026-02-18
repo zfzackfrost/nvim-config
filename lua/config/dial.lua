@@ -269,10 +269,4 @@ config.augends:on_filetype({
 })
 config.augends:register_group({
   default = default_augends,
-  case = {
-    augend.case.new({
-      types = { 'camelCase', 'snake_case', 'PascalCase', 'SCREAMING_SNAKE_CASE' },
-      cyclic = true,
-    }),
-  },
 })
