@@ -1,25 +1,18 @@
 local M = {}
 
 local default_opts = {}
-local vtsls_hints_settings = {
+local tsls_hints_settings = {
   inlayHints = {
-    variableTypes = {
-      enabled = true,
-    },
-    parameterTypes = {
-      enabled = true,
-    },
-    propertyDeclarationTypes = {
-      enabled = true,
-    },
-    parameterNames = {
-      enabled = 'all',
-    },
+    includeInlayVariableTypeHints = true,
+    includeInlayFunctionLikeReturnTypeHints = true,
+    includeInlayFunctionParameterTypeHints = true,
+    includeInlayPropertyDeclarationTypeHints = true,
+    includeInlayParameterNameHints = 'all',
   },
 }
-local vtsls_settings = {
-  typescript = vtsls_hints_settings,
-  javascript = vtsls_hints_settings,
+local tsls_settings = {
+  typescript = tsls_hints_settings,
+  javascript = tsls_hints_settings,
 }
 
 local svelte_settings = {
@@ -55,8 +48,8 @@ local server_opts = {
   basedpyright = {},
   tailwindcss = {},
   taplo = {},
-  vtsls = {
-    settings = vtsls_settings,
+  ts_ls = {
+    settings = tsls_settings,
   },
   glsl_analyzer = {},
   yamlls = {
@@ -72,7 +65,7 @@ local server_opts = {
   },
   openscad_ls = {},
   svelte = {
-    settings = vim.tbl_deep_extend('keep', svelte_settings, vtsls_settings),
+    settings = vim.tbl_deep_extend('keep', svelte_settings, tsls_settings),
   },
   zls = {},
 }
