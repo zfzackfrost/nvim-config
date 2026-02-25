@@ -16,6 +16,10 @@ return {
         ['package-lock.json'] = { glyph = '󱌠', hl = 'MiniIconsRed' },
         ['Cargo.lock'] = { glyph = '󱌠', hl = 'MiniIconsRed' },
         ['init.lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' },
+        ['package.json'] = { glyph = '', hl = 'MiniIconsRed' },
+        ['.prettierrc'] = { glyph = '', hl = 'MiniIconsGreen' },
+        ['vite.config.js'] = { glyph = '', hl = 'MiniIconsBlue' },
+        ['vite.config.ts'] = { glyph = '', hl = 'MiniIconsBlue' },
       },
       extension = {
         ['snippets'] = { glyph = '', hl = 'MiniIconsGrey' },
