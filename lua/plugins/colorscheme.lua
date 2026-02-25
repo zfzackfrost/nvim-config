@@ -35,6 +35,7 @@ return {
           SignColumn = { bg = colors.crust },
           EdgyWinBar = { fg = colors.surface0, bg = colors.overlay2 },
           MiniIconsDarkGrey = { fg = colors.overlay0 },
+          NeoTreeDotFile = { fg = colors.overlay0 },
         }
       end,
     },
