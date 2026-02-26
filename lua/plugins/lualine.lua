@@ -11,6 +11,16 @@ local function fileformat()
   return ff .. '(' .. symbols .. ')'
 end
 
+---@param s string
+local function location_fmt(s)
+  local selection = require('utils.vim.selection').get()
+  if selection == nil then
+    return s
+  end
+  local selection_str = table.concat(selection, '\n')
+  return string.format('%s (%d)', s, #selection_str)
+end
+
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
@@ -42,7 +52,7 @@ return {
       lualine_c = { 'filename' },
       lualine_x = { 'encoding', fileformat, 'filetype' },
       lualine_y = { 'progress' },
-      lualine_z = { 'location' },
+      lualine_z = { { 'location', fmt = location_fmt } },
     },
     extensions = {
       'lazy',
