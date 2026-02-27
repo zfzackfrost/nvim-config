@@ -27,14 +27,15 @@ return {
           enabled = true,
         },
       },
-
       custom_highlights = function(colors)
+        local color_utils = require('catppuccin.utils.colors')
         return {
           LineNr = { bg = colors.crust },
           CursorLineNr = { bg = colors.crust },
           SignColumn = { bg = colors.crust },
           EdgyWinBar = { fg = colors.surface0, bg = colors.overlay2 },
           MiniIconsDarkGrey = { fg = colors.overlay0 },
+          MiniCursorword = { bg = color_utils.darken(colors.surface1, 0.5, colors.base), underline = true },
           NeoTreeDotFile = { fg = colors.overlay0 },
         }
       end,
