@@ -51,11 +51,6 @@ do
   })
 end
 
-local js_let_const = augend.constant.new({
-  elements = { 'let', 'const' },
-  word = true,
-  cyclic = true,
-})
 local hex_under = augend.integer.new({
   radix = 16,
   prefix = '0x',
@@ -80,96 +75,81 @@ local dec_under = augend.integer.new({
   natural = false,
 })
 
-local hex_a_js = augend.integer.new({
+local dec_quote = augend.integer.new({
+  radix = 10,
+  delimiter = "'",
+  natural = false,
+})
+local hex_lo_quote = augend.integer.new({
   radix = 16,
   prefix = '0x',
   delimiter = "'",
   natural = true,
 })
-local hex_b_js = augend.integer.new({
+local hex_up_quote = augend.integer.new({
   radix = 16,
   prefix = '0X',
   delimiter = "'",
   natural = true,
 })
-local oct_a_js = augend.integer.new({
+local oct_lo_quote = augend.integer.new({
   radix = 8,
   prefix = '0o',
   delimiter = "'",
   natural = true,
 })
-local oct_b_js = augend.integer.new({
+local oct_up_quote = augend.integer.new({
   radix = 8,
   prefix = '0O',
   natural = true,
 })
-local oct_c_js = augend.integer.new({
-  radix = 8,
-  prefix = '0',
-  natural = true,
-})
-local bin_a_js = augend.integer.new({
+local bin_lo_quote = augend.integer.new({
   radix = 2,
   prefix = '0b',
   natural = true,
 })
-local bin_b_js = augend.integer.new({
+local bin_up_quote = augend.integer.new({
   radix = 2,
   prefix = '0B',
   natural = true,
 })
 
-local js_augends = {
-  dec_int,
-  hex_a_js,
-  hex_b_js,
-  oct_a_js,
-  oct_b_js,
-  oct_c_js,
-  bin_a_js,
-  bin_b_js,
+local ints_no_delim = {
+  augend.integer.alias.decimal,
+  augend.integer.alias.hex,
+  augend.integer.alias.octal,
+  augend.integer.alias.binary,
+}
+local ints_quote = {
+  dec_quote,
+  hex_lo_quote,
+  hex_up_quote,
+  oct_lo_quote,
+  oct_up_quote,
+  bin_lo_quote,
+  bin_up_quote,
+}
+
+local js_let_const = augend.constant.new({
+  elements = { 'let', 'const' },
+  word = true,
+  cyclic = true,
+})
+local js_augends = extend({ ints_no_delim, {
   js_let_const,
   augend.constant.alias.bool,
-}
+} })
+
 local json_augends = {
   dec_int,
   augend.constant.alias.bool,
 }
 
-local dec_c = augend.integer.new({
-  radix = 10,
-  delimiter = "'",
-  natural = false,
-})
-local hex_c = augend.integer.new({
-  radix = 16,
-  prefix = '0x',
-  delimiter = "'",
-  natural = true,
-})
-local oct_c = augend.integer.new({
-  radix = 8,
-  prefix = '0o',
-  delimiter = "'",
-  natural = true,
-})
-local bin_c = augend.integer.new({
-  radix = 2,
-  prefix = '0b',
-  delimiter = "'",
-  natural = true,
-})
-
 local default_augends = {
   dec_int,
 }
 
-local c_augends = {
-  dec_c,
-  hex_c,
-  oct_c,
-  bin_c,
-}
+local c_augends = extend({ ints_no_delim, ints_quote })
 
 local scope_cmake = augend.constant.new({
   elements = { 'PUBLIC', 'PRIVATE', 'INTERFACE' },
