@@ -3,8 +3,7 @@ return {
     'nvim-mini/mini.comment',
     version = false,
     keys = {
-      { 'gc', desc = 'Comment', mode = { 'n' } },
-      { 'gc', desc = 'Comment', mode = { 'x' } },
+      { 'gc', desc = 'Comment', mode = { 'n', 'x' } },
       { 'gc', desc = 'Comment textobject', mode = { 'o' } },
     },
     opts = {
