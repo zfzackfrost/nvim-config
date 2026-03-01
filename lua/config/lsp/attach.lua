@@ -56,8 +56,25 @@ local function on_attach(args)
   end
 end
 
-local augroup = augroup('user_lsp', {})
+---Tailwind LSP on attach handler
+---@param args vim.api.keyset.create_autocmd.callback_args
+local function on_tailwind_attach(args)
+  local client = vim.lsp.get_client_by_id(args.data.client_id)
+  if client == nil then
+    return
+  end
+  if client.name ~= 'tailwindcss' then
+    return
+  end
+  vim.cmd.TailwindColorDisable()
+end
+
+local augroup = augroup('user_lsp_attach', {})
 autocmd('LspAttach', {
   group = augroup,
   callback = on_attach,
+})
+autocmd('LspAttach', {
+  group = augroup,
+  callback = on_tailwind_attach,
 })

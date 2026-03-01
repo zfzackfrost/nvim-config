@@ -23,7 +23,7 @@ return {
         RRGGBB = true,
         css_fn = true,
         names = false,
-        tailwind = false,
+        tailwind = true,
       },
     },
   },

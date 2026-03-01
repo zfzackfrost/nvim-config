@@ -20,7 +20,7 @@ return {
       override = false,
     },
     document_color = {
-      enable = true,
+      enable = false,
     },
     conceal = {
       enabled = false,
