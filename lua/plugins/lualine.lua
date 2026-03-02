@@ -11,14 +11,13 @@ local function fileformat()
   return ff .. '(' .. symbols .. ')'
 end
 
----@param s string
-local function location_fmt(s)
+local function selected_chars()
   local selection = require('utils.vim.selection').get()
   if selection == nil then
-    return s
+    return ''
   end
   local selection_str = table.concat(selection, '\n')
-  return string.format('%s (%d)', s, #selection_str)
+  return '󰗧 ' .. tostring(#selection_str)
 end
 
 return {
@@ -50,9 +49,9 @@ return {
       lualine_a = { 'mode' },
       lualine_b = { 'branch', 'diff', 'diagnostics' },
       lualine_c = { 'filename' },
-      lualine_x = { 'encoding', fileformat, 'filetype' },
+      lualine_x = { selected_chars, 'encoding', fileformat, 'filetype' },
       lualine_y = { 'progress' },
-      lualine_z = { { 'location', fmt = location_fmt } },
+      lualine_z = { 'location' },
     },
     extensions = {
       'lazy',
