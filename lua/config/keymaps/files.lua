@@ -34,4 +34,5 @@ wk.add({
   { prefix, group = 'files' },
   { prefix .. 'p', [[:!mkdir -p %:p:h<Cr>]], desc = 'Make parent directory' },
   { prefix .. 't', select_filetype, desc = 'Select filetype' },
+  { prefix .. 'n', [[<Cmd>NewFile<Cr>]], desc = 'Make file(s)' },
 })
