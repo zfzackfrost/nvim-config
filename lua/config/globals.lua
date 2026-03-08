@@ -5,6 +5,8 @@ _G.bt = function()
   Snacks.debug.backtrace()
 end
 
+_G.utils = require('utils')
+
 _G.augroup = vim.api.nvim_create_augroup
 _G.autocmd = vim.api.nvim_create_autocmd
 
