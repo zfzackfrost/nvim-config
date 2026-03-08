@@ -1,4 +1,4 @@
-local str = require('utils.str')
+local str = utils.str
 local header = [[
  __    _  _______  _______  __   __  ___   __   __
 |  |  | ||       ||       ||  | |  ||   | |  |_|  |

@@ -1,4 +1,4 @@
-local m = require('utils.vim.map')
+local m = utils.vim.map
 
 local language_prefix = '<leader>cl'
 local function language_maps(mod)

@@ -1,5 +1,5 @@
 local wk = require('which-key')
-local m = require('utils.vim.map')
+local m = utils.vim.map
 
 local Terminal = require('toggleterm.terminal').Terminal
 

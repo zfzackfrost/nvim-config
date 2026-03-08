@@ -1,5 +1,5 @@
-local s = require('utils.str')
-local cmt = require('utils.vim.comments')
+local s = utils.str
+local cmt = utils.vim.comments
 
 local defaults = {
   width = 80,
@@ -135,7 +135,7 @@ local function text_callback(visual)
 end
 
 local function comment_box()
-  local selection = require('utils.vim.selection').get()
+  local selection = utils.vim.selection.get()
   local default_text = ''
   if selection ~= nil then
     default_text = table.concat(selection, ' ')

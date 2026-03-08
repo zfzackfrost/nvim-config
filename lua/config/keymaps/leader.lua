@@ -1,6 +1,6 @@
 local wk = require('which-key')
 local prefix = '<leader>'
-local m = require('utils.vim.map')
+local m = utils.vim.map
 
 local function search_files()
   Snacks.picker.files()

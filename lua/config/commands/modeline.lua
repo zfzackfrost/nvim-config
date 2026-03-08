@@ -1,9 +1,9 @@
 ---GenModeline command function
 ---@param t vim.api.keyset.create_user_command.command_args
 local function gen_modeline(t)
-  local iff = require('utils.func').iff
-  local starts_with = require('utils.str').starts_with
-  local cmt_format = require('utils.vim.comments').format
+  local iff = utils.func.iff
+  local starts_with = utils.str.starts_with
+  local cmt_format = utils.vim.comments.format
 
   local modeline_str = string.format(
     'vim: set %s ft=%s sw=%d ts=%d sts=%d', --

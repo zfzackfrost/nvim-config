@@ -1,4 +1,4 @@
-local s = require('utils.str')
+local s = utils.str
 
 local function increname_prepend_expr()
   local cword = vim.fn.expand('<cword>')

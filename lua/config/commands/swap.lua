@@ -1,4 +1,4 @@
-local iff = require('utils.func').iff
+local iff = utils.func.iff
 
 ---@param t vim.api.keyset.create_user_command.command_args
 local function clean_swap(t)

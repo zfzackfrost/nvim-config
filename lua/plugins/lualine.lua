@@ -12,7 +12,7 @@ local function fileformat()
 end
 
 local function selected_chars()
-  local selection = require('utils.vim.selection').get()
+  local selection = utils.vim.selection.get()
   if selection == nil then
     return ''
   end

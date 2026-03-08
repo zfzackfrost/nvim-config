@@ -1,6 +1,6 @@
 ---@module 'config.local_settings.types'
 
-local v = require('utils.validate')
+local v = utils.validate
 local lfile = require('config.local_settings.file')
 
 ---@param ft_config FiletypeSettings
