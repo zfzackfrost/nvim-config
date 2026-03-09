@@ -4,14 +4,22 @@ local lazy = {}
 ---
 --- Will only require the module after the first index of a module.
 --- Only works for modules that export a table.
-function lazy.on_index(require_path)
+function lazy.on_index(require_path, callback)
   return setmetatable({}, {
     __index = function(_, key)
-      return require(require_path)[key]
+      local mod = require(require_path)
+      if callback ~= nil then
+        callback(mod)
+      end
+      return mod[key]
     end,
 
     __newindex = function(_, key, value)
-      require(require_path)[key] = value
+      local mod = require(require_path)
+      if callback ~= nil then
+        callback(mod)
+      end
+      mod[key] = value
     end,
   })
 end
