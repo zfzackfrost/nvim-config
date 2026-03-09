@@ -1,5 +1,3 @@
-local iff = utils.func.iff
-
 ---@param t vim.api.keyset.create_user_command.command_args
 local function clean_swap(t)
   local function impl()
@@ -21,9 +19,9 @@ local function clean_swap(t)
         string.format(
           'Removed %d swap %s\nEncountered %d %s',
           ok_count,
-          iff(ok_count == 1, 'file', 'files'),
+          utils.func.iff(ok_count == 1, 'file', 'files'),
           err_count,
-          iff(err_count == 1, 'error', 'errors')
+          utils.func.iff(err_count == 1, 'error', 'errors')
         ),
         vim.log.levels.INFO,
         {}
