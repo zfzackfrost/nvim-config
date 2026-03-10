@@ -29,7 +29,7 @@ local server_opts = {
     },
   },
   lua_ls = {},
-  cmake = {},
+  neocmake = {},
   css_variables = {},
   cssls = {},
   cssmodules_ls = {},
