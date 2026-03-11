@@ -1,4 +1,5 @@
 require('config.commands.box')
+require('config.commands.chmod')
 require('config.commands.debug')
 require('config.commands.format')
 require('config.commands.modeline')

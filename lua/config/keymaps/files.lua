@@ -35,4 +35,5 @@ wk.add({
   { prefix .. 'p', [[:!mkdir -p %:p:h<Cr>]], desc = 'Make parent directory' },
   { prefix .. 't', select_filetype, desc = 'Select filetype' },
   { prefix .. 'n', [[<Cmd>NewFile<Cr>]], desc = 'Make file(s)' },
+  { prefix .. 'x', [[<Cmd>Chmod +x<Cr>]], desc = 'Set executable permission' },
 })
