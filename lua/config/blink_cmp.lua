@@ -27,6 +27,13 @@ local kind_icon = {
     return hl
   end,
 }
+---@type blink.cmp.DrawComponent
+local kind = {
+  highlight = function(ctx)
+    local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+    return hl
+  end,
+}
 
 ------------------- Providers -----------------
 
@@ -90,6 +97,7 @@ local opts = {
     nerd_font_variant = 'normal',
   },
   completion = {
+    -- kind_icon = kind_icon,
     list = {
       selection = {
         preselect = false,
@@ -101,6 +109,10 @@ local opts = {
     },
     menu = {
       draw = {
+        components = {
+          kind_icon = kind_icon,
+          kind = kind,
+        },
         columns = {
           { 'kind_icon', 'kind', gap = 1 },
           { 'label', 'label_description' },
