@@ -97,7 +97,6 @@ local opts = {
     nerd_font_variant = 'normal',
   },
   completion = {
-    -- kind_icon = kind_icon,
     list = {
       selection = {
         preselect = false,
