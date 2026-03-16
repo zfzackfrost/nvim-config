@@ -5,6 +5,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
   },
   ft = {
+    'markdown',
     'css',
     'scss',
     'html',
