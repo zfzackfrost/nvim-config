@@ -4,9 +4,12 @@ return {
     version = false,
     lazy = true,
     opts = {
+      lsp = {
+        snippet = { glyph = '󱄽' },
+      },
       directory = {
         ['.nvim'] = { glyph = '', hl = 'MiniIconsGreen' },
-        ['snippets'] = { glyph = '', hl = 'MiniIconsGrey' },
+        ['snippets'] = { glyph = '󱄽', hl = 'MiniIconsGrey' },
       },
       file = {
         ['.nvim.json'] = { glyph = '', hl = 'MiniIconsGreen' },
@@ -22,7 +25,7 @@ return {
         ['vite.config.ts'] = { glyph = '', hl = 'MiniIconsBlue' },
       },
       extension = {
-        ['snippets'] = { glyph = '', hl = 'MiniIconsGrey' },
+        ['snippets'] = { glyph = '󱄽', hl = 'MiniIconsGrey' },
         ['lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' },
       },
     },
