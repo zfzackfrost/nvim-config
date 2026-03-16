@@ -5,6 +5,7 @@ return {
     dependencies = {
       'LuaSnip',
       'ribru17/blink-cmp-spell',
+      'mini.icons',
     },
     event = { 'InsertEnter' },
     config = function()
