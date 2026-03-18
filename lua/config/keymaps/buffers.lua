@@ -1,5 +1,4 @@
 local prefix = '<leader>b'
-local wk = require('which-key')
 local m = utils.vim.map
 
 local function make_bufdelete(force)

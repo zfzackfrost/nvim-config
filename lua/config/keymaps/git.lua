@@ -1,4 +1,3 @@
-local wk = require('which-key')
 local m = utils.vim.map
 
 local Terminal = require('toggleterm.terminal').Terminal
