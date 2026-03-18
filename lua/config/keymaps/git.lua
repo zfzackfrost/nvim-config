@@ -8,6 +8,7 @@ local lazygit = Terminal:new({
   direction = 'tab',
   close_on_exit = true,
   on_open = function(term)
+    vim.keymap.set({ 't' }, '<Esc><Esc>', '<Nop>', { buffer = 0 })
     vim.cmd('startinsert!')
   end,
 })
