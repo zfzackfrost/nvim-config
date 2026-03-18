@@ -18,7 +18,7 @@ return {
         ['pnpm-lock.yaml'] = { glyph = '󱌠', hl = 'MiniIconsDarkGrey' },
         ['package-lock.json'] = { glyph = '󱌠', hl = 'MiniIconsDarkGrey' },
         ['Cargo.lock'] = { glyph = '󱌠', hl = 'MiniIconsDarkGrey' },
-        ['init.lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' },
+        ['init.lua'] = { glyph = '󰢱', hl = 'MiniIconsBlue' },
         ['package.json'] = { glyph = '', hl = 'MiniIconsRed' },
         ['.prettierrc'] = { glyph = '', hl = 'MiniIconsGreen' },
         ['vite.config.js'] = { glyph = '', hl = 'MiniIconsBlue' },
