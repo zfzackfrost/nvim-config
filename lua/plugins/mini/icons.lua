@@ -27,6 +27,9 @@ return {
       extension = {
         ['snippets'] = { glyph = '󱄽', hl = 'MiniIconsGrey' },
         ['lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' },
+        ['glsl'] = { glyph = '', hl = 'MiniIconsYellow' },
+        ['hlsl'] = { glyph = '', hl = 'MiniIconsYellow' },
+        ['wgsl'] = { glyph = '', hl = 'MiniIconsYellow' },
       },
     },
     config = function(_, opts)
