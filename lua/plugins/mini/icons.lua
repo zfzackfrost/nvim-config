@@ -5,7 +5,11 @@ return {
     lazy = true,
     opts = {
       lsp = {
-        snippet = { glyph = '󱄽' },
+        ['snippet'] = { glyph = '󱄽' },
+        ['function'] = { glyph = '󰡱' },
+        ['method'] = { glyph = '󰊕' },
+        ['field'] = { glyph = '' },
+        ['variable'] = { glyph = '󰫧' },
       },
       directory = {
         ['.nvim'] = { glyph = '', hl = 'MiniIconsGreen' },
