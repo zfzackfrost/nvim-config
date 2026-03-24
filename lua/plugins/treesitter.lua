@@ -1,9 +1,5 @@
 return {
   {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    lazy = true,
-  },
-  {
     'windwp/nvim-ts-autotag',
     ft = {
       'typescriptreact',
@@ -20,15 +16,11 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    branch = 'master',
     lazy = false,
-    main = 'nvim-treesitter.configs',
-    opts = {
-      ignore_insall = { 'comment', 'ipkg' },
-      sync_install = false,
-      auto_install = true,
-      highlight = { enable = true },
-      indent = { enable = true },
-    },
+    opts = {},
+    config = function(_, opts)
+      local ts = require('nvim-treesitter')
+      ts.setup(opts)
+    end,
   },
 }
