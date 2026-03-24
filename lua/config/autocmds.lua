@@ -1,4 +1,14 @@
 do
+  local group = augroup('user_treesitter', {})
+  autocmd({ 'FileType' }, {
+    group = group,
+    callback = function(ev)
+      pcall(vim.treesitter.start, ev.buf)
+      vim.bo[ev.buf].syntax = 'ON'
+    end,
+  })
+end
+do
   local group = augroup('user_local_settings', {})
   autocmd({ 'BufWinEnter', 'BufEnter', 'BufRead' }, {
     group = group,
