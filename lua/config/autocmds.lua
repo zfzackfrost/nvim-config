@@ -1,6 +1,6 @@
 do
   local group = augroup('user_treesitter', {})
-  autocmd({ 'FileType' }, {
+  autocmd({ 'BufWinEnter' }, {
     group = group,
     callback = function(ev)
       pcall(vim.treesitter.start, ev.buf)
