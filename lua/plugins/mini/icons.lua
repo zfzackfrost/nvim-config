@@ -43,8 +43,13 @@ return {
         ['obj'] = { glyph = '', hl = 'MiniIconsOrange' },
         ['mat'] = { glyph = '', hl = 'MiniIconsOrange' },
         ['vdb'] = { glyph = '', hl = 'MiniIconsOrange' },
+        ['abc'] = { glyph = '󱗾', hl = 'MiniIconsOrange' },
         ['stl'] = { glyph = '󰹛', hl = 'MiniIconsOrange' },
         ['3mf'] = { glyph = '󰹛', hl = 'MiniIconsOrange' },
+        ['usd'] = { glyph = '', hl = 'MiniIconsOrange' },
+        ['usda'] = { glyph = '', hl = 'MiniIconsOrange' },
+        ['usdc'] = { glyph = '', hl = 'MiniIconsOrange' },
+        ['usdz'] = { glyph = '', hl = 'MiniIconsOrange' },
       },
     },
     config = function(_, opts)
