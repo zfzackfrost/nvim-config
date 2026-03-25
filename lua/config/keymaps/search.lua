@@ -27,6 +27,6 @@ wk.add({
   { prefix .. 'b', search_buffers, desc = 'Search for buffer' },
   { prefix .. 'h', search_help, desc = 'Search for vim help' },
   { prefix .. 'm', search_man, desc = 'Search linux manual' },
-  { prefix .. 'p', search_picker, desc = 'Search for Snacks picker' },
+  { prefix .. 'p', search_picker, desc = 'Search for Snacks picker', mode = { 'n', 'x' } },
   { prefix .. 'g', search_grug, desc = 'Search using grug-far.nvim' },
 })
