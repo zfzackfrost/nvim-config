@@ -23,6 +23,8 @@ return {
         blink_cmp = true,
         window_picker = true,
         lsp_trouble = true,
+        noice = true,
+        grug_far = true,
         snacks = {
           enabled = true,
         },
