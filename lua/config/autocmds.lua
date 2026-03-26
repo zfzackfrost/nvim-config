@@ -4,7 +4,6 @@ do
     group = group,
     callback = function(ev)
       pcall(vim.treesitter.start, ev.buf)
-      vim.bo[ev.buf].syntax = 'ON'
     end,
   })
 end
