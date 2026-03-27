@@ -1,5 +1,4 @@
 local mini_ai = require('mini.ai')
-local spec_treesitter = mini_ai.gen_spec.treesitter
 
 -- ============================================================
 -- ========================== Custom ==========================
