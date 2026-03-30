@@ -2,8 +2,15 @@ local lazy = require('utils.lazy_require')
 
 local function make_setter(path)
   local components = vim.split(path, '.', { plain = true })
-  local c_start = vim.list_slice(components, 1, #components - 1)
-  local c_last = components[#components]
+  local c_start = {}
+  local c_last
+  if #components > 1 then
+    c_start = vim.list_slice(components, 1, #components - 1)
+    c_last = components[#components]
+  else
+    c_start = {}
+    c_last = components[1]
+  end
   return function(module)
     local t = _G.utils
     for _, c in pairs(c_start) do
@@ -14,7 +21,7 @@ local function make_setter(path)
 end
 
 _G.utils = {
-  ---@module "plenary.async"
+  ---@module ""plenary.async"
   async = lazy.on_index('plenary.async', 'async'),
   mini = {
     ---@module 'utils.mini.splitjoin'
