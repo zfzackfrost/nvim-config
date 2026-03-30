@@ -56,8 +56,8 @@ return {
   version = '*',
   dependencies = {
     'echasnovski/mini.icons',
-    'nvim-lua/plenary.nvim',
-    'MunifTanjim/nui.nvim',
+    'plenary.nvim',
+    'nui.nvim',
   },
   cmd = { 'Neotree' },
   opts = local_opts,
