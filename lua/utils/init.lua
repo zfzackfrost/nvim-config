@@ -14,6 +14,8 @@ local function make_setter(path)
 end
 
 _G.utils = {
+  ---@module "plenary.async"
+  async = lazy.on_index('plenary.async', 'async'),
   mini = {
     ---@module 'utils.mini.splitjoin'
     splitjoin = lazy.on_index('utils.mini.splitjoin', make_setter('mini.splitjoin')),
