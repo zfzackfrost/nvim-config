@@ -39,6 +39,11 @@ return {
           MiniIconsDarkGrey = { fg = colors.overlay0 },
           MiniCursorword = { bg = color_utils.darken(colors.surface1, 0.5, colors.base), underline = true },
           NeoTreeDotFile = { fg = colors.overlay0 },
+          ['@comment.hint'] = { fg = colors.blue, bg = colors.none },
+          ['@comment.note'] = { fg = colors.blue, bg = colors.none },
+          ['@comment.todo'] = { fg = colors.flamingo, bg = colors.none },
+          ['@comment.warning'] = { fg = colors.yellow, bg = colors.none },
+          ['@comment.error'] = { fg = colors.red, bg = colors.none },
         }
       end,
     },
