@@ -23,14 +23,14 @@ return {
         prefix = 'gs',
       },
 
-      -- Disabled: Multiply (duplicate) text
+      -- Multiply (duplicate) text
       multiply = {
-        prefix = 'm',
+        prefix = 'gm',
       },
 
-      -- Disabled: Evaluate text and replace with output
+      -- Evaluate text and replace with output
       evaluate = {
-        prefix = '=',
+        prefix = 'g=',
       },
     },
   },
