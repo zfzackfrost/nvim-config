@@ -20,7 +20,7 @@ wk.add({
   { prefix, group = 'list', icon = list_icon },
   {
     prefix .. 'm',
-    '<Cmd>Noice<Cr>',
+    '<Cmd>Noice all<Cr>',
     desc = 'Messages',
     icon = messages_icon,
   },
