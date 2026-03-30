@@ -27,8 +27,10 @@ return {
         ['.prettierrc'] = { glyph = '', hl = 'MiniIconsGreen' },
         ['vite.config.js'] = { glyph = '', hl = 'MiniIconsBlue' },
         ['vite.config.ts'] = { glyph = '', hl = 'MiniIconsBlue' },
+        ['.env'] = { glyph = '', hl = 'MiniIconsGrey' },
       },
       extension = {
+        ['env'] = { glyph = '', hl = 'MiniIconsGrey' },
         ['snippets'] = { glyph = '󱄽', hl = 'MiniIconsGrey' },
         ['lua'] = { glyph = '󰢱', hl = 'MiniIconsAzure' },
         ['glsl'] = { glyph = '', hl = 'MiniIconsYellow' },
