@@ -14,10 +14,6 @@ local function on_attach(args)
   if not vim.b._has_lsp_maps then
     local wk = require('which-key')
 
-    local function toggle_hints()
-      local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf })
-      vim.lsp.inlay_hint.enable(not enabled, { bufnr = args.buf })
-    end
     vim.keymap.set('n', '<leader>c<C-r>', increname_prepend_expr, {
       desc = 'Rename under cursor (prepend)',
       buffer = args.buf,
@@ -44,12 +40,6 @@ local function on_attach(args)
         buffer = args.buf,
         vim.lsp.buf.code_action,
         desc = 'Code action',
-      },
-      {
-        '<leader>ch',
-        toggle_hints,
-        buffer = args.buf,
-        desc = 'Toggle inlay hints',
       },
     })
     vim.b._has_lsp_maps = true
