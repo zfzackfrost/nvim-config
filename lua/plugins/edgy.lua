@@ -29,6 +29,15 @@ return {
           size = { width = 45 },
         },
       },
+      bottom = {
+        {
+          ft = 'trouble',
+          wo = {
+            winbar = 'Trouble  ',
+          },
+          size = { height = 10 },
+        },
+      },
     },
   },
 }
