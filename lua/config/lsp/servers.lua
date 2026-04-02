@@ -45,7 +45,7 @@ local server_opts = {
       },
     },
   },
-  basedpyright = {},
+  pylsp = {},
   tailwindcss = {},
   taplo = {},
   ts_ls = {
