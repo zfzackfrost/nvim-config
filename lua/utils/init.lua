@@ -30,6 +30,8 @@ _G.utils = {
     ---@module 'utils.vim.selection'
     selection = lazy.on_index('utils.vim.selection', make_setter('vim.selection')),
   },
+  ---@module 'utils.fs'
+  fs = lazy.on_index('utils.fs', make_setter('fs')),
   ---@module 'utils.func'
   func = lazy.on_index('utils.func', make_setter('func')),
   ---@module 'utils.str'
