@@ -4,7 +4,8 @@ local function new_file()
     if i == nil then
       return
     end
-    vim.system({ 'zsh', '-c', 'mf ' .. i }):wait()
+    local script_file = vim.fs.joinpath(vim.fn.stdpath('config'), 'scripts', 'new_file_helper.zsh')
+    vim.system({ 'zsh', '-c', script_file .. ' ' .. i }):wait()
   end
   vim.ui.input({ prompt = 'File name' }, impl)
 end
