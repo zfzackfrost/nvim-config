@@ -16,6 +16,8 @@ end
 _G.utils = {
   ---@module "plenary.async"
   async = lazy.on_index('plenary.async', make_setter('async')),
+  ---@module "utils.brace_expand"
+  brace_expand = lazy.on_index('utils.brace_expand', make_setter('brace_expand')),
   mini = {
     ---@module 'utils.mini.splitjoin'
     splitjoin = lazy.on_index('utils.mini.splitjoin', make_setter('mini.splitjoin')),
