@@ -134,7 +134,9 @@ local opts = {
       show_on_trigger_character = true,
     },
   },
-  cmdline = {},
+  cmdline = {
+    enabled = false,
+  },
   sources = sources,
 }
 
