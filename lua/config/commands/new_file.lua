@@ -1,12 +1,10 @@
 ---NewFile command function
-local function new_file()
-  local function impl(i)
-    if i == nil then
-      return
-    end
-    local script_file = vim.fs.joinpath(vim.fn.stdpath('config'), 'scripts', 'new_file_helper.zsh')
-    vim.system({ 'zsh', '-c', script_file .. ' ' .. i }):wait()
+---@param t vim.api.keyset.create_user_command.command_args
+local function new_file(t)
+  ---@type string[]
+  local paths = utils.brace_expand.expand(t.args)
+  for _, p in ipairs(paths) do
+    utils.fs.create_file(p)
   end
-  vim.ui.input({ prompt = 'File name' }, impl)
 end
-nvim.create_user_command('NewFile', new_file, { force = true })
+nvim.create_user_command('NewFile', new_file, { nargs = 1 })

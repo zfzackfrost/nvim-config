@@ -30,10 +30,17 @@ local function select_filetype()
 end
 
 local prefix = '<leader>f'
+
+vim.keymap.set('n', prefix .. 'n', function()
+  return [[:NewFile ]]
+end, {
+  desc = 'Make file(s)',
+  expr = true,
+  replace_keycodes = true,
+})
 wk.add({
   { prefix, group = 'files' },
   { prefix .. 'p', [[:!mkdir -p %:p:h<Cr>]], desc = 'Make parent directory' },
   { prefix .. 't', select_filetype, desc = 'Select filetype' },
-  { prefix .. 'n', [[<Cmd>NewFile<Cr>]], desc = 'Make file(s)' },
   { prefix .. 'x', [[<Cmd>Chmod +x<Cr>]], desc = 'Set executable permission' },
 })
