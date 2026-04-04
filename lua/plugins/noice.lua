@@ -5,7 +5,18 @@ return {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
     'MunifTanjim/nui.nvim',
   },
+  ---@module 'noice'
+  ---@type NoiceConfig
   opts = {
+    cmdline = {
+      format = {
+        cmd_new_file = {
+          pattern = '^:NewFile%s+',
+          icon = '󰝒',
+          title = 'New File Pattern',
+        },
+      },
+    },
     lsp = {
       progress = {
         enabled = false,
