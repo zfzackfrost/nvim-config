@@ -44,4 +44,36 @@ function M.create_file(path, perms)
   vim.uv.fs_close(fd)
 end
 
+function M.mkdirp(path, mode)
+  mode = mode or 0x1ED -- 0755
+
+  -- Try the fast path first (directory may already exist)
+  local ok, err, code = vim.uv.fs_mkdir(path, mode)
+  if ok then
+    return true
+  end
+  if code == 'EEXIST' then
+    return true
+  end
+
+  if code == 'ENOENT' then
+    -- Walk up and create the parent first
+    local parent = path:match('^(.+)/[^/]+$')
+    if not parent then
+      error('mkdirp failed: ' .. err)
+    end
+
+    M.mkdirp(parent, mode)
+
+    -- Retry now that parent exists
+    local ok2, err2, code2 = vim.uv.fs_mkdir(path, mode)
+    if not ok2 and code2 ~= 'EEXIST' then
+      error('mkdirp failed: ' .. err2)
+    end
+    return true
+  end
+
+  error('mkdirp failed: ' .. err)
+end
+
 return M
