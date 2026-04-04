@@ -7,4 +7,4 @@ local function new_file(t)
     utils.fs.create_file(p)
   end
 end
-nvim.create_user_command('NewFile', new_file, { nargs = 1, complete = 'file' })
+nvim.create_user_command('NewFile', new_file, { nargs = 1 })
