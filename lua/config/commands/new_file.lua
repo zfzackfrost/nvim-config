@@ -4,6 +4,8 @@ local function new_file(t)
   ---@type string[]
   local paths = utils.brace_expand.expand(t.args)
   for _, p in ipairs(paths) do
+    p = vim.fs.abspath(p)
+    utils.fs.mkdirp(vim.fs.dirname(p))
     utils.fs.create_file(p)
   end
 end
