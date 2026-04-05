@@ -35,7 +35,7 @@ return {
           LineNr = { bg = colors.crust },
           CursorLineNr = { bg = colors.crust },
           SignColumn = { bg = colors.crust },
-          EdgyWinBar = { fg = colors.surface0, bg = colors.overlay2 },
+          EdgyWinBar = { fg = colors.overlay2, bg = color_utils.darken(colors.surface0, 0.5, colors.mantle) },
           MiniIconsDarkGrey = { fg = colors.overlay0 },
           MiniCursorword = { bg = color_utils.darken(colors.surface1, 0.5, colors.base), underline = true },
           NeoTreeDotFile = { fg = colors.overlay0 },
