@@ -1,5 +1,6 @@
 return {
   'nvim-mini/mini-git',
+  main = 'mini.git',
   version = false,
   cmd = { 'Git' },
   opts = {

@@ -15,6 +15,12 @@ return {
           icon = '󰝒',
           title = 'New File Pattern',
         },
+        cmd_git = {
+          pattern = '^:Git%s+',
+          icon = '',
+          icon_hl_group = 'MiniIconsRed',
+          title = 'Git Operation',
+        },
       },
     },
     lsp = {
