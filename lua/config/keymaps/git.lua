@@ -27,10 +27,16 @@ local function lazygit_open()
   lazygit:toggle()
 end
 
+vim.keymap.set('n', prefix .. '<Space>', function()
+  return [[:Git ]]
+end, { expr = true, replace_keycodes = true })
+
 m.add_with_icon({
   { prefix, group = 'git' },
 
   { prefix .. 'g', lazygit_open, desc = 'Lazygit Open' },
+
+  { prefix .. '<Space>', desc = 'Git operation' },
 
   { prefix_add, group = 'add' },
   { prefix_add .. 'a', [[<Cmd>Git add --all<Cr>]], desc = 'Add all' },
