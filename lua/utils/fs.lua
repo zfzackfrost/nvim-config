@@ -44,6 +44,10 @@ function M.create_file(path, perms)
   vim.uv.fs_close(fd)
 end
 
+---Create a directory and its parents
+---@param path string path to directory to create
+---@param mode? integer Unix-style permission flags (defaults to 755 octal)
+---@return boolean # `true` if `path` and its parent directories were created. Otherwise, the function terminated with an error.
 function M.mkdirp(path, mode)
   mode = mode or 0x1ED -- 0755
 
