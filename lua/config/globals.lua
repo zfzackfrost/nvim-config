@@ -83,7 +83,7 @@ _G.nvim = {
   buf_delete = vim.api.nvim_buf_delete,
   create_buf = vim.api.nvim_create_buf,
 
-  list_wins = vim.api.list_wins,
+  list_wins = vim.api.nvim_list_wins,
   get_current_win = vim.api.nvim_get_current_win,
   set_current_win = vim.api.nvim_set_current_win,
 
