@@ -10,6 +10,7 @@ return {
         cmd_new_file = {
           pattern = '^:NewFile%s+',
           icon = '󰝒',
+          icon_hl_group = 'MiniIconsGreen',
           title = 'New File Pattern',
         },
         cmd_git = {
