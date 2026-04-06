@@ -62,7 +62,7 @@ function M.mkdirp(path, mode)
 
   if code == 'ENOENT' then
     -- Walk up and create the parent first
-    local parent = path:match('^(.+)/[^/]+$')
+    local parent = vim.fs.dirname(path)
     if not parent then
       error('mkdirp failed: ' .. err)
     end
