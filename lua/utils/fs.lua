@@ -64,7 +64,7 @@ function M.mkdirp(path, mode)
     -- Walk up and create the parent first
     local parent = vim.fs.dirname(path)
     if not parent then
-      error('mkdirp failed: ' .. err)
+      error('mkdirp failed: could not find parent directory')
     end
 
     M.mkdirp(parent, mode)
