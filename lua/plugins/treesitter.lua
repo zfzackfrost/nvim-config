@@ -14,6 +14,11 @@ return {
     opts = {},
   },
   {
+    'nvim-treesitter/nvim-treesitter-context',
+    event = 'VeryLazy',
+    opts = {},
+  },
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     lazy = false,
