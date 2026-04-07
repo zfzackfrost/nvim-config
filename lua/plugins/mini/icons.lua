@@ -53,15 +53,20 @@ return {
           ['usda'] = { glyph = '', hl = 'MiniIconsOrange' },
           ['usdc'] = { glyph = '', hl = 'MiniIconsOrange' },
           ['usdz'] = { glyph = '', hl = 'MiniIconsOrange' },
-          ['sub'] = { glyph = '', hl = 'MiniIconsGreen' },
-          ['spc'] = { glyph = '', hl = 'MiniIconsGreen' },
+          ['scad'] = { glyph = '󰺾', hl = 'MiniIconsBlue' },
+          ['step'] = { glyph = '󰺾', hl = 'MiniIconsBlue' },
+          ['dxf'] = { glyph = '󰺾', hl = 'MiniIconsBlue' },
+          ['spi'] = { glyph = '', hl = 'MiniIconsGreen' },
+          ['cir'] = { glyph = '', hl = 'MiniIconsGreen' },
+          ['ckt'] = { glyph = '', hl = 'MiniIconsGreen' },
           ['libs'] = { glyph = '', hl = 'MiniIconsGreen' },
           ['mod'] = { glyph = '', hl = 'MiniIconsGreen' },
-          ['spice'] = { glyph = '', hl = 'MiniIconsGreen' },
+          ['inc'] = { glyph = '', hl = 'MiniIconsGreen' },
+          ['sub'] = { glyph = '', hl = 'MiniIconsGreen' },
         },
       }
       --Add Blender backup extensions
-      for i = 0, 100, 1 do
+      for i = 1, 64, 1 do
         opts.extension['blend' .. tostring(i)] = {
           glyph = opts.extension['blend'].glyph,
           hl = 'MiniIconsDarkGrey',

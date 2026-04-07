@@ -6,7 +6,7 @@ vim.filetype.add({
     ['spi'] = 'spice',
     ['cir'] = 'spice',
     ['ckt'] = 'spice',
-    ['lib'] = 'spice',
+    ['libs'] = 'spice',
     ['mod'] = 'spice',
     ['inc'] = 'spice',
     ['sub'] = 'spice',
