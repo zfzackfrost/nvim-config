@@ -15,7 +15,7 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter-context',
-    event = 'VeryLazy',
+    event = 'User BuftypeLazy',
     opts = {},
   },
   {
