@@ -1,7 +1,7 @@
 return {
   {
     'nvim-mini/mini.cursorword',
-    event = 'VeryLazy',
+    event = 'User BuftypeLazy',
     version = false,
     opts = {},
   },
