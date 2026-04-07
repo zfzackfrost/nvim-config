@@ -1,4 +1,48 @@
 do
+  local group = augroup('user_filetype_lazy', {})
+  local ignore_ft_list = {
+    'lazy',
+    'snacks_picker_input',
+    'neo-tree',
+    '',
+  }
+  autocmd('User', {
+    pattern = 'FiletypeLazy',
+    callback = function()
+      -- print('OK!')
+    end,
+  })
+  autocmd('User', {
+    pattern = 'VeryLazy',
+    group = group,
+    callback = function()
+      local all_bufs = nvim.list_bufs()
+      local dashboard_buf
+      for _, b in ipairs(all_bufs) do
+        if vim.bo[b].filetype == 'snacks_dashboard' then
+          dashboard_buf = b
+          break
+        end
+      end
+      if dashboard_buf ~= nil then
+        autocmd('BufWinEnter', {
+          callback = function(t)
+            if t.buf ~= dashboard_buf and not vim.list_contains(ignore_ft_list, vim.bo[t.buf].filetype) then
+              nvim.exec_autocmds('User', { pattern = 'FiletypeLazy' })
+              return true
+            end
+          end,
+        })
+      else
+        vim.defer_fn(function()
+          nvim.exec_autocmds('User', { pattern = 'FiletypeLazy' })
+        end, 250)
+      end
+      return true
+    end,
+  })
+end
+do
   local group = augroup('user_treesitter', {})
   autocmd({ 'BufWinEnter' }, {
     group = group,
