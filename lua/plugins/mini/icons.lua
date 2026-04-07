@@ -52,6 +52,11 @@ return {
         ['usda'] = { glyph = '', hl = 'MiniIconsOrange' },
         ['usdc'] = { glyph = '', hl = 'MiniIconsOrange' },
         ['usdz'] = { glyph = '', hl = 'MiniIconsOrange' },
+        ['sub'] = { glyph = '', hl = 'MiniIconsGreen' },
+        ['spc'] = { glyph = '', hl = 'MiniIconsGreen' },
+        ['libs'] = { glyph = '', hl = 'MiniIconsGreen' },
+        ['mod'] = { glyph = '', hl = 'MiniIconsGreen' },
+        ['spice'] = { glyph = '', hl = 'MiniIconsGreen' },
       },
     },
     config = function(_, opts)
