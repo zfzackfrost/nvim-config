@@ -1,13 +1,7 @@
 do
-  local group = augroup('user_filetype_lazy', {})
-  local ignore_ft_list = {
-    'lazy',
-    'snacks_picker_input',
-    'neo-tree',
-    '',
-  }
+  local group = augroup('user_buftype_lazy', {})
   autocmd('User', {
-    pattern = 'FiletypeLazy',
+    pattern = 'BuftypeLazy',
     callback = function()
       -- print('OK!')
     end,
@@ -27,15 +21,19 @@ do
       if dashboard_buf ~= nil then
         autocmd('BufWinEnter', {
           callback = function(t)
-            if t.buf ~= dashboard_buf and not vim.list_contains(ignore_ft_list, vim.bo[t.buf].filetype) then
-              nvim.exec_autocmds('User', { pattern = 'FiletypeLazy' })
-              return true
+            if t.buf == dashboard_buf then
+              return false
             end
+            if vim.bo[t.buf].buftype ~= '' then
+              return false
+            end
+            nvim.exec_autocmds('User', { pattern = 'BuftypeLazy' })
+            return true
           end,
         })
       else
         vim.defer_fn(function()
-          nvim.exec_autocmds('User', { pattern = 'FiletypeLazy' })
+          nvim.exec_autocmds('User', { pattern = 'BuftypeLazy' })
         end, 250)
       end
       return true

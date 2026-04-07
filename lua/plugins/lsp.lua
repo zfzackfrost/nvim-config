@@ -13,7 +13,7 @@ return {
     dependencies = {
       'mason-lspconfig.nvim',
     },
-    event = 'User FiletypeLazy',
+    event = 'User BuftypeLazy',
     config = function()
       require('config.lsp')
     end,
