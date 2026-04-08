@@ -38,6 +38,8 @@ _G.utils = {
   func = lazy.on_index('utils.func', make_setter('func')),
   ---@module 'utils.str'
   str = lazy.on_index('utils.str', make_setter('str')),
+  ---@module 'utils.table'
+  table = lazy.on_index('utils.table', make_setter('table')),
   ---@module 'utils.validate'
   validate = lazy.on_index('utils.validate', make_setter('validate')),
 }
