@@ -1,6 +1,6 @@
 return {
   'stevearc/conform.nvim',
-  cmd = { 'Format' },
+  lazy = true,
   ---@module 'conform'
   ---@type conform.setupOpts
   opts = {
