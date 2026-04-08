@@ -1,42 +1,29 @@
 do
   local group = augroup('user_buftype_lazy', {})
   autocmd('User', {
-    pattern = 'BuftypeLazy',
-    callback = function()
-      -- print('OK!')
-    end,
-  })
-  autocmd('User', {
     pattern = 'VeryLazy',
     group = group,
     callback = function()
-      local all_bufs = nvim.list_bufs()
-      local dashboard_buf
-      for _, b in ipairs(all_bufs) do
-        if vim.bo[b].filetype == 'snacks_dashboard' then
-          dashboard_buf = b
-          break
-        end
-      end
-      if dashboard_buf ~= nil then
-        autocmd('BufWinEnter', {
+      local exec_event = utils.func.defer_wrap(function()
+        nvim.exec_autocmds('User', { pattern = 'BuftypeLazy' })
+      end, 250)
+      --- If dashboard is open on startup, wait until we have a "normal"
+      --- buffer open to run the event
+      if Snacks.dashboard.status.opened then
+        autocmd('BufEnter', {
           callback = function(t)
-            if t.buf == dashboard_buf then
-              return false
-            end
+            --- Don't execute if 'buftype' is set
             if vim.bo[t.buf].buftype ~= '' then
-              return false
+              return
             end
-            nvim.exec_autocmds('User', { pattern = 'BuftypeLazy' })
-            return true
+            exec_event()
+            return true --- Only execute the event once
           end,
         })
       else
-        vim.defer_fn(function()
-          nvim.exec_autocmds('User', { pattern = 'BuftypeLazy' })
-        end, 250)
+        -- If dashboard isn't open, just run the event
+        exec_event()
       end
-      return true
     end,
   })
 end
