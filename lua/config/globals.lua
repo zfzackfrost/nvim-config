@@ -90,6 +90,7 @@ _G.nvim = {
   list_tabs = vim.api.list_tabs,
   get_current_tabpage = vim.api.nvim_get_current_tabpage,
   set_current_tabpage = vim.api.nvim_set_current_tabpage,
+  tabpage_list_wins = vim.api.nvim_tabpage_list_wins,
 
   list_chans = vim.api.nvim_list_chans,
   chan_send = vim.api.nvim_chan_send,

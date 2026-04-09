@@ -22,17 +22,24 @@ vim.keymap.set('i', '<M-Cr>', function()
 end, { silent = true })
 
 local function smart_close()
-  local buftype = vim.bo.buftype
-  if buftype == '' then
-    return
-  end
-  local win_count = #nvim.list_wins()
-  if win_count <= 1 then
+  local all_wins = nvim.tabpage_list_wins(0)
+
+  if #all_wins <= 1 then
     vim.notify("Can't close last window!", vim.log.levels.WARN)
     return
   end
   if vim.bo.modified then
     vim.notify("Can't close window with unsaved changes!", vim.log.levels.WARN)
+    return
+  end
+  local n_normal_wins = 0
+  for _, w in ipairs(all_wins) do
+    local buf = nvim.win_get_buf(w)
+    if vim.bo[buf].buftype == '' then
+      n_normal_wins = n_normal_wins + 1
+    end
+  end
+  if n_normal_wins <= 1 and vim.bo.buftype == '' then
     return
   end
   nvim.win_close(0, false)
