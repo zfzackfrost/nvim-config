@@ -64,6 +64,12 @@ return {
           ['inc'] = { glyph = '', hl = 'MiniIconsGreen' },
           ['sub'] = { glyph = '', hl = 'MiniIconsGreen' },
         },
+        filetype = {
+          ['gitcommit'] = { glyph = '', hl = 'MiniIconsRed' },
+          ['gitconfig'] = { glyph = '', hl = 'MiniIconsRed' },
+          ['gitignore'] = { glyph = '', hl = 'MiniIconsRed' },
+          ['gitrebase'] = { glyph = '', hl = 'MiniIconsRed' },
+        },
       }
       --Add Blender backup extensions
       for i = 1, 64, 1 do
