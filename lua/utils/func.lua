@@ -2,9 +2,11 @@ local M = {}
 
 ---If function
 ---@param choose_a boolean Return value `a`?
----@param a any first value
----@param b any second value
----@return any # `a` if `choose_a` is `true`. Otherwise `b`.
+---@generic A # Type of `a`
+---@param a A first value
+---@generic B # Type of `b`
+---@param b B second value
+---@return A|B # `a` if `choose_a` is `true`. Otherwise `b`.
 function M.iff(choose_a, a, b)
   if choose_a then
     return a
