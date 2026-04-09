@@ -23,7 +23,7 @@ end, { silent = true })
 
 local function smart_close()
   local buftype = vim.bo.buftype
-  if buftype ~= '' then
+  if buftype == '' then
     return
   end
   local win_count = #nvim.list_wins()
