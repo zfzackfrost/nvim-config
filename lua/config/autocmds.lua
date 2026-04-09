@@ -1,15 +1,16 @@
 do
   local group = augroup('user_buftype_lazy', {})
   autocmd('User', {
-    pattern = 'VeryLazy',
     group = group,
+    pattern = 'VeryLazy',
     callback = function()
+      -- Helper to run the event after a 250ms delay
       local exec_event = utils.func.defer_wrap(function()
         nvim.exec_autocmds('User', { pattern = 'BuftypeLazy' })
       end, 250)
-      --- If dashboard is open on startup, wait until we have a "normal"
-      --- buffer open to run the event
-      if Snacks.dashboard.status.opened then
+
+      -- Wait until we have a "normal" buffer open to run the event.
+      if vim.bo.buftype ~= '' then
         autocmd('BufEnter', {
           callback = function(t)
             --- Don't execute if 'buftype' is set
@@ -17,11 +18,11 @@ do
               return
             end
             exec_event()
-            return true --- Only execute the event once
+            return true -- Only execute the event once
           end,
         })
       else
-        -- If dashboard isn't open, just run the event
+        -- If "normal" buffer is open, just run the event
         exec_event()
       end
     end,
