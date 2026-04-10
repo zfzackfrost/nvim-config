@@ -1,9 +1,35 @@
 local M = {}
 
+---@alias ClearDirNotifyFormatter fun(file_count: integer, dir_count: integer, err_count: integer): string
+
+---Create a simple `notify_formatter` for use with `clear_dir`
+---@param context string? A word to describe the context of the removed items. Used like this: "Removed 1 {context} file"
+---@return ClearDirNotifyFormatter
+function M.make_clear_dir_notify_formatter(context)
+  local context_str = ''
+  if context ~= nil then
+    context_str = ' ' .. context
+  end
+  return function(file_count, dir_count, err_count)
+    return string.format(
+      'Removed %d%s %s and %d %s\nEncountered %d %s',
+      file_count,
+      context_str,
+      utils.func.iff(file_count == 1, 'file', 'files'),
+      dir_count,
+      utils.func.iff(dir_count == 1, 'directory', 'directories'),
+      err_count,
+      utils.func.iff(err_count == 1, 'error', 'errors')
+    )
+  end
+end
+
+local default_clear_dir_notify_formatter = M.make_clear_dir_notify_formatter()
+
 ---Delete all files/subdirectories in the specified directory.
 ---@param dir_path string path of the directory to operate on
 ---@param silent boolean? If falsey, display a notification on completion.
----@param notify_formatter (fun(file_count: integer, dir_count: integer, err_count: integer): string)? # Function to create completed notification message. If not provided, a generic message will be used.
+---@param notify_formatter ClearDirNotifyFormatter? Function to create completed notification message. If not provided, a generic message will be used.
 function M.clear_dir(dir_path, silent, notify_formatter)
   local file_count = 0
   local dir_count = 0
@@ -33,15 +59,7 @@ function M.clear_dir(dir_path, silent, notify_formatter)
     if notify_formatter ~= nil then
       msg = notify_formatter(file_count, dir_count, err_count)
     else
-      msg = string.format(
-        'Removed %d %s and %d %s\nEncountered %d %s',
-        file_count,
-        utils.func.iff(file_count == 1, 'file', 'files'),
-        dir_count,
-        utils.func.iff(dir_count == 1, 'directory', 'directories'),
-        err_count,
-        utils.func.iff(err_count == 1, 'error', 'errors')
-      )
+      msg = default_clear_dir_notify_formatter(file_count, dir_count, err_count)
     end
     vim.notify(msg, vim.log.levels.INFO, {})
   end
