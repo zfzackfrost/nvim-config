@@ -39,7 +39,7 @@ end
 ---@param path string path to the file to create
 ---@param perms integer? permissions for the new file; defaults to 438 (644 octal)
 function M.create_file(path, perms)
-  perms = utils.func.iff(perms == nil, 438, perms)
+  perms = utils.func.iff(perms == nil, 438, perms --[[@as integer]])
   local fd, err = vim.uv.fs_open(path, 'a', perms)
   if not fd then
     error('failed to create new file: ' .. err)
