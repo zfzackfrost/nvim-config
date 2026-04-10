@@ -3,31 +3,42 @@ local M = {}
 ---Delete all files/subdirectories in the specified directory.
 ---@param dir_path string path of the directory to operate on
 ---@param silent boolean? If falsey, display a notification on completion.
----@param notify_formatter (fun(ok_count: integer, err_count: integer): string)? # Function to create completed notification message. If not provided, a generic message will be used.
+---@param notify_formatter (fun(file_count: integer, dir_count: integer, err_count: integer): string)? # Function to create completed notification message. If not provided, a generic message will be used.
 function M.clear_dir(dir_path, silent, notify_formatter)
-  local files = vim.fs.find(function()
-    return true
-  end, { path = dir_path, limit = math.huge })
-
-  local ok_count = 0
+  local file_count = 0
+  local dir_count = 0
   local err_count = 0
-  for _, f in ipairs(files) do
-    local _, err = vim.uv.fs_unlink(f)
-    if err == nil then
-      ok_count = ok_count + 1
-    else
+
+  local it = vim
+    .iter(vim.fs.dir(dir_path))
+    :filter(function(_, t)
+      return t == 'directory' or t == 'file'
+    end)
+    :map(function(name, ty)
+      return vim.fs.joinpath(dir_path, name), ty
+    end)
+  for p, ty in it do
+    local ok, _ = pcall(vim.fs.rm, p, { recursive = true, force = true })
+    if not ok then
       err_count = err_count + 1
+    elseif ty == 'file' then
+      file_count = file_count + 1
+    elseif ty == 'directory' then
+      dir_count = dir_count + 1
     end
   end
+
   if not silent then
     local msg
     if notify_formatter ~= nil then
-      msg = notify_formatter(ok_count, err_count)
+      msg = notify_formatter(file_count, dir_count, err_count)
     else
       msg = string.format(
-        'Removed %d %s\nEncountered %d %s',
-        ok_count,
-        utils.func.iff(ok_count == 1, 'file', 'files'),
+        'Removed %d %s and %d %s\nEncountered %d %s',
+        file_count,
+        utils.func.iff(file_count == 1, 'file', 'files'),
+        dir_count,
+        utils.func.iff(dir_count == 1, 'directory', 'directories'),
         err_count,
         utils.func.iff(err_count == 1, 'error', 'errors')
       )
