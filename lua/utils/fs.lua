@@ -3,7 +3,8 @@ local M = {}
 ---Delete all files/subdirectories in the specified directory.
 ---@param dir_path string path of the directory to operate on
 ---@param silent boolean? If falsey, display a notification on completion.
-function M.clear_dir(dir_path, silent)
+---@param notify_formatter (fun(ok_count: integer, err_count: integer): string)? # Function to create completed notification message. If not provided, a generic message will be used.
+function M.clear_dir(dir_path, silent, notify_formatter)
   local files = vim.fs.find(function()
     return true
   end, { path = dir_path, limit = math.huge })
@@ -19,17 +20,19 @@ function M.clear_dir(dir_path, silent)
     end
   end
   if not silent then
-    vim.notify(
-      string.format(
+    local msg
+    if notify_formatter ~= nil then
+      msg = notify_formatter(ok_count, err_count)
+    else
+      msg = string.format(
         'Removed %d %s\nEncountered %d %s',
         ok_count,
         utils.func.iff(ok_count == 1, 'file', 'files'),
         err_count,
         utils.func.iff(err_count == 1, 'error', 'errors')
-      ),
-      vim.log.levels.INFO,
-      {}
-    )
+      )
+    end
+    vim.notify(msg, vim.log.levels.INFO, {})
   end
 end
 
