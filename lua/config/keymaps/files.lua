@@ -34,13 +34,36 @@ local prefix = '<leader>f'
 vim.keymap.set('n', prefix .. 'n', function()
   return [[:NewFile ]]
 end, {
-  desc = 'Make file(s)',
+  desc = 'New file(s)',
   expr = true,
   replace_keycodes = true,
 })
+
+---@type wk.Icon
+local newfile_icon = {
+  icon = '󰝒',
+  color = 'green',
+}
+---@type wk.Icon
+local newdir_icon = {
+  icon = '󰉗',
+  color = 'green',
+}
+---@type wk.Icon
+local executable_icon = {
+  icon = '󱁻',
+  color = 'blue',
+}
+---@type wk.Icon
+local list_icon = {
+  icon = '󰉹',
+  color = 'blue',
+}
+
 wk.add({
   { prefix, group = 'files' },
-  { prefix .. 'p', [[:!mkdir -p %:p:h<Cr>]], desc = 'Make parent directory' },
-  { prefix .. 't', select_filetype, desc = 'Select filetype' },
-  { prefix .. 'x', [[<Cmd>Chmod +x<Cr>]], desc = 'Set executable permission' },
+  { prefix .. 'n', icon = newfile_icon },
+  { prefix .. 'p', [[:!mkdir -p %:p:h<Cr>]], desc = 'Make parent directory', icon = newdir_icon },
+  { prefix .. 't', select_filetype, desc = 'Select filetype', icon = list_icon },
+  { prefix .. 'x', [[<Cmd>Chmod +x<Cr>]], desc = 'Set executable permission', icon = executable_icon },
 })
