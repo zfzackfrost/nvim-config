@@ -19,6 +19,12 @@ return {
           icon_hl_group = 'MiniIconsRed',
           title = 'Git Operation',
         },
+        cmd_chmod = {
+          pattern = '^:Chmod%s+',
+          icon = '󱁻',
+          icon_hl_group = 'MiniIconsBlue',
+          title = 'Chmod',
+        },
       },
     },
     lsp = {
