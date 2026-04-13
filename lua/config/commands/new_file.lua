@@ -13,4 +13,7 @@ local function new_file(t)
     end
   end
 end
+
+--`NewFile {a,b}/file.txt` - If expanded pattern doesn't end in a path separator, creates a file for each pattern item.
+--`NewFile {a,b}/dir/` - If expanded pattern ends in a path separator, creates a directory for each pattern item.
 nvim.create_user_command('NewFile', new_file, { nargs = 1 })
