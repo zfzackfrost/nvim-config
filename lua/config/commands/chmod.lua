@@ -3,6 +3,10 @@ local function chmod(t)
   local perms = t.fargs[1]
   local file = t.fargs[2]
   if file == nil then
+    if vim.bo.buftype ~= '' then
+      vim.notify('Buffer is not associated with a file', vim.log.levels.ERROR)
+      return
+    end
     file = '%'
   end
   file = vim.fn.expandcmd(file)
