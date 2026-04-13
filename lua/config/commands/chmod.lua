@@ -11,7 +11,7 @@ local function chmod(t)
   end
   file = vim.fn.expandcmd(file)
   if vim.uv.fs_stat(file) == nil then
-    vim.notify(("'Not found\n  '%s'"):format(file), vim.log.levels.ERROR)
+    vim.notify(("Not found\n  '%s'"):format(file), vim.log.levels.ERROR)
     return
   end
   file = vim.fs.abspath(file)
