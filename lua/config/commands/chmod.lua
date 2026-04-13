@@ -28,4 +28,7 @@ local function chmod(t)
     end
   end)
 end
+-- Usage: `Chmod PERMS [FILE_PATH]`
+-- `PERMS` is anything accepted for the first argument by the system's `chmod` command.
+-- `FILE_PATH` is the path to the file to operate on. It is optional and defaults to the current buffer's file.
 nvim.create_user_command('Chmod', chmod, { nargs = '+' })
