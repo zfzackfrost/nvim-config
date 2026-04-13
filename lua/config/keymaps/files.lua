@@ -57,7 +57,7 @@ local executable_icon = {
 ---@type wk.Icon
 local list_icon = {
   icon = '󰉹',
-  color = 'blue',
+  color = 'orange',
 }
 
 wk.add({
