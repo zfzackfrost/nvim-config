@@ -2,12 +2,15 @@ return {
   {
     'mfussenegger/nvim-dap',
     dependencies = { 'rcarriga/nvim-dap-ui' },
-    cmd = { 'DebugStart' },
+    cmd = { 'DapNew', 'DapTerminate' },
   },
   {
-    'rcarriga/nvim-dap-ui',
-    dependencies = { 'nvim-neotest/nvim-nio' },
-    lazy = true,
+    'igorlfs/nvim-dap-view',
+    -- let the plugin lazy load itself
+    lazy = false,
+    version = '1.*',
+    ---@module 'dap-view'
+    ---@type dapview.Config
     opts = {},
   },
 }

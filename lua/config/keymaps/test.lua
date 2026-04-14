@@ -1,26 +1,55 @@
 local wk = require('which-key')
 local prefix = '<leader>d'
 wk.add({
-  { prefix, group = 'test/debug' },
+  { prefix, group = 'debug' },
   {
-    prefix .. 't',
-    function()
-      require('neotest').summary.toggle()
-    end,
-    desc = 'Tests summary',
+    prefix .. '<Cr>',
+    [[<Cmd>DebugStart<Cr>]],
+    desc = 'Start debugging',
+  },
+  {
+    prefix .. 'q',
+    [[<Cmd>DebugStop<Cr>]],
+    desc = 'Terminate debugging',
+  },
+  {
+    prefix .. 'v',
+    [[<Cmd>DapViewOpen<Cr>]],
+    desc = 'Open debugging view',
   },
   {
     prefix .. 'r',
     function()
-      require('neotest').run.run()
+      require('dap').continue()
     end,
-    desc = 'Run nearest test',
+    desc = 'Continue',
   },
   {
-    prefix .. 'f',
+    prefix .. 'b',
     function()
-      require('neotest').run.run(vim.fn.expand('%'))
+      require('dap').toggle_breakpoint()
     end,
-    desc = 'Run tests in file',
+    desc = 'Toggle breakpoint',
+  },
+  {
+    prefix .. 'i',
+    function()
+      require('dap').step_into()
+    end,
+    desc = 'Step into',
+  },
+  {
+    prefix .. 'o',
+    function()
+      require('dap').step_over()
+    end,
+    desc = 'Step over',
+  },
+  {
+    prefix .. 'u',
+    function()
+      require('dap').step_out()
+    end,
+    desc = 'Step out',
   },
 })
