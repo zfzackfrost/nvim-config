@@ -1,10 +1,8 @@
----@param t vim.api.keyset.create_user_command.command_args
-local function debug_start(t)
+local function debug_start()
   vim.cmd.DapNew()
 end
----@param t vim.api.keyset.create_user_command.command_args
-local function debug_stop(t)
-  vim.cmd.DapTermiate()
+local function debug_stop()
+  vim.cmd.DapTerminate()
 end
 
 nvim.create_user_command('DebugStart', debug_start, {})

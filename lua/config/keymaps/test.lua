@@ -1,5 +1,14 @@
 local wk = require('which-key')
 local prefix = '<leader>d'
+
+local function open_debug_view()
+  local win = nvim.get_current_win()
+  vim.cmd.DapViewOpen()
+  vim.defer_fn(function()
+    nvim.set_current_win(win)
+  end, 200)
+end
+
 wk.add({
   { prefix, group = 'debug' },
   {
@@ -14,7 +23,7 @@ wk.add({
   },
   {
     prefix .. 'v',
-    [[<Cmd>DapViewOpen<Cr>]],
+    open_debug_view,
     desc = 'Open debugging view',
   },
   {
