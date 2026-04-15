@@ -9,17 +9,50 @@ local function open_debug_view()
   end, 200)
 end
 
+---@type wk.Icon
+local play_icon = {
+  icon = '',
+  color = 'green',
+}
+---@type wk.Icon
+local continue_icon = {
+  icon = '',
+  color = 'orange',
+}
+---@type wk.Icon
+local terminate_icon = {
+  icon = '',
+  color = 'red',
+}
+---@type wk.Icon
+local step_into_icon = {
+  icon = '',
+  color = 'blue',
+}
+---@type wk.Icon
+local step_out_icon = {
+  icon = '',
+  color = 'blue',
+}
+---@type wk.Icon
+local step_over_icon = {
+  icon = '',
+  color = 'blue',
+}
+
 wk.add({
   { prefix, group = 'debug' },
   {
     prefix .. '<Cr>',
     [[<Cmd>DebugStart<Cr>]],
     desc = 'Start debugging',
+    icon = play_icon,
   },
   {
     prefix .. 'q',
     [[<Cmd>DebugStop<Cr>]],
     desc = 'Terminate debugging',
+    icon = terminate_icon,
   },
   {
     prefix .. 'v',
@@ -32,6 +65,7 @@ wk.add({
       require('dap').continue()
     end,
     desc = 'Continue',
+    icon = continue_icon,
   },
   {
     prefix .. 'b',
@@ -46,6 +80,7 @@ wk.add({
       require('dap').step_into()
     end,
     desc = 'Step into',
+    icon = step_into_icon,
   },
   {
     prefix .. 'o',
@@ -53,6 +88,7 @@ wk.add({
       require('dap').step_over()
     end,
     desc = 'Step over',
+    icon = step_over_icon,
   },
   {
     prefix .. 'u',
@@ -60,6 +96,7 @@ wk.add({
       require('dap').step_out()
     end,
     desc = 'Step out',
+    icon = step_out_icon,
   },
 })
 
