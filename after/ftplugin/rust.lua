@@ -3,6 +3,6 @@ require('mini.pairs').map_buf(0, 'i', "'", {
   pair = "''",
   neigh_pattern = '[^<&%a\\].',
 })
-nvim.buf_create_user_command(0, 'DebugStart', function()
+vim.b.debug_start_impl = function()
   vim.cmd.RustLsp('debug')
-end, { force = true })
+end
