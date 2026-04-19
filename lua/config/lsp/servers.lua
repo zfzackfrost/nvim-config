@@ -76,10 +76,6 @@ end
 
 ---@return string[] # Array of language servers which have configurations
 function M.all_servers()
-  local servers = {}
-  for name, _ in pairs(server_opts) do
-    table.insert(servers, name)
-  end
-  return servers
+  return vim.tbl_keys(server_opts)
 end
 return M
