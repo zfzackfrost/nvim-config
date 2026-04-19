@@ -10,16 +10,19 @@ local tsls_hints_settings = {
     includeInlayParameterNameHints = 'all',
   },
 }
+
+---@type lspconfig.settings.ts_ls
 local tsls_settings = {
   typescript = tsls_hints_settings,
   javascript = tsls_hints_settings,
 }
 
+---@type lspconfig.settings.svelte
 local svelte_settings = {
   svelte = {},
 }
 
----@module "lspconfig.configs"
+---@type table<string, vim.lsp.Config>
 local server_opts = {
   arduino_language_server = {},
   clangd = {
@@ -38,6 +41,7 @@ local server_opts = {
   html = {},
   eslint = {},
   jsonls = {
+    ---@type lspconfig.settings.jsonls
     settings = {
       json = {
         schemas = require('schemastore').json.schemas(),
@@ -53,6 +57,7 @@ local server_opts = {
   },
   glsl_analyzer = {},
   yamlls = {
+    ---@type lspconfig.settings.yamlls
     settings = {
       yaml = {
         schemaStore = {
@@ -65,7 +70,7 @@ local server_opts = {
   },
   openscad_ls = {},
   svelte = {
-    settings = vim.tbl_deep_extend('keep', svelte_settings, tsls_settings),
+    settings = svelte_settings,
   },
   zls = {},
 }
