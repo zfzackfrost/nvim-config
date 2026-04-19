@@ -14,12 +14,12 @@ return {
     opts = {},
   },
   {
-    'nvim-treesitter/nvim-treesitter-context',
+    'zfzackfrost/nvim-treesitter-context',
     event = 'User BuftypeLazy',
     opts = {},
   },
   {
-    'nvim-treesitter/nvim-treesitter',
+    'zfzackfrost/nvim-treesitter',
     build = ':TSUpdate',
     lazy = false,
     opts = {},
