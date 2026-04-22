@@ -1,4 +1,4 @@
-require('config.lsp.attach')
+require('config.lsp.attach').setup()
 local servers = require('config.lsp.servers')
 local all_servers = servers.all_servers()
 vim.lsp.enable(all_servers, true)

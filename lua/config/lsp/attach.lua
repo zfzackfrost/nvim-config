@@ -1,4 +1,5 @@
 local s = utils.str
+local M = {}
 
 local function increname_prepend_expr()
   local cword = vim.fn.expand('<cword>')
@@ -6,10 +7,14 @@ local function increname_prepend_expr()
   local keys = [[:IncRename ]] .. cword .. nav
   return keys
 end
+local function increname()
+  local keys = [[:IncRename ]]
+  return keys
+end
 
 ---LSP on attach handler
 ---@param args vim.api.keyset.create_autocmd.callback_args
-local function on_attach(args)
+function M.on_attach(args)
   -- Only create mappings for the first client
   if not vim.b._has_lsp_maps then
     local wk = require('which-key')
@@ -20,8 +25,13 @@ local function on_attach(args)
       expr = true,
       replace_keycodes = true,
     })
+    vim.keymap.set('n', '<leader>cr', increname, {
+      desc = 'Rename under cursor (replace)',
+      buffer = args.buf,
+      expr = true,
+      replace_keycodes = true,
+    })
     wk.add({
-      { '<leader>cr', [[:IncRename ]], buffer = args.buf, desc = 'Rename under cursor (replace)' },
       {
         '<leader>cR',
         [[:IncRename <C-r>=expand('<cword>')<Cr>]],
@@ -59,12 +69,15 @@ local function on_tailwind_attach(args)
   vim.cmd.TailwindColorDisable()
 end
 
-local augroup = augroup('user_lsp_attach', {})
-autocmd('LspAttach', {
-  group = augroup,
-  callback = on_attach,
-})
-autocmd('LspAttach', {
-  group = augroup,
-  callback = on_tailwind_attach,
-})
+function M.setup()
+  local augroup = augroup('user_lsp_attach', {})
+  autocmd('LspAttach', {
+    group = augroup,
+    callback = M.on_attach,
+  })
+  autocmd('LspAttach', {
+    group = augroup,
+    callback = on_tailwind_attach,
+  })
+end
+return M

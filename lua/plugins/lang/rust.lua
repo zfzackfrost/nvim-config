@@ -18,6 +18,9 @@ return {
     init = function()
       vim.g.rustaceanvim = {
         server = {
+          on_attach = function(client, bufnr)
+            require('config.lsp.attach').on_attach({ buf = bufnr })
+          end,
           cmd = {
             'rustup',
             'run',
