@@ -11,7 +11,13 @@ vim.keymap.set({ 'n', 'v' }, 's', function()
 end)
 
 -- Map <Esc><Esc> to `<C-\><C-n>` in terminal mode
-vim.keymap.set('t', '<Esc><Esc>', [[<C-\><C-n>]])
+autocmd('TermOpen', {
+  callback = function()
+    vim.keymap.set('t', '<Esc><Esc>', [[<C-\><C-n>]], {
+      buf = 0,
+    })
+  end,
+})
 
 -- Map <Esc> to `nohlsearch` in normal mode
 vim.keymap.set('n', '<Esc>', [[<Cmd>nohlsearch<Cr>]])

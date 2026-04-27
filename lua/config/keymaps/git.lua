@@ -7,7 +7,14 @@ local lazygit = Terminal:new({
   direction = 'tab',
   close_on_exit = true,
   on_open = function(term)
-    vim.keymap.set({ 't' }, '<Esc><Esc>', '<Nop>', { buffer = 0 })
+    local function unmap_esc()
+      vim.keymap.del('t', '<Esc><Esc>', {
+        buf = term.bufnr,
+      })
+    end
+    vim.defer_fn(function()
+      pcall(unmap_esc)
+    end, 100)
     vim.cmd('startinsert!')
   end,
 })
@@ -15,7 +22,7 @@ local lazygit = Terminal:new({
 local prefix = '<leader>g'
 local prefix_add = prefix .. 'a'
 local prefix_commit = prefix .. 'c'
-local prefix_hunk = prefix .. 'h'
+local prefix_reset = prefix .. 'r'
 
 ---@type wk.Icon
 local git_icon = {
@@ -29,22 +36,25 @@ end
 
 vim.keymap.set('n', prefix .. '<Space>', function()
   return [[:Git ]]
-end, { expr = true, replace_keycodes = true })
+end, {
+  expr = true,
+  replace_keycodes = true,
+  desc = 'Git operation',
+})
 
 m.add_with_icon({
   { prefix, group = 'git' },
 
-  { prefix .. 'g', lazygit_open, desc = 'Lazygit Open' },
-
-  { prefix .. '<Space>', desc = 'Git operation' },
+  { prefix .. 'g', lazygit_open, desc = 'Lazygit open' },
 
   { prefix_add, group = 'add' },
   { prefix_add .. 'a', [[<Cmd>Git add --all<Cr>]], desc = 'Add all' },
   { prefix_add .. 'f', [[<Cmd>Git add %<Cr>]], desc = 'Add current file' },
+  { prefix_add .. 'h', [[<Cmd>Gitsigns stage_hunk<Cr>]], desc = 'Add hunk' },
 
   { prefix_commit, group = 'commit' },
-  { prefix_commit .. 'c', [[<Cmd>Git commit<Cr>]], desc = 'Commit' },
-  { prefix_hunk, group = 'hunk' },
-  { prefix_hunk .. 'r', [[<Cmd>Gitsigns reset_hunk<Cr>]], desc = 'Reset hunk' },
-  { prefix_hunk .. 'a', [[<Cmd>Gitsigns stage_hunk<Cr>]], desc = 'Add/stage hunk' },
+  { prefix_commit .. 'c', [[<Cmd>Git commit<Cr>]], desc = 'Commit staged' },
+
+  { prefix_reset, group = 'reset' },
+  { prefix_reset .. 'h', [[<Cmd>Gitsigns reset_hunk<Cr>]], desc = 'Reset hunk' },
 }, git_icon)
