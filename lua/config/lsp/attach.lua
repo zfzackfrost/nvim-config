@@ -12,8 +12,10 @@ local function increname()
   return keys
 end
 
+---@alias UserLspOnAttachArgs vim.api.keyset.create_autocmd.callback_args | {buf: integer}
+
 ---LSP on attach handler
----@param args vim.api.keyset.create_autocmd.callback_args
+---@param args UserLspOnAttachArgs
 function M.on_attach(args)
   -- Only create mappings for the first client
   if not vim.b._has_lsp_maps then
