@@ -180,7 +180,6 @@ local bool_c_cmake = augend.constant.new({
 
 local css_augends = {
   augend.integer.alias.decimal,
-  augend.hexcolor,
 }
 
 config.augends:on_filetype({
@@ -241,7 +240,7 @@ config.augends:on_filetype({
   typescript = js_augends,
   javascriptreact = js_augends,
   typescriptreact = js_augends,
-  svelte = extend({ js_augends, css_augends }),
+  svelte = js_augends,
 
   css = css_augends,
   scss = css_augends,
