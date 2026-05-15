@@ -70,7 +70,7 @@ _G.nvim = {
   win_get_tabpage = vim.api.nvim_win_get_tabpage,
   win_hide = vim.api.nvim_win_hide,
   win_is_valid = vim.api.nvim_win_is_valid,
-  win_set_hl_ns = vim.api.nvim_win_is_valid,
+  win_set_hl_ns = vim.api.nvim_win_set_hl_ns,
   win_text_height = vim.api.nvim_win_text_height,
 
   list_bufs = vim.api.nvim_list_bufs,
