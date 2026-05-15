@@ -28,9 +28,15 @@ _G.nvim = {
   get_current_line = vim.api.nvim_get_current_line,
   set_current_line = vim.api.nvim_set_current_line,
   get_mode = vim.api.nvim_get_mode,
-  get_keymap = vim.api.nvim_get_keymap,
   get_runtime_file = vim.api.nvim_get_runtime_file,
   open_term = vim.api.nvim_open_term,
+
+  get_keymap = vim.api.nvim_get_keymap,
+  set_keymap = vim.api.nvim_set_keymap,
+  del_keymap = vim.api.nvim_del_keymap,
+  buf_set_keymap = vim.api.nvim_buf_set_keymap,
+  buf_get_keymap = vim.api.nvim_buf_get_keymap,
+  buf_del_keymap = vim.api.nvim_buf_del_keymap,
 
   get_namespaces = vim.api.nvim_get_namespaces,
   buf_clear_namespace = vim.api.nvim_buf_clear_namespace,
