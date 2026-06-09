@@ -26,7 +26,7 @@ return {
       jsonc = { 'prettier' },
       lua = { 'stylua' },
       markdown = { 'prettier' },
-      python = { 'yapf' },
+      python = { 'black' },
       rust = { 'rustfmt' },
       scss = { 'prettier' },
       svelte = { 'prettier' },
