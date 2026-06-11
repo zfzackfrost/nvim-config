@@ -60,6 +60,8 @@ _G.nvim = {
 
   win_call = vim.api.nvim_win_call,
   win_close = vim.api.nvim_win_close,
+  win_set_config = vim.api.nvim_win_set_config,
+  win_get_config = vim.api.nvim_win_get_config,
   win_del_var = vim.api.nvim_win_del_var,
   win_get_var = vim.api.nvim_win_get_var,
   win_set_var = vim.api.nvim_win_set_var,
