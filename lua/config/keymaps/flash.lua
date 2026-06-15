@@ -1,7 +1,13 @@
-local wk = require('which-key')
+local m = utils.vim.map
 local prefix = '<Bslash>'
 
-wk.add({
+---@type wk.Icon
+local flash_icon = {
+  icon = '󱐋',
+  color = 'yellow',
+}
+
+m.add_with_icon({
   { prefix, group = 'flash' },
   {
     prefix .. '<Bslash>',
@@ -43,4 +49,4 @@ wk.add({
     mode = { 'c' },
     desc = 'Toggle Flash Search',
   },
-})
+}, flash_icon)
