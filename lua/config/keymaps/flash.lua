@@ -41,12 +41,4 @@ m.add_with_icon({
     mode = { 'o', 'x' },
     desc = 'Treesitter Search',
   },
-  {
-    prefix .. 's',
-    function()
-      require('flash').toggle()
-    end,
-    mode = { 'c' },
-    desc = 'Toggle Flash Search',
-  },
 }, flash_icon)
