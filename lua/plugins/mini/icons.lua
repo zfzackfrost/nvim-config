@@ -63,6 +63,9 @@ return {
           ['mod'] = { glyph = '', hl = 'MiniIconsGreen' },
           ['inc'] = { glyph = '', hl = 'MiniIconsGreen' },
           ['sub'] = { glyph = '', hl = 'MiniIconsGreen' },
+          ['gd'] = { glyph = '', hl = 'MiniIconsYellow' },
+          ['tscn'] = { glyph = '', hl = 'MiniIconsBlue' },
+          ['tres'] = { glyph = '', hl = 'MiniIconsBlue' },
         },
         filetype = {
           ['gitcommit'] = { glyph = '', hl = 'MiniIconsRed' },

@@ -1,14 +1,10 @@
 return {
   {
     'mfussenegger/nvim-dap',
-    cmd = { 'DapNew', 'DapTerminate' },
   },
   {
-    'igorlfs/nvim-dap-view',
-    lazy = false,
-    version = '1.*',
-    ---@module 'dap-view'
-    ---@type dapview.Config
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
     opts = {},
   },
 }
