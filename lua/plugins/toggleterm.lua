@@ -2,6 +2,7 @@ return {
   {
     'akinsho/toggleterm.nvim',
     version = false,
+    enabled = false,
     opts = function()
       return {
         size = function(term)
