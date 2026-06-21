@@ -1,23 +1,23 @@
 local m = utils.vim.map
 
-local Terminal = require('toggleterm.terminal').Terminal
+-- local Terminal = require('toggleterm.terminal').Terminal
 
-local lazygit = Terminal:new({
-  cmd = 'lazygit',
-  direction = 'tab',
-  close_on_exit = true,
-  on_open = function(term)
-    local function unmap_esc()
-      vim.keymap.del('t', '<Esc><Esc>', {
-        buf = term.bufnr,
-      })
-    end
-    vim.defer_fn(function()
-      pcall(unmap_esc)
-    end, 100)
-    vim.cmd('startinsert!')
-  end,
-})
+-- local lazygit = Terminal:new({
+--   cmd = 'lazygit',
+--   direction = 'tab',
+--   close_on_exit = true,
+--   on_open = function(term)
+--     local function unmap_esc()
+--       vim.keymap.del('t', '<Esc><Esc>', {
+--         buf = term.bufnr,
+--       })
+--     end
+--     vim.defer_fn(function()
+--       pcall(unmap_esc)
+--     end, 100)
+--     vim.cmd('startinsert!')
+--   end,
+-- })
 
 local prefix = '<leader>g'
 local prefix_add = prefix .. 'a'
@@ -31,7 +31,7 @@ local git_icon = {
 }
 
 local function lazygit_open()
-  lazygit:toggle()
+  Snacks.lazygit.open()
 end
 
 vim.keymap.set('n', prefix .. '<Space>', function()
