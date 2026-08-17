@@ -1,5 +1,5 @@
 local m = utils.vim.map
-local prefix = '<Bslash>'
+local prefix = '\\'
 
 ---@type wk.Icon
 local flash_icon = {
@@ -10,7 +10,7 @@ local flash_icon = {
 m.add_with_icon({
   { prefix, group = 'flash' },
   {
-    prefix .. '<Bslash>',
+    prefix .. '\\',
     function()
       require('flash').jump()
     end,
